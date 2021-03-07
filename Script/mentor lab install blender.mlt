@@ -1,0 +1,311 @@
+<?xml version="1.0" standalone="no"?>
+<mlt LC_NUMERIC="C" version="6.25.0" title="Shotcut version 21.01.29" producer="main_bin">
+  <profile description="automatic" width="1920" height="1080" progressive="1" sample_aspect_num="1" sample_aspect_den="1" display_aspect_num="1920" display_aspect_den="1080" frame_rate_num="60" frame_rate_den="1" colorspace="709"/>
+  <producer id="producer0" in="00:00:00.000" out="00:00:28.667">
+    <property name="length">00:00:28.683</property>
+    <property name="eof">pause</property>
+    <property name="resource">C:/Users/vreality-mvgraph/Videos/2021-02-13 15-19-47.flv</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="creation_time">2021-02-13T19:20:15</property>
+    <property name="shotcut:hash">7e1de5fc31ff57e6f0927f95e39e3cd7</property>
+    <property name="ignore_points">0</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+  </producer>
+  <producer id="producer1" in="00:00:00.000" out="00:01:34.533">
+    <property name="length">00:01:34.550</property>
+    <property name="eof">pause</property>
+    <property name="resource">C:/Users/vreality-mvgraph/Videos/2021-02-13 15-23-15.flv</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="creation_time">2021-02-13T19:24:50</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:hash">efad0e66d02b7036b1a31c34bfee90fc</property>
+  </producer>
+  <playlist id="main_bin" title="Shotcut version 21.01.29">
+    <property name="shotcut:projectAudioChannels">2</property>
+    <property name="shotcut:projectFolder">0</property>
+    <property name="xml_retain">1</property>
+    <entry producer="producer0" in="00:00:00.000" out="00:00:28.667"/>
+    <entry producer="producer1" in="00:00:00.000" out="00:01:34.533"/>
+  </playlist>
+  <producer id="black" in="00:00:00.000" out="00:01:15.033">
+    <property name="length">00:01:15.050</property>
+    <property name="eof">pause</property>
+    <property name="resource">0</property>
+    <property name="aspect_ratio">1</property>
+    <property name="mlt_service">color</property>
+    <property name="mlt_image_format">rgb24a</property>
+    <property name="set.test_audio">0</property>
+  </producer>
+  <playlist id="background">
+    <entry producer="black" in="00:00:00.000" out="00:01:15.033"/>
+  </playlist>
+  <producer id="producer2" in="00:00:00.000" out="00:00:28.667">
+    <property name="length">00:00:28.683</property>
+    <property name="eof">pause</property>
+    <property name="resource">C:/Users/vreality-mvgraph/Videos/2021-02-13 15-19-47.flv</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="creation_time">2021-02-13T19:20:15</property>
+    <property name="shotcut:hash">7e1de5fc31ff57e6f0927f95e39e3cd7</property>
+    <property name="ignore_points">0</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">2021-02-13 15-19-47.flv</property>
+  </producer>
+  <producer id="producer3" in="00:00:00.000" out="00:00:28.667">
+    <property name="length">00:00:28.683</property>
+    <property name="eof">pause</property>
+    <property name="resource">C:/Users/vreality-mvgraph/Videos/2021-02-13 15-19-47.flv</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="creation_time">2021-02-13T19:20:15</property>
+    <property name="shotcut:hash">7e1de5fc31ff57e6f0927f95e39e3cd7</property>
+    <property name="ignore_points">0</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">2021-02-13 15-19-47.flv</property>
+  </producer>
+  <producer id="producer4" in="00:00:00.000" out="00:01:34.533">
+    <property name="length">00:01:34.550</property>
+    <property name="eof">pause</property>
+    <property name="resource">C:/Users/vreality-mvgraph/Videos/2021-02-13 15-23-15.flv</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="creation_time">2021-02-13T19:24:50</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:hash">efad0e66d02b7036b1a31c34bfee90fc</property>
+    <property name="shotcut:caption">2021-02-13 15-23-15.flv</property>
+  </producer>
+  <producer id="producer5" in="00:00:00.000" out="00:00:09.433">
+    <property name="length">00:00:09.450</property>
+    <property name="eof">pause</property>
+    <property name="resource">10:C:/Users/vreality-mvgraph/Videos/2021-02-13 15-23-15.flv</property>
+    <property name="aspect_ratio">1</property>
+    <property name="seekable">1</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">1</property>
+    <property name="warp_speed">10</property>
+    <property name="warp_resource">C:/Users/vreality-mvgraph/Videos/2021-02-13 15-23-15.flv</property>
+    <property name="mlt_service">timewarp</property>
+    <property name="shotcut:producer">avformat</property>
+    <property name="video_delay">0</property>
+    <property name="shotcut:hash">efad0e66d02b7036b1a31c34bfee90fc</property>
+    <property name="shotcut:caption">2021-02-13 15-23-15.flv (10x)</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+  </producer>
+  <producer id="producer6" in="00:00:00.000" out="00:01:34.533">
+    <property name="length">00:01:34.550</property>
+    <property name="eof">pause</property>
+    <property name="resource">C:/Users/vreality-mvgraph/Videos/2021-02-13 15-23-15.flv</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="creation_time">2021-02-13T19:24:50</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:hash">efad0e66d02b7036b1a31c34bfee90fc</property>
+    <property name="shotcut:caption">2021-02-13 15-23-15.flv</property>
+  </producer>
+  <producer id="producer7" in="00:00:00.000" out="00:01:34.533">
+    <property name="length">00:01:34.550</property>
+    <property name="eof">pause</property>
+    <property name="resource">C:/Users/vreality-mvgraph/Videos/2021-02-13 15-23-15.flv</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="creation_time">2021-02-13T19:24:50</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:hash">efad0e66d02b7036b1a31c34bfee90fc</property>
+    <property name="shotcut:caption">2021-02-13 15-23-15.flv</property>
+  </producer>
+  <producer id="producer8" in="00:00:00.000" out="00:01:34.533">
+    <property name="length">00:01:34.550</property>
+    <property name="eof">pause</property>
+    <property name="resource">C:/Users/vreality-mvgraph/Videos/2021-02-13 15-23-15.flv</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="creation_time">2021-02-13T19:24:50</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:hash">efad0e66d02b7036b1a31c34bfee90fc</property>
+    <property name="shotcut:caption">2021-02-13 15-23-15.flv</property>
+  </producer>
+  <producer id="producer9" in="00:00:00.000" out="00:00:09.433">
+    <property name="length">00:00:09.450</property>
+    <property name="eof">pause</property>
+    <property name="resource">10:C:/Users/vreality-mvgraph/Videos/2021-02-13 15-23-15.flv</property>
+    <property name="aspect_ratio">1</property>
+    <property name="seekable">1</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">1</property>
+    <property name="warp_speed">10</property>
+    <property name="warp_resource">C:/Users/vreality-mvgraph/Videos/2021-02-13 15-23-15.flv</property>
+    <property name="mlt_service">timewarp</property>
+    <property name="shotcut:producer">avformat</property>
+    <property name="video_delay">0</property>
+    <property name="shotcut:hash">efad0e66d02b7036b1a31c34bfee90fc</property>
+    <property name="shotcut:caption">2021-02-13 15-23-15.flv (10x)</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+  </producer>
+  <producer id="producer10" in="00:00:00.000" out="00:01:34.533">
+    <property name="length">00:01:34.550</property>
+    <property name="eof">pause</property>
+    <property name="resource">C:/Users/vreality-mvgraph/Videos/2021-02-13 15-23-15.flv</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="creation_time">2021-02-13T19:24:50</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:hash">efad0e66d02b7036b1a31c34bfee90fc</property>
+    <property name="shotcut:caption">2021-02-13 15-23-15.flv</property>
+  </producer>
+  <producer id="producer11" in="00:00:00.000" out="00:01:34.533">
+    <property name="length">00:01:34.550</property>
+    <property name="eof">pause</property>
+    <property name="resource">C:/Users/vreality-mvgraph/Videos/2021-02-13 15-23-15.flv</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="creation_time">2021-02-13T19:24:50</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:hash">efad0e66d02b7036b1a31c34bfee90fc</property>
+    <property name="shotcut:caption">2021-02-13 15-23-15.flv</property>
+  </producer>
+  <playlist id="playlist0">
+    <property name="shotcut:video">1</property>
+    <property name="shotcut:name">V1</property>
+    <entry producer="producer2" in="00:00:00.617" out="00:00:16.317"/>
+    <entry producer="producer3" in="00:00:17.167" out="00:00:26.933"/>
+    <entry producer="producer4" in="00:00:02.433" out="00:00:23.200"/>
+    <entry producer="producer5" in="00:00:02.317" out="00:00:04.400"/>
+    <entry producer="producer6" in="00:00:43.933" out="00:00:46.000"/>
+    <entry producer="producer7" in="00:00:51.283" out="00:00:56.417"/>
+    <entry producer="producer8" in="00:00:57.217" out="00:01:05.800"/>
+    <entry producer="producer9" in="00:00:06.583" out="00:00:07.567"/>
+    <entry producer="producer10" in="00:01:15.717" out="00:01:20.833"/>
+    <entry producer="producer11" in="00:01:20.850" out="00:01:24.833"/>
+  </playlist>
+  <playlist id="playlist1">
+    <property name="shotcut:audio">1</property>
+    <property name="shotcut:name">A1</property>
+    <blank length="00:00:00.017"/>
+  </playlist>
+  <producer id="producer12" in="00:00:00.000" out="00:01:34.533">
+    <property name="length">00:01:34.550</property>
+    <property name="eof">pause</property>
+    <property name="resource">C:/Users/vreality-mvgraph/Videos/2021-02-13 15-23-15.flv</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="creation_time">2021-02-13T19:24:50</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:hash">efad0e66d02b7036b1a31c34bfee90fc</property>
+    <property name="shotcut:caption">2021-02-13 15-23-15.flv</property>
+  </producer>
+  <playlist id="playlist2">
+    <property name="shotcut:video">1</property>
+    <property name="shotcut:name">V2</property>
+    <blank length="00:01:10.350"/>
+    <entry producer="producer12" in="00:01:28.850" out="00:01:33.533"/>
+  </playlist>
+  <tractor id="tractor0" title="Shotcut version 21.01.29" global_feed="1" in="00:00:00.000" out="00:01:15.033">
+    <property name="shotcut">1</property>
+    <property name="shotcut:projectAudioChannels">2</property>
+    <property name="shotcut:projectFolder">0</property>
+    <property name="shotcut:scaleFactor">1.85191</property>
+    <property name="shotcut:trackHeight">10</property>
+    <track producer="background"/>
+    <track producer="playlist0"/>
+    <track producer="playlist1" hide="video"/>
+    <track producer="playlist2" hide="audio"/>
+    <transition id="transition0">
+      <property name="a_track">0</property>
+      <property name="b_track">1</property>
+      <property name="mlt_service">mix</property>
+      <property name="always_active">1</property>
+      <property name="sum">1</property>
+    </transition>
+    <transition id="transition1">
+      <property name="a_track">0</property>
+      <property name="b_track">1</property>
+      <property name="version">0.9</property>
+      <property name="mlt_service">frei0r.cairoblend</property>
+      <property name="threads">0</property>
+      <property name="disable">1</property>
+    </transition>
+    <transition id="transition2">
+      <property name="a_track">0</property>
+      <property name="b_track">2</property>
+      <property name="mlt_service">mix</property>
+      <property name="always_active">1</property>
+      <property name="sum">1</property>
+    </transition>
+    <transition id="transition3">
+      <property name="a_track">0</property>
+      <property name="b_track">3</property>
+      <property name="mlt_service">mix</property>
+      <property name="always_active">1</property>
+      <property name="sum">1</property>
+    </transition>
+    <transition id="transition4">
+      <property name="a_track">1</property>
+      <property name="b_track">3</property>
+      <property name="version">0.9</property>
+      <property name="mlt_service">frei0r.cairoblend</property>
+      <property name="threads">0</property>
+      <property name="disable">0</property>
+    </transition>
+  </tractor>
+</mlt>
