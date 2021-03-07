@@ -3,19 +3,12 @@ using UnityEngine.Experimental.Rendering.Universal;
 using System.Collections;
 using System.Collections.Generic;
 
-public class GlobalLight : MonoBehaviour {
+public class GlobalLight : ArtificialLight {
   [Header("Configuration")]
-  public AnimationCurve lightValue;
-  public float targetIntensity = 1;
+  public Gradient color;
 
-  [Header("Initialization")]
-  public Light2D myLight;
-
-  void Reset () {
-    myLight = GetComponent<Light2D>();
-  }
-
-  void Update () {
-    myLight.intensity = lightValue.Evaluate(Sky.Instance.hour) * targetIntensity;
+  public override void Update () {
+    base.Update();
+    myLight.color = color.Evaluate(Sky.Instance.hour / 24f);
   }
 }
