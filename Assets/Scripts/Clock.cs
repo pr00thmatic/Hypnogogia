@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
+[ExecuteInEditMode]
 public class Clock : MonoBehaviour {
   [Header("Initialization")]
   public Transform hours;
