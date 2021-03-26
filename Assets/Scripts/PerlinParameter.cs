@@ -15,7 +15,11 @@ public class PerlinParameter : MonoBehaviour {
 
   void Reset () {
     animator = GetComponent<Animator>();
-    x = transform.GetSiblingIndex() * 0.2f;
+  }
+
+  void Start () {
+    x = transform.GetSiblingIndex() * 1.2f;
+    speed += Random.Range(0.2f, -0.2f);
   }
 
   void Update () {
