@@ -11,6 +11,7 @@ public class Sky : NonPersistentSingleton<Sky> {
   [Header("Information")]
   [Tooltip("the hour of the day (in hours)")]
   public float hour;
+  public float NormalizedHour { get => hour / 24f; }
 
   [Header("Initialization")]
   public Renderer r;
