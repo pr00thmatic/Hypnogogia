@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
+[ExecuteInEditMode]
 public class FadingStars : MonoBehaviour {
   [Header("Configuration")]
   public AnimationCurve fading;
@@ -31,7 +32,9 @@ public class FadingStars : MonoBehaviour {
   }
 
   void Update () {
-    x += speed * Time.deltaTime;
+    if (Application.isPlaying) {
+      x += speed * Time.deltaTime;
+    }
     alpha = (1 - Mathf.PerlinNoise(x, 1) * twinkleFalloff) * fading.Evaluate(Sky.Instance.NormalizedHour + offset);
     r.color = new Color(1,1,1, alpha);
     t = Sky.Instance.NormalizedHour;

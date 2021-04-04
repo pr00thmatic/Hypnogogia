@@ -7,4 +7,9 @@ public class Utils {
     v.y = y;
     return v;
   }
+
+  public static Vector3 SetX (Vector3 v, float x) {
+    v.x = x;
+    return v;
+  }
 }
