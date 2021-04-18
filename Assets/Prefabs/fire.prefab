@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 1.1947, y: 1.1947, z: 1.1947}
   m_Children:
   - {fileID: 2029692648506763632}
-  - {fileID: 9065764285315532835}
+  - {fileID: 6163865230025824900}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -45,10 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f52795e5f994534293571abcdc74781, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 0.5
+  value: 1
   lights:
   - {fileID: 1670004867442028457}
   - {fileID: 1457293160908479418}
+  fire: {fileID: 6163865230025824900}
 --- !u!1 &2029692647834355523
 GameObject:
   m_ObjectHideFlags: 0
@@ -97,7 +98,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.77
   m_Color: {r: 1, g: 0.42578703, b: 0, a: 1}
-  m_Intensity: 1.73
+  m_Intensity: 1.0607665
   m_LightVolumeOpacity: 0
   m_ApplyToSortingLayers: 75fa743b85f2eaceff67e8ceedf229aa8fde51656f2975e500000000
   m_LightCookieSprite: {fileID: 0}
@@ -135,10 +136,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intensityRange: {x: 0, y: 3.5}
-  value: 0.5
+  value: 1
   speed: 2
-  x: 0
-  targetIntensity: 0
+  x: 19.186632
+  targetIntensity: 3.5
   light: {fileID: 2029692647834355521}
 --- !u!1 &2029692648506763635
 GameObject:
@@ -172,6 +173,37 @@ Transform:
   m_Father: {fileID: 2029692647425480534}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2503499935941514418
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6163865230025824900}
+  m_Layer: 0
+  m_Name: fire
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6163865230025824900
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2503499935941514418}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 9065764285315532835}
+  m_Father: {fileID: 2029692647425480534}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4537747399897921238
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,7 +216,7 @@ GameObject:
   - component: {fileID: 4009128948689613101}
   - component: {fileID: 2451174986529311391}
   m_Layer: 0
-  m_Name: fire
+  m_Name: Anim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -201,8 +233,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 2029692647425480534}
-  m_RootOrder: 1
+  m_Father: {fileID: 6163865230025824900}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4009128948689613101
 SpriteRenderer:
@@ -322,7 +354,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.77
   m_Color: {r: 1, g: 0.95142794, b: 0.41037738, a: 1}
-  m_Intensity: 0.2
+  m_Intensity: 0.12122734
   m_LightVolumeOpacity: 0
   m_ApplyToSortingLayers: 75fa743b85f2eaceff67e8cec34797a2edf229aa8fde51656f2975e500000000
   m_LightCookieSprite: {fileID: 0}
@@ -360,8 +392,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intensityRange: {x: 0, y: 0.4}
-  value: 0.5
+  value: 1
   speed: 2
-  x: 0
-  targetIntensity: 0
+  x: 101.18661
+  targetIntensity: 0.4
   light: {fileID: 4950112022636967411}

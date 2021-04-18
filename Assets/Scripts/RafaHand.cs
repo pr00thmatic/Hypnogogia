@@ -11,6 +11,9 @@ public class RafaHand : MonoBehaviour {
   [Header("Information")]
   public bool follow = false;
   public float debug;
+  public float timestampFollow = -1;
+  public float TimeFollowing { get => Time.time - timestampFollow; }
+  public UsableWithHand currentlyUsedItem;
 
   [Header("Initialization")]
   public RafaMetarigTransform metaRig;
@@ -18,12 +21,12 @@ public class RafaHand : MonoBehaviour {
   public Transform arm1;
 
   void Update () {
-    if (Input.GetMouseButtonUp(0)) {
+    if (Input.GetMouseButtonDown(1)) {
       follow = false;
       metaRig.followCommands = false;
     }
 
-    if (follow) {
+    if (follow && !currentlyUsedItem) {
       float z = Mathf.Abs(transform.position.z - Camera.main.transform.position.z);
       Vector3 point = Camera.main.ScreenToWorldPoint(Input.mousePosition + new Vector3(0,0,z));
       Vector3 d = point - shoulder.position;
@@ -33,14 +36,11 @@ public class RafaHand : MonoBehaviour {
       if (Vector3.Angle(Vector3.right, d) > angle) return;
       transform.position = Vector3.ClampMagnitude(d, radius) + shoulder.position;
       transform.up = (invertHand? -1: 1) * arm1.right;
-      // if (Input.OnMouseButtonDown(0)) {
-      //   Transform test = GameObject.CreatePrimitive(PrimitiveType.sphere).transform;
-      //   test.position = transform.position;
-      // }
     }
   }
 
   void OnMouseDown () {
+    timestampFollow = Time.time;
     follow = true;
     metaRig.followCommands = true;
   }

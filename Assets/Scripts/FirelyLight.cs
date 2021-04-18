@@ -3,6 +3,7 @@ using UnityEngine.Experimental.Rendering.Universal;
 using System.Collections;
 using System.Collections.Generic;
 
+[ExecuteInEditMode]
 public class FirelyLight : MonoBehaviour {
   [Header("Configuration")]
   public Vector2 intensityRange = new Vector2(0, 3.5f);
