@@ -20,5 +20,9 @@ public class RafaMotion : MonoBehaviour {
     animator.SetFloat("speed", Mathf.Abs(Input.GetAxis("Horizontal")));
     rotationTarget.transform.rotation =
       Quaternion.Euler(Utils.SetY(rotationTarget.transform.rotation.eulerAngles, orientation < 0? 180: 0));
+
+    if (Input.GetKeyDown(KeyCode.LeftShift)) {
+      animator.SetBool("ducking", !animator.GetBool("ducking"));
+    }
   }
 }
