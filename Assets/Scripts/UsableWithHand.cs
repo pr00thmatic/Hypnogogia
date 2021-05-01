@@ -19,9 +19,11 @@ public class UsableWithHand : MonoBehaviour {
 
   void OnTriggerStay (Collider c) {
     RafaHand hand = c.GetComponent<RafaHand>();
+    if (!hand || hand.frameBlockedByInteraction) return;
     if (c.isTrigger && hand && hand.TimeFollowing > 0.2f && hand.follow) {
       canBeUsed = true;
       if (Input.GetMouseButton(0)) {
+        hand.frameBlockedByInteraction = true;
         onUse?.Invoke(hand);
       }
       if (takesControl) {
