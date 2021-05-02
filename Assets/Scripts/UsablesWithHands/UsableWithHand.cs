@@ -23,7 +23,7 @@ public class UsableWithHand : MonoBehaviour {
     if (!canBeUsed) return;
     if (Input.GetMouseButton(0)) {
       if (Input.GetMouseButtonDown(0)) onUseBegin?.Invoke(hand);
-      hand.frameBlockedByInteraction = true;
+      hand.blockedByInteraction = true;
       onUse?.Invoke(hand);
     }
     if (takesControl && Input.GetMouseButtonDown(0)) {
