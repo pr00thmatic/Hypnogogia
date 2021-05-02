@@ -16,7 +16,9 @@ public class FireKnob : MonoBehaviour {
   void Update () {
     if (knob.beingUsed) {
       fire.value = Mathf.Clamp(fire.value + Input.GetAxis("Mouse Y") * speed, 0, 1);
+      if (Input.GetMouseButtonUp(0)) knob.StopUsing();
     }
+
     if (knobSprite) {
       knobSprite.rotation = Quaternion.Euler(0,0, Mathf.Lerp(angles.y, angles.x, fire.value));
     }

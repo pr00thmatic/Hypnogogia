@@ -15,7 +15,7 @@ public class FirelyLight : MonoBehaviour {
   public float targetIntensity;
 
   [Header("Initialization")]
-  public Light2D light;
+  public new Light2D light;
 
   void Start () {
     x = Random.Range(1,100);

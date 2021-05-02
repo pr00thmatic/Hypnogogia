@@ -22,7 +22,7 @@ public class DoorKnob : MonoBehaviour {
     usable.onUse -= Toggle;
   }
 
-  public void Toggle (RafaHand hand) {
+  public void Toggle (UserHand hand) {
     door.isOpen = !door.isOpen;
   }
 }
