@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 [RequireComponent(typeof(SortingGroup))]
+[RequireComponent(typeof(SurfaceMimicker))]
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Collider2D))]
 public class Grabbable : MonoBehaviour {

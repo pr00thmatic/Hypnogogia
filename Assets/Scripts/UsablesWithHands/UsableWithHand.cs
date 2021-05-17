@@ -23,7 +23,7 @@ public class UsableWithHand : MonoBehaviour {
     if (!canBeUsed) return;
     if (Input.GetMouseButton(0)) {
       if (Input.GetMouseButtonDown(0)) onUseBegin?.Invoke(hand);
-      hand.blockedByInteraction = true;
+      hand.SpentAction();
       onUse?.Invoke(hand);
     }
     if (takesControl && Input.GetMouseButtonDown(0)) {
@@ -34,8 +34,12 @@ public class UsableWithHand : MonoBehaviour {
 
   void OnTriggerStay2D (Collider2D c) {
     UserHand hand = c.GetComponent<UserHand>();
-    if (!hand || hand.Blocked) return;
-    canBeUsed = true;
+    if (!hand) return;
+    if (hand.Blocked) {
+      canBeUsed = false;
+    } else {
+      canBeUsed = true;
+    }
     this.hand = hand;
   }
 

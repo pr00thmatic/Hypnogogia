@@ -4,19 +4,12 @@ using System.Collections.Generic;
 
 public class UserHand : MonoBehaviour, IBlockHandMotion {
   [Header("Information")]
-  public bool blockedByInteraction = false;
-  public bool blockedByEnable;
-  public bool Blocked { get => blockedByEnable || blockedByInteraction; }
   public UsableWithHand currentlyUsedItem;
   public bool BlockingHandMotion { get => currentlyUsedItem && currentlyUsedItem.takesControl; }
+  public bool Blocked { get => hand.IsBlocked; }
 
-  void OnEnable () {
-    blockedByEnable = true;
-  }
+  [Header("Initialization")]
+  public SelectedHand hand;
 
-  void Update () {
-    if (Input.GetMouseButtonUp(0)) {
-      blockedByEnable = blockedByInteraction = false;
-    }
-  }
+  public void SpentAction () { hand.SpentAction(); }
 }

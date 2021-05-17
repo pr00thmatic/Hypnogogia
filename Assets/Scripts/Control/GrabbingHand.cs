@@ -3,44 +3,34 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class GrabbingHand : MonoBehaviour {
-  public const int BLOCKED_BY_DROP = 0, BLOCKED_BY_PICKUP = 1, BLOCKED_BY_ENABLE = 2;
-
   [Header("Configuration")]
   public int grabbedSortingOrder = -1;
 
   [Header("Information")]
   public Grabbable currentlyGrabbed;
-  public bool[] blocked = new bool[3];
   public Vector3 Center { get => (Vector3) c.offset + transform.position; }
+  public static bool UserCommandDown { get => (Input.GetMouseButtonDown(2) || Input.GetKeyDown(KeyCode.G)); }
+  public static bool UserCommandUp { get => (Input.GetMouseButtonUp(2) || Input.GetKeyUp(KeyCode.G)); }
 
   [Header("Initialization")]
   public Transform movingHand;
   public CircleCollider2D c;
-
-  void OnEnable () {
-    blocked[BLOCKED_BY_ENABLE] = true;
-  }
+  public UserHand user;
+  public SelectedHand hand;
 
   void Update () {
-    if (!UpdateBlockersAndContinue()) return;
+    if (hand.IsBlocked) return;
     if (!UpdateDropAndContinue()) return;
     if (!UpdateGrabAndContinue()) return;
   }
 
-  // returns false if something is blocking the grab/drop action
-  public bool UpdateBlockersAndContinue () {
-    if (Input.GetMouseButtonUp(0)) for (int i=0; i<blocked.Length; i++) blocked[i] = false;
-    foreach (bool b in blocked) if (b) return false;
-    return true;
-  }
-
   // returns false if the hand just picked up something
   public bool UpdateGrabAndContinue () {
-    if (Input.GetMouseButton(0) && !currentlyGrabbed) {
+    if (UserCommandDown && !currentlyGrabbed) {
       currentlyGrabbed = FindAvailableGrabbable();
       if (currentlyGrabbed) {
         currentlyGrabbed.Use(this);
-        blocked[BLOCKED_BY_PICKUP] = true;
+        hand.SpentAction();
         return false;
       }
     }
@@ -68,10 +58,10 @@ public class GrabbingHand : MonoBehaviour {
 
   // returns false if the hand just dropped something
   public bool UpdateDropAndContinue () {
-    if (Input.GetMouseButtonDown(0) && currentlyGrabbed) {
+    if (UserCommandDown && currentlyGrabbed) {
       currentlyGrabbed.Unuse();
       currentlyGrabbed = null;
-      blocked[BLOCKED_BY_DROP] = true;
+      hand.SpentAction();
       return false;
     }
 

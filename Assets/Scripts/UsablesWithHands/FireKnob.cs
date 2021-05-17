@@ -8,6 +8,9 @@ public class FireKnob : MonoBehaviour {
   public float speed = 1;
   public Vector2 angles = new Vector2(-168.12f, -23);
 
+  // [Header("Information")]
+  public float Value { get => fire.value; }
+
   [Header("Initialization")]
   public FirelyLightsController fire;
   public UsableWithHand knob;
