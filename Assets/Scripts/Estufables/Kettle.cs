@@ -22,7 +22,7 @@ public class Kettle : MonoBehaviour {
     if (hotness >= 1 && estufa && !steam.isPlaying) {
       steam.Play();
     }
-    if (steam.isPlaying && !estufa) {
+    if (steam.isPlaying && (!estufa || estufa.Value == 0)) {
       steam.Stop();
     }
   }
