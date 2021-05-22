@@ -6,6 +6,8 @@ public class PerlinParameter : MonoBehaviour {
   [Header("Configuration")]
   public float speed;
   public string parameter = "speed";
+  public RandomRange parameterRange = new RandomRange(0, 1);
+  public RandomRange speedRandomRange = new RandomRange(0.1f, -0.2f);
 
   [Header("Information")]
   public float x;
@@ -19,11 +21,11 @@ public class PerlinParameter : MonoBehaviour {
 
   void Start () {
     x = transform.GetSiblingIndex() * 1.2f;
-    speed += Random.Range(0.2f, -0.2f);
+    speed += speedRandomRange.Uniform;
   }
 
   void Update () {
-    animator.SetFloat(parameter, Mathf.PerlinNoise(x, 1));
+    animator.SetFloat(parameter, Mathf.PerlinNoise(x, 1) * parameterRange.Uniform);
     x += speed * Time.deltaTime;
   }
 }

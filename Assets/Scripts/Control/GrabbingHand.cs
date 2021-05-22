@@ -9,8 +9,8 @@ public class GrabbingHand : MonoBehaviour {
   [Header("Information")]
   public Grabbable currentlyGrabbed;
   public Vector3 Center { get => (Vector3) c.offset + transform.position; }
-  public static bool UserCommandDown { get => (Input.GetMouseButtonDown(2) || Input.GetKeyDown(KeyCode.G)); }
-  public static bool UserCommandUp { get => (Input.GetMouseButtonUp(2) || Input.GetKeyUp(KeyCode.G)); }
+  public static bool UserCommandDown { get => (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.G)); }
+  public static bool UserCommandUp { get => (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.G)); }
 
   [Header("Initialization")]
   public Transform movingHand;

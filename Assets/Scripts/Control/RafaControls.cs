@@ -3,18 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class RafaControls : MonoBehaviour {
+  [Header("Information")]
+  public int currentHand;
+
   [Header("Initialization")]
-  public GameObject selectableHands;
   public GameObject handControls;
 
-  public void RouteControlToHand (GameObject handControl) {
-    selectableHands.SetActive(false);
-    handControl.SetActive(true);
-    handControls.SetActive(true);
+  void Start () {
+    SetControlTo(currentHand, true);
   }
 
-  public void RemoveControlFromHands () {
-    selectableHands.SetActive(true);
-    handControls.SetActive(false);
+  public void SwitchHand () {
+    SetControlTo(currentHand, false);
+    currentHand = (currentHand + 1) % handControls.transform.childCount;
+    SetControlTo(currentHand, true);
+  }
+
+  public void SetControlTo (int handIndex, bool enabled) {
+    handControls.transform.GetChild(handIndex).gameObject.SetActive(enabled);
   }
 }

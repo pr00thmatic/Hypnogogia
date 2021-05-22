@@ -33,8 +33,8 @@ public class HandMouseFollow : MonoBehaviour {
     motionTarget.position = Vector3.ClampMagnitude(d, radius) + shoulder.position;
     motionTarget.rotation = arm1.rotation * Quaternion.Euler(0,0,90 * (invertHand? 1: -1));
 
-    if (Input.GetMouseButtonDown(1)) {
-      GetComponentInParent<RafaControls>().RemoveControlFromHands();
+    if (Input.GetKeyDown(KeyCode.Space)) {
+      GetComponentInParent<RafaControls>().SwitchHand();
     }
   }
 }
