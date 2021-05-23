@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8054438528915594627}
-  - component: {fileID: 8054438528915594652}
   - component: {fileID: 8305086754864016898}
+  - component: {fileID: 3590994494730499213}
   m_Layer: 0
   m_Name: single fire
   m_TagString: Untagged
@@ -33,7 +33,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &8054438528915594652
+--- !u!114 &8305086754864016898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8054438528915594626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15f66f3407c55884eba54c9d197beb06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 20
+  parameter: perlin
+  parameterRange:
+    a: 0
+    b: 1
+  speedRandomRange:
+    a: 0.1
+    b: -0.2
+  x: 0
+  animator: {fileID: 3590994494730499213}
+--- !u!95 &3590994494730499213
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -52,28 +74,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &8305086754864016898
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8054438528915594626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15f66f3407c55884eba54c9d197beb06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0
-  parameter: perlin
-  parameterRange:
-    a: 0
-    b: 1
-  speedRandomRange:
-    a: 0.1
-    b: -0.2
-  x: 0
-  animator: {fileID: 8054438528915594652}
 --- !u!1 &8912593381598180740
 GameObject:
   m_ObjectHideFlags: 0

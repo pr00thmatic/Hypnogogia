@@ -24,4 +24,8 @@ public class RandomRange {
   public float Lerp (float t) {
     return Mathf.Lerp(Min, Max, t);
   }
+
+  public bool IsIn (float value) {
+    return Min <= value && value <= Max;
+  }
 }
