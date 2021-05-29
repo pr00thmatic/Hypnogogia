@@ -9,6 +9,7 @@ public class EggManager : MonoBehaviour {
   public float totallyCooked = 0.25f;
   public float startBurning = 0.75f;
   public RandomRange timeBetweenOilJump = new RandomRange(0.5f, 1);
+  public float zeroWigglesOverride = 0;
 
   [Header("Information")]
   [Range(0,1)]
@@ -16,6 +17,7 @@ public class EggManager : MonoBehaviour {
   [Range(0,1)]
   public float wigglyShines = 0;
   public float cooldownToOilJump = 0;
+  public float desirableWigglesWithCookingFactor = 0;
 
   [Header("Initialization")]
   public Egg[] eggs;
@@ -31,11 +33,12 @@ public class EggManager : MonoBehaviour {
     eggs[BURNT].alpha = Mathf.Clamp((cookingFactor - startBurning) / (1 - startBurning), 0,1);
 
     eggs[BURNT].wigglyShines = eggs[COOKED].wigglyShines = eggs[RAW].wigglyShines =
-      Mathf.Lerp(1, 0, cookingFactor / startBurning * 0.9f);
-    eggs[BURNT].status = eggs[COOKED].status = eggs[RAW].status =
-      Mathf.Lerp(0, 0.5f, (cookingFactor / startBurning * 1.2f));
+      Mathf.Min(zeroWigglesOverride, Mathf.Lerp(1, 0, cookingFactor / startBurning * 0.9f));
 
-    cooldownToOilJump -= Time.deltaTime;
+    eggs[BURNT].status = eggs[COOKED].status = eggs[RAW].status =
+      Mathf.Max((1-zeroWigglesOverride) * 0.5f, Mathf.Lerp(0, 0.5f, (cookingFactor / startBurning * 1.2f)));
+
+    cooldownToOilJump -= Time.deltaTime * zeroWigglesOverride;
     if (cooldownToOilJump <= 0 && cookingFactor < startBurning) {
       cooldownToOilJump = timeBetweenOilJump.Uniform;
       Utils.RandomPick(oil).Play();
