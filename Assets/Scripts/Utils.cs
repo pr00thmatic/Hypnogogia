@@ -22,4 +22,8 @@ public class Utils {
   public static void Set (SortingGroup sGroup, SortingGroup other) {
     Set(sGroup, other.sortingLayerName, other.sortingOrder);
   }
+
+  public static T RandomPick<T> (T[] items) {
+    return items[Random.Range(0, items.Length)];
+  }
 }
