@@ -26,4 +26,8 @@ public class Pan : MonoBehaviour, IOileable {
   public void HandleEnter (Hornilla hornilla) {
     contextualStove.representation.GetComponent<ContextualPan>().originalPan = this;
   }
+
+  public void Cook (string name) {
+    contextualStove.representation.GetComponent<ContextualPan>().whatsCooking.Find(name).gameObject.SetActive(true);
+  }
 }

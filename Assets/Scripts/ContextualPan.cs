@@ -8,6 +8,7 @@ public class ContextualPan : MonoBehaviour {
 
   [Header("Initialization")]
   public Animator oil;
+  public Transform whatsCooking;
 
   void Update () {
     oil.SetFloat("t", originalPan? Mathf.Clamp(originalPan.oil, 0, 1): 0);
