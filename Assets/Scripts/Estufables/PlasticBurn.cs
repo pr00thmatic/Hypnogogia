@@ -36,7 +36,7 @@ public class PlasticBurn : MonoBehaviour {
   }
 
   void Update () {
-    if (estufable.estufa && estufable.estufa.IsOn) {
+    if (estufable.hornilla && estufable.hornilla.IsOn) {
       burnPercentage = (estufable.hotness - burnSubinterval.x) / (burnSubinterval.y - burnSubinterval.x);
       timeInEstufa += Time.deltaTime;
       foreach (Transform child in rig) {

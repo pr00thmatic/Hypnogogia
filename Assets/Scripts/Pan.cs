@@ -9,12 +9,21 @@ public class Pan : MonoBehaviour, IOileable {
   [Header("Initialization")]
   public Estufable estufable;
   public ParticleSystem steam;
+  public RequireContextualStove contextualStove;
+
+  void OnEnable () {
+    contextualStove.onHornillaEnter += HandleEnter;
+  }
+
+  void OnDisable () {
+    contextualStove.onHornillaEnter -= HandleEnter;
+  }
 
   public void AddOil (float amount) {
     oil += amount;
   }
 
-  void Update () {
-
+  public void HandleEnter (Hornilla hornilla) {
+    contextualStove.representation.GetComponent<ContextualPan>().originalPan = this;
   }
 }

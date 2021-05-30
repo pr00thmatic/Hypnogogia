@@ -48,6 +48,7 @@ public class Grabbable : MonoBehaviour {
     sortGroup.sortingOrder = hand.grabbedSortingOrder;
     body.velocity = Vector2.zero;
     body.isKinematic = true;
+    body.simulated = false;
     CustomGripTransform customGrip = GetComponent<CustomGripTransform>();
     if (customGrip) {
       originalRotation = customGrip.gripTransform.localRotation;
@@ -62,6 +63,7 @@ public class Grabbable : MonoBehaviour {
     this.hand = null;
     transform.parent = null;
     body.isKinematic = false;
+    body.simulated = true;
     foreach (Collider2D c in cs) c.enabled = true;
   }
 }

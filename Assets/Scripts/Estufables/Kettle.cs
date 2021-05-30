@@ -10,10 +10,10 @@ public class Kettle : MonoBehaviour {
 
   void Update () {
     hotGradient.SetFloat("hotness", estufable.hotness);
-    if (estufable.hotness >= 1 && estufable.estufa && !steam.isPlaying) {
+    if (estufable.hotness >= 1 && estufable.hornilla && !steam.isPlaying) {
       steam.Play();
     }
-    if (steam.isPlaying && (!estufable.estufa || estufable.estufa.Value == 0)) {
+    if (steam.isPlaying && (!estufable.hornilla || estufable.hornilla.Value == 0)) {
       steam.Stop();
     }
   }
