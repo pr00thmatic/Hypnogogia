@@ -15,7 +15,7 @@ public class SurfaceMimicker : MonoBehaviour {
     if (c.collider.GetComponentInParent<HandSelection>()) return;
     if (c.collider.GetComponentInParent<Grabbable>()) {
       transform.parent = c.collider.GetComponentInParent<Grabbable>().transform.parent;
-    } else {
+    } else if (!c.collider.GetComponent<NotSurfaceMimickable>()) {
       transform.parent = c.collider.transform;
     }
   }

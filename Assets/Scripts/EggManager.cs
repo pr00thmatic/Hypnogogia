@@ -21,6 +21,7 @@ public class EggManager : MonoBehaviour {
   public Egg[] eggs;
   public ParticleSystem[] oil;
   public ContextualCook cookable;
+  public GameObject cookedEggPrototype;
 
   void Reset () {
     eggs = GetComponentsInChildren<Egg>();
@@ -49,9 +50,10 @@ public class EggManager : MonoBehaviour {
   }
 
   public GameObject Clone () {
-    GameObject clone = new GameObject("EggSnapshot");
+    GameObject clone = Instantiate(cookedEggPrototype);
     foreach (Egg egg in eggs) {
-      Egg snapshot = Instantiate(egg, Vector3.zero, Quaternion.identity, clone.transform);
+      Egg snapshot = Instantiate(egg, Vector3.zero, Quaternion.identity, clone.GetComponent<CookedEggInPan>().pannedEggs);
+      snapshot.name = egg.name;
       snapshot.wigglyShines = 0;
       snapshot.status = 0.5f;
       snapshot.transform.localScale = Vector3.one;
