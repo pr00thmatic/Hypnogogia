@@ -10,6 +10,7 @@ public class Pan : MonoBehaviour, IOileable {
   public Estufable estufable;
   public ParticleSystem steam;
   public RequireContextualStove contextualStove;
+  public EggMimic egg;
 
   void OnEnable () {
     contextualStove.onHornillaEnter += HandleEnter;
