@@ -6,9 +6,15 @@ public class RequireContextualStove : MonoBehaviour {
   public event System.Action<Hornilla> onHornillaEnter;
   public event System.Action<Hornilla> onHornillaExit;
 
+  [Header("Information")]
+  public Hornilla hornilla;
+
   [Header("Initialization")]
   public Estufable estufable;
-  public GameObject representation;
+  public string representationName;
+  public GameObject Representation {
+    get => hornilla? hornilla.GetComponentInParent<CookingPlace>().WhatsCookin.Find(representationName).gameObject: null;
+  }
 
   void OnEnable () {
     estufable.onHornillaEnter += HandleEnter;
@@ -21,13 +27,18 @@ public class RequireContextualStove : MonoBehaviour {
   }
 
   public void HandleEnter (Hornilla hornilla) {
-    hornilla.GetComponentInParent<CookingPlace>().contextual.Open();
-    representation.SetActive(true);
+    CookingPlace cookerxD = hornilla.GetComponentInParent<CookingPlace>();
+    this.hornilla = hornilla;
+    cookerxD.contextual.Open();
+    Representation.SetActive(true);
     onHornillaEnter?.Invoke(hornilla);
   }
 
   public void HandleExit (Hornilla hornilla) {
     hornilla.GetComponentInParent<CookingPlace>().contextual.Close();
-    onHornillaExit?.Invoke(hornilla);
+    if (hornilla == this.hornilla) {
+      this.hornilla = null;
+      onHornillaExit?.Invoke(hornilla);
+    }
   }
 }

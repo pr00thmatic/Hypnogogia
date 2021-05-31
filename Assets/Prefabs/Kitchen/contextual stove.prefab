@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4331676663308852173}
   - component: {fileID: 4331676663308852172}
   - component: {fileID: 4331676663308852171}
+  - component: {fileID: 918179350}
   m_Layer: 0
   m_Name: cooking pan
   m_TagString: Untagged
@@ -123,6 +124,21 @@ SortingGroup:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 150
+--- !u!114 &918179350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4331676663308852169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 626c692f8943ca24ca766f1bc61b3e93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalPan: {fileID: 0}
+  oil: {fileID: 195103687050439174}
+  whatsCooking: {fileID: 4331676663308852170}
 --- !u!1 &4331676663484403627
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,9 +411,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4331676663980188157}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.59, y: 0.487, z: 0}
-  m_LocalScale: {x: 2.428, y: 2.428, z: 2.428}
+  m_LocalScale: {x: 2.0922563, y: 2.0922563, z: 2.0922563}
   m_Children:
   - {fileID: 4331676664637001506}
   - {fileID: 4331676664245346788}
@@ -567,7 +583,7 @@ Transform:
   m_GameObject: {fileID: 4331676664245346787}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.72899985, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 4331676664652214271}
   m_Father: {fileID: 4331676663980188158}
@@ -936,5 +952,10 @@ PrefabInstance:
 --- !u!4 &6095175005624929415 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 837333529343724665, guid: 29163a1ca879d7c458956e100081c634, type: 3}
+  m_PrefabInstance: {fileID: 6847907088771023102}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &195103687050439174 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6754698992557304568, guid: 29163a1ca879d7c458956e100081c634, type: 3}
   m_PrefabInstance: {fileID: 6847907088771023102}
   m_PrefabAsset: {fileID: 0}

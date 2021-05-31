@@ -10,14 +10,15 @@ public class Pan : MonoBehaviour, IOileable {
   public Estufable estufable;
   public ParticleSystem steam;
   public RequireContextualStove contextualStove;
-  public EggMimic egg;
 
   void OnEnable () {
     contextualStove.onHornillaEnter += HandleEnter;
+    contextualStove.onHornillaExit += HandleExit;
   }
 
   void OnDisable () {
     contextualStove.onHornillaEnter -= HandleEnter;
+    contextualStove.onHornillaExit -= HandleExit;
   }
 
   public void AddOil (float amount) {
@@ -25,10 +26,14 @@ public class Pan : MonoBehaviour, IOileable {
   }
 
   public void HandleEnter (Hornilla hornilla) {
-    contextualStove.representation.GetComponent<ContextualPan>().originalPan = this;
+    contextualStove.Representation.GetComponent<ContextualPan>().originalPan = this;
+  }
+
+  public void HandleExit (Hornilla hornilla) {
+
   }
 
   public void Cook (string name) {
-    contextualStove.representation.GetComponent<ContextualPan>().whatsCooking.Find(name).gameObject.SetActive(true);
+    contextualStove.Representation.GetComponent<ContextualPan>().whatsCooking.Find(name).gameObject.SetActive(true);
   }
 }

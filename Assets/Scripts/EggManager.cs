@@ -47,4 +47,16 @@ public class EggManager : MonoBehaviour {
       Utils.RandomPick(oil).Play();
     }
   }
+
+  public GameObject Clone () {
+    GameObject clone = new GameObject("EggSnapshot");
+    foreach (Egg egg in eggs) {
+      Egg snapshot = Instantiate(egg, Vector3.zero, Quaternion.identity, clone.transform);
+      snapshot.wigglyShines = 0;
+      snapshot.status = 0.5f;
+      snapshot.transform.localScale = Vector3.one;
+    }
+
+    return clone;
+  }
 }
