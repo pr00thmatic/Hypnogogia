@@ -57,6 +57,11 @@ public class EggManager : MonoBehaviour {
       snapshot.transform.localScale = Vector3.one;
     }
 
+    SpriteRenderer[] renderers = clone.GetComponentsInChildren<SpriteRenderer>(true);
+    foreach (SpriteRenderer renderer in renderers) {
+      renderer.maskInteraction = SpriteMaskInteraction.None;
+    }
+
     return clone;
   }
 }

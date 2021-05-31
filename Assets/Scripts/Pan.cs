@@ -10,6 +10,7 @@ public class Pan : MonoBehaviour, IOileable {
   public Estufable estufable;
   public ParticleSystem steam;
   public RequireContextualStove contextualStove;
+  public Transform eggPlace;
 
   void OnEnable () {
     contextualStove.onHornillaEnter += HandleEnter;
@@ -30,7 +31,20 @@ public class Pan : MonoBehaviour, IOileable {
   }
 
   public void HandleExit (Hornilla hornilla) {
+    if (eggPlace.childCount > 0) {
+      Destroy(eggPlace.GetChild(0).gameObject);
+    }
+    EggManager contextualEgg =
+      contextualStove.Representation.GetComponent<ContextualPan>().whatsCooking
+      .GetComponentInChildren<EggManager>(true);
 
+    if (contextualEgg.gameObject.activeInHierarchy) {
+      GameObject egg = contextualEgg.Clone();
+      egg.transform.parent = eggPlace;
+      egg.transform.localPosition = Vector3.zero;
+      egg.transform.localRotation = Quaternion.identity;
+      egg.transform.localScale = Vector3.one;
+    }
   }
 
   public void Cook (string name) {

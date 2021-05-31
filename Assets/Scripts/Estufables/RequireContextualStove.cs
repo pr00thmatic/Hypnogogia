@@ -37,8 +37,8 @@ public class RequireContextualStove : MonoBehaviour {
   public void HandleExit (Hornilla hornilla) {
     hornilla.GetComponentInParent<CookingPlace>().contextual.Close();
     if (hornilla == this.hornilla) {
-      this.hornilla = null;
       onHornillaExit?.Invoke(hornilla);
+      this.hornilla = null;
     }
   }
 }
