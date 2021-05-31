@@ -5,12 +5,16 @@ using System.Collections.Generic;
 public class Pan : MonoBehaviour, IOileable {
   [Header("Information")]
   public float oil;
+  public bool beingUsed = false;
 
   [Header("Initialization")]
   public Estufable estufable;
   public ParticleSystem steam;
   public RequireContextualStove contextualStove;
   public Transform eggPlace;
+  public GameObject sidePan;
+  public GameObject usingPan;
+  public Grabbable grabbable;
 
   void OnEnable () {
     contextualStove.onHornillaEnter += HandleEnter;
@@ -20,6 +24,16 @@ public class Pan : MonoBehaviour, IOileable {
   void OnDisable () {
     contextualStove.onHornillaEnter -= HandleEnter;
     contextualStove.onHornillaExit -= HandleExit;
+  }
+
+  void Update () {
+    if (grabbable.IsGrabbed) {
+      beingUsed = Input.GetMouseButton(1);
+    } else {
+      beingUsed = false;
+    }
+    sidePan.SetActive(!beingUsed);
+    usingPan.SetActive(beingUsed);
   }
 
   public void AddOil (float amount) {

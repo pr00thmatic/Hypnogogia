@@ -11,9 +11,11 @@ public class Estufable : MonoBehaviour {
   public bool waitsForDrop = false;
   public bool sticksToHornilla = false;
 
-  [Header("Initialization")]
+  [Header("Information")]
   public float hotness;
   public Hornilla hornilla;
+
+  [Header("Initialization")]
   public Grabbable grabbable;
 
   void Update () {
