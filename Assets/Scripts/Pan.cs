@@ -28,7 +28,7 @@ public class Pan : MonoBehaviour, IOileable {
 
   void Update () {
     if (grabbable.IsGrabbed) {
-      beingUsed = Input.GetMouseButton(1);
+      beingUsed = TheInputInstance.Input.Rafa.Use.ReadValue<float>() > 0.1f;
     } else {
       beingUsed = false;
     }

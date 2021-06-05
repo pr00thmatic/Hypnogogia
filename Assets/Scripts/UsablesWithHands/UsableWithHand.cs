@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -13,23 +14,22 @@ public class UsableWithHand : MonoBehaviour {
   public bool beingUsed = false;
   public bool canBeUsed;
   public UserHand hand;
+  public bool fired = false;
+  public bool holding = false;
+
+  void OnEnable () {
+    TheInputInstance.Input.Rafa.Grab.performed += HandleUse;
+  }
 
   void OnDisable () {
+    TheInputInstance.Input.Rafa.Grab.performed -= HandleUse;
     beingUsed = false;
     canBeUsed = false;
   }
 
   void Update () {
     if (!canBeUsed) return;
-    if (Input.GetMouseButton(0)) {
-      if (Input.GetMouseButtonDown(0)) onUseBegin?.Invoke(hand);
-      hand.SpentAction();
-      onUse?.Invoke(hand);
-    }
-    if (takesControl && Input.GetMouseButtonDown(0)) {
-      beingUsed = true;
-      hand.currentlyUsedItem = this;
-    }
+    if (holding) onUse?.Invoke(hand);
   }
 
   void OnTriggerStay2D (Collider2D c) {
@@ -48,6 +48,17 @@ public class UsableWithHand : MonoBehaviour {
     if (hand && !hand.Blocked) {
       canBeUsed = false;
     }
+  }
+
+  public void HandleUse (InputAction.CallbackContext ctx) {
+    if (!canBeUsed) return;
+    onUseBegin?.Invoke(hand);
+    if (takesControl) {
+      beingUsed = true;
+      hand.currentlyUsedItem = this;
+    }
+    holding = true;
+    hand.SpentAction();
   }
 
   public void StopUsing () {

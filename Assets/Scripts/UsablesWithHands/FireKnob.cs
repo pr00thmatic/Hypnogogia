@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -16,14 +17,28 @@ public class FireKnob : MonoBehaviour {
   public UsableWithHand knob;
   public Transform knobSprite;
 
+  void OnEnable () {
+    TheInputInstance.Input.Rafa.Grab.canceled += HandleRelease;
+  }
+
+  void OnDisable () {
+    TheInputInstance.Input.Rafa.Grab.canceled -= HandleRelease;
+  }
+
   void Update () {
     if (knob.beingUsed) {
-      fire.value = Mathf.Clamp(fire.value + Input.GetAxis("Mouse Y") * speed, 0, 1);
-      if (Input.GetMouseButtonUp(0)) knob.StopUsing();
+      Vector2 handControl = TheInputInstance.Input.Rafa.MoveHand.ReadValue<Vector2>();
+      fire.value = Mathf.Clamp(fire.value + Mathf.Clamp(handControl.y, -Time.deltaTime, Time.deltaTime) * speed, 0, 1);
     }
 
     if (knobSprite) {
       knobSprite.rotation = Quaternion.Euler(0,0, Mathf.Lerp(angles.y, angles.x, fire.value));
+    }
+  }
+
+  public void HandleRelease (InputAction.CallbackContext ctx) {
+    if (knob.beingUsed) {
+      knob.StopUsing();
     }
   }
 }

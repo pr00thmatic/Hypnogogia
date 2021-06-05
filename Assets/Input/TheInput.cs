@@ -81,6 +81,22 @@ public class @TheInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""JoystickHandDetector"",
+                    ""type"": ""Value"",
+                    ""id"": ""4f43aa1c-9ebf-42de-ae19-011d6e5fad4e"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""MouseHandDetector"",
+                    ""type"": ""Value"",
+                    ""id"": ""5dd9720c-5efe-4dd2-b085-46cee6615a83"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -284,6 +300,17 @@ public class @TheInput : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""cc8bae58-bf82-48ea-ac32-ee18f3286c64"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveHand"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""c9fbdde0-0b52-4ce5-b73c-211f8822b539"",
                     ""path"": ""<HID::54C-5C4>/stick"",
                     ""interactions"": """",
@@ -328,12 +355,100 @@ public class @TheInput : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""3099f55f-ce76-4284-a0a1-a23c0e77a937"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Duck"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""018d9000-bbcd-4d49-8de8-5faa8bccd175"",
                     ""path"": ""<Mouse>/position"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""MouseHand"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""30147aa7-5c09-407f-8397-689c8fef5c22"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""JoystickHandDetector"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""cf49b1a8-5f61-46fe-8a5e-038eac7c6b24"",
+                    ""path"": ""2DVector(mode=2)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""JoystickHandDetector"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""0e784558-98d8-4ea7-929d-520b7f48fdf0"",
+                    ""path"": ""<Joystick>/R"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""JoystickHandDetector"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""fe02bafd-75d0-4444-b5f4-01bbb20e3cbf"",
+                    ""path"": ""<Joystick>/Rz"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""JoystickHandDetector"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""b55f5b73-bcb6-4a6c-96d9-185a8b4c0398"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""JoystickHandDetector"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""c9ada265-0c5e-435f-b2d8-f53ea7a5bd4d"",
+                    ""path"": ""<Joystick>/Z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""JoystickHandDetector"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7079bfcc-2fe0-4abb-8941-daa51baac868"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MouseHandDetector"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -352,6 +467,8 @@ public class @TheInput : IInputActionCollection, IDisposable
         m_Rafa_Walk = m_Rafa.FindAction("Walk", throwIfNotFound: true);
         m_Rafa_Duck = m_Rafa.FindAction("Duck", throwIfNotFound: true);
         m_Rafa_MouseHand = m_Rafa.FindAction("MouseHand", throwIfNotFound: true);
+        m_Rafa_JoystickHandDetector = m_Rafa.FindAction("JoystickHandDetector", throwIfNotFound: true);
+        m_Rafa_MouseHandDetector = m_Rafa.FindAction("MouseHandDetector", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -409,6 +526,8 @@ public class @TheInput : IInputActionCollection, IDisposable
     private readonly InputAction m_Rafa_Walk;
     private readonly InputAction m_Rafa_Duck;
     private readonly InputAction m_Rafa_MouseHand;
+    private readonly InputAction m_Rafa_JoystickHandDetector;
+    private readonly InputAction m_Rafa_MouseHandDetector;
     public struct RafaActions
     {
         private @TheInput m_Wrapper;
@@ -421,6 +540,8 @@ public class @TheInput : IInputActionCollection, IDisposable
         public InputAction @Walk => m_Wrapper.m_Rafa_Walk;
         public InputAction @Duck => m_Wrapper.m_Rafa_Duck;
         public InputAction @MouseHand => m_Wrapper.m_Rafa_MouseHand;
+        public InputAction @JoystickHandDetector => m_Wrapper.m_Rafa_JoystickHandDetector;
+        public InputAction @MouseHandDetector => m_Wrapper.m_Rafa_MouseHandDetector;
         public InputActionMap Get() { return m_Wrapper.m_Rafa; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -454,6 +575,12 @@ public class @TheInput : IInputActionCollection, IDisposable
                 @MouseHand.started -= m_Wrapper.m_RafaActionsCallbackInterface.OnMouseHand;
                 @MouseHand.performed -= m_Wrapper.m_RafaActionsCallbackInterface.OnMouseHand;
                 @MouseHand.canceled -= m_Wrapper.m_RafaActionsCallbackInterface.OnMouseHand;
+                @JoystickHandDetector.started -= m_Wrapper.m_RafaActionsCallbackInterface.OnJoystickHandDetector;
+                @JoystickHandDetector.performed -= m_Wrapper.m_RafaActionsCallbackInterface.OnJoystickHandDetector;
+                @JoystickHandDetector.canceled -= m_Wrapper.m_RafaActionsCallbackInterface.OnJoystickHandDetector;
+                @MouseHandDetector.started -= m_Wrapper.m_RafaActionsCallbackInterface.OnMouseHandDetector;
+                @MouseHandDetector.performed -= m_Wrapper.m_RafaActionsCallbackInterface.OnMouseHandDetector;
+                @MouseHandDetector.canceled -= m_Wrapper.m_RafaActionsCallbackInterface.OnMouseHandDetector;
             }
             m_Wrapper.m_RafaActionsCallbackInterface = instance;
             if (instance != null)
@@ -482,6 +609,12 @@ public class @TheInput : IInputActionCollection, IDisposable
                 @MouseHand.started += instance.OnMouseHand;
                 @MouseHand.performed += instance.OnMouseHand;
                 @MouseHand.canceled += instance.OnMouseHand;
+                @JoystickHandDetector.started += instance.OnJoystickHandDetector;
+                @JoystickHandDetector.performed += instance.OnJoystickHandDetector;
+                @JoystickHandDetector.canceled += instance.OnJoystickHandDetector;
+                @MouseHandDetector.started += instance.OnMouseHandDetector;
+                @MouseHandDetector.performed += instance.OnMouseHandDetector;
+                @MouseHandDetector.canceled += instance.OnMouseHandDetector;
             }
         }
     }
@@ -496,5 +629,7 @@ public class @TheInput : IInputActionCollection, IDisposable
         void OnWalk(InputAction.CallbackContext context);
         void OnDuck(InputAction.CallbackContext context);
         void OnMouseHand(InputAction.CallbackContext context);
+        void OnJoystickHandDetector(InputAction.CallbackContext context);
+        void OnMouseHandDetector(InputAction.CallbackContext context);
     }
 }

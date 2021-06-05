@@ -255,6 +255,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6680252962858106062}
   - component: {fileID: 186069820507679516}
+  - component: {fileID: 6615243804060134872}
+  - component: {fileID: 6156804621200850639}
+  - component: {fileID: 3895785176903250931}
   m_Layer: 0
   m_Name: motion control
   m_TagString: Untagged
@@ -283,16 +286,56 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6046541299944113406}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8e7a17d0dd5db14fb734f40b9eef878, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  control: {fileID: 6156804621200850639}
+--- !u!114 &6615243804060134872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6046541299944113406}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62cac59f58270bf4791fb9128e37311f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handSpeed: 2
+  control: {fileID: 6156804621200850639}
+--- !u!114 &6156804621200850639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6046541299944113406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5ccc999677d5804a9ab179c14df0235, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   radius: 1
-  invertHand: 0
+  invertHand: 1
   shoulder: {fileID: 0}
   arm1: {fileID: 0}
   motionTarget: {fileID: 0}
   metaRig: {fileID: 0}
-  blockers:
-  - {fileID: 1591120852}
+  blockers: []
+--- !u!114 &3895785176903250931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6046541299944113406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88e3b037c2885f5438f129e30ed40129, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseControl: {fileID: 186069820507679516}
+  joystickControl: {fileID: 6615243804060134872}

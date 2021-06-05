@@ -25,7 +25,7 @@ public class Oil : MonoBehaviour {
     }
 
     orientation = rafaOrientation;
-    beingUsed = Input.GetMouseButton(1);
+    beingUsed = TheInputInstance.Input.Rafa.Use.ReadValue<float>() > 0.1f;
 
     transform.rotation = Quaternion.RotateTowards(transform.rotation, target, rotationSpeed * Time.deltaTime);
     transform.rotation = Quaternion.Euler(Utils.SetX(Utils.SetY(transform.rotation.eulerAngles, 0), 0));

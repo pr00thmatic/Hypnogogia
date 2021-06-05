@@ -9,7 +9,7 @@ public class SelectedHand : MonoBehaviour {
   public bool IsBlocked { get => actionUsed; }
 
   void OnEnable () {
-    actionUsed = true;
+    actionUsed = false;
     TheInputInstance.Input.Rafa.Grab.canceled += HandleRelease;
   }
 
