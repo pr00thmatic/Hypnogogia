@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -9,8 +10,6 @@ public class GrabbingHand : MonoBehaviour {
   [Header("Information")]
   public Grabbable currentlyGrabbed;
   public Vector3 Center { get => (Vector3) c.offset + transform.position; }
-  public static bool UserCommandDown { get => (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.G)); }
-  public static bool UserCommandUp { get => (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.G)); }
 
   [Header("Initialization")]
   public Transform movingHand;
@@ -18,23 +17,12 @@ public class GrabbingHand : MonoBehaviour {
   public UserHand user;
   public SelectedHand hand;
 
-  void Update () {
-    if (hand.IsBlocked) return;
-    if (!UpdateDropAndContinue()) return;
-    if (!UpdateGrabAndContinue()) return;
+  void OnEnable () {
+    TheInputInstance.Input.Rafa.Grab.performed += HandleGrab;
   }
 
-  // returns false if the hand just picked up something
-  public bool UpdateGrabAndContinue () {
-    if (UserCommandDown && !currentlyGrabbed) {
-      currentlyGrabbed = FindAvailableGrabbable();
-      if (currentlyGrabbed) {
-        currentlyGrabbed.Use(this);
-        hand.SpentAction();
-        return false;
-      }
-    }
-    return true;
+  void OnDisable () {
+    TheInputInstance.Input.Rafa.Grab.performed -= HandleGrab;
   }
 
   public Grabbable FindAvailableGrabbable () {
@@ -56,15 +44,19 @@ public class GrabbingHand : MonoBehaviour {
     return hits[min].GetComponentInParent<Grabbable>();
   }
 
-  // returns false if the hand just dropped something
-  public bool UpdateDropAndContinue () {
-    if (UserCommandDown && currentlyGrabbed) {
+  public void HandleGrab (InputAction.CallbackContext ctx) {
+    if (hand.IsBlocked) return;
+
+    if (currentlyGrabbed) {
       currentlyGrabbed.Unuse();
       currentlyGrabbed = null;
       hand.SpentAction();
-      return false;
+    } else {
+      currentlyGrabbed = FindAvailableGrabbable();
+      if (currentlyGrabbed) {
+        currentlyGrabbed.Use(this);
+        hand.SpentAction();
+      }
     }
-
-    return true;
   }
 }

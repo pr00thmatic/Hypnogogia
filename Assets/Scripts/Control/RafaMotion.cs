@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -10,19 +11,29 @@ public class RafaMotion : MonoBehaviour {
   public Animator animator;
   public Transform rotationTarget;
 
-  void Update () {
-    if (Input.GetAxis("Horizontal") != 0) {
-      orientation = (int) Mathf.Sign(Input.GetAxis("Horizontal"));
-    } else {
-      animator.SetFloat("offset", Random.Range(0, 1f));
-    }
+  void OnEnable () {
+    TheInputInstance.Input.Rafa.Duck.performed += HandleDuck;
+  }
 
-    animator.SetFloat("speed", Mathf.Abs(Input.GetAxis("Horizontal")));
+  void OnDisable () {
+    TheInputInstance.Input.Rafa.Duck.performed -= HandleDuck;
+  }
+
+  void Update () {
+    Vector2 walk = TheInputInstance.Input.Rafa.Walk.ReadValue<Vector2>();
+
+    if (walk.x != 0) {
+      orientation = (int) Mathf.Sign(walk.x);
+    }//  else {
+    //   animator.SetFloat("offset", Random.Range(0, 1f));
+    // }
+
+    animator.SetFloat("speed", Mathf.Abs(walk.x));
     rotationTarget.transform.rotation =
       Quaternion.Euler(Utils.SetY(rotationTarget.transform.rotation.eulerAngles, orientation < 0? 180: 0));
+  }
 
-    if (Input.GetKeyDown(KeyCode.LeftShift)) {
+  public void HandleDuck (InputAction.CallbackContext ctx) {
       animator.SetBool("ducking", !animator.GetBool("ducking"));
-    }
   }
 }

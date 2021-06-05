@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -9,15 +10,18 @@ public class SelectedHand : MonoBehaviour {
 
   void OnEnable () {
     actionUsed = true;
+    TheInputInstance.Input.Rafa.Grab.canceled += HandleRelease;
   }
 
-  void Update () {
-    if (Input.GetMouseButtonUp(0) || GrabbingHand.UserCommandUp) {
-      actionUsed = false;
-    }
+  void OnDisable () {
+    TheInputInstance.Input.Rafa.Grab.canceled -= HandleRelease;
   }
 
   public void SpentAction () {
     actionUsed = true;
+  }
+
+  public void HandleRelease (InputAction.CallbackContext ctx) {
+    actionUsed = false;
   }
 }

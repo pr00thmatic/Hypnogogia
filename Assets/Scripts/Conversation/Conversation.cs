@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -16,10 +17,12 @@ public class Conversation : MonoBehaviour {
   public ConversationData data;
   public GameObject talkIndicator;
 
-  void Update () {
-    if ((canStartConversation || IsCurrentlyHappening) && Input.GetKeyDown(KeyCode.LeftControl)) {
-      NextDialogue();
-    }
+  void OnEnable () {
+    TheInputInstance.Input.Rafa.Talk.performed += HandleTalk;
+  }
+
+  void OnDisable () {
+    TheInputInstance.Input.Rafa.Talk.performed -= HandleTalk;
   }
 
   void OnTriggerStay2D (Collider2D c) {
@@ -46,6 +49,12 @@ public class Conversation : MonoBehaviour {
       Conversables.everyone[Current.owner].Display(Current.message);
     } else {
       currentPieceOfChat = -1;
+    }
+  }
+
+  public void HandleTalk (InputAction.CallbackContext ctx) {
+    if (canStartConversation || IsCurrentlyHappening) {
+      NextDialogue();
     }
   }
 }
