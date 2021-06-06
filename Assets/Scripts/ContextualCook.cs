@@ -5,10 +5,10 @@ using System.Collections.Generic;
 public class ContextualCook : MonoBehaviour {
   [Header("Configuration")]
   public float cookingTime = 3;
-  [Range(0,1)]
-  public float cookingFactor;
 
   [Header("Information")]
+  [Range(0,1)]
+  public float cookingFactor;
   public ContextualStove stove;
 
   void OnEnable () {

@@ -25,6 +25,7 @@ public class ContextualStove : MonoBehaviour {
 
   public void Open () {
     animator.SetBool("is open", true);
+    HideWhatsCookin();
   }
 
   public void Close () {

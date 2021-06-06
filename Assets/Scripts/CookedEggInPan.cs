@@ -3,6 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class CookedEggInPan : MonoBehaviour {
+  [Header("Information")]
+  public bool isStuck = false;
+  public EggStatus status;
+  public bool alreadySlided = false;
+
   [Header("Initialization")]
   public Rigidbody2D body;
   public new Collider2D collider;
@@ -14,18 +19,25 @@ public class CookedEggInPan : MonoBehaviour {
   }
 
   void Update () {
-    if (transform.localPosition.x > -0.22f) {
+    if (transform.localPosition.x > -0.22f && !alreadySlided) {
       Slide();
     }
   }
 
   void OnCollisionStay2D (Collision2D c) {
+    if (isStuck) return;
     Splash(c.collider);
   }
 
   public void Slide () {
-    transform.parent = null;
-    collider.isTrigger = false;
+    GetComponentInParent<Pan>().oil = 0;
+    if (!isStuck) {
+      alreadySlided = true;
+      transform.parent = null;
+      collider.isTrigger = false;
+    } else {
+      body.isKinematic = true;
+    }
   }
 
   public void Splash (Collider2D c) {

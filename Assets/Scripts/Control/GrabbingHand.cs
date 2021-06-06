@@ -12,6 +12,7 @@ public class GrabbingHand : MonoBehaviour {
   public Vector3 Center { get => (Vector3) c.offset + transform.position; }
 
   [Header("Initialization")]
+  public RafaMotion motion;
   public Transform movingHand;
   public CircleCollider2D c;
   public UserHand user;

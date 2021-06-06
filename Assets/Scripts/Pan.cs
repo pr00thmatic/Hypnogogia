@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class Pan : MonoBehaviour, IOileable {
+public class Pan : MonoBehaviour, IOileable, IWashable {
   [Header("Information")]
   public float oil;
   public bool beingUsed = false;
@@ -41,15 +41,15 @@ public class Pan : MonoBehaviour, IOileable {
   }
 
   public void HandleEnter (Hornilla hornilla) {
-    contextualStove.Representation.GetComponent<ContextualPan>().originalPan = this;
+    ContextualPan contextual = contextualStove.Representation.GetComponent<ContextualPan>();
+    contextual.originalPan = this;
+    contextual.GetComponentInChildren<EggManager>(true).Mimic(eggPlace.GetComponentInChildren<CookedEggInPan>());
   }
 
   public void HandleExit (Hornilla hornilla) {
-    if (eggPlace.childCount > 0) {
-      Destroy(eggPlace.GetChild(0).gameObject);
-    }
+    DestroyEgg();
     EggManager contextualEgg =
-      contextualStove.Representation.GetComponent<ContextualPan>().whatsCooking
+      contextualStove.Representation.GetComponent<ContextualPan>().whatsCookin
       .GetComponentInChildren<EggManager>(true);
 
     if (contextualEgg.gameObject.activeInHierarchy) {
@@ -62,6 +62,17 @@ public class Pan : MonoBehaviour, IOileable {
   }
 
   public void Cook (string name) {
-    contextualStove.Representation.GetComponent<ContextualPan>().whatsCooking.Find(name).gameObject.SetActive(true);
+    contextualStove.Representation.GetComponent<ContextualPan>().whatsCookin.Find(name).gameObject.SetActive(true);
+  }
+
+  public void DestroyEgg () {
+    if (eggPlace.childCount > 0) {
+      Destroy(eggPlace.GetChild(0).gameObject);
+    }
+  }
+
+  public void Wash () {
+    DestroyEgg();
+    oil = 0;
   }
 }

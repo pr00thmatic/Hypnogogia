@@ -10,6 +10,7 @@ using System.Collections.Generic;
 public class Grabbable : MonoBehaviour {
   [Header("Configuration")]
   public bool keepsRotationUp = true;
+  public bool simulateWhileGrabbed = false;
 
   [Header("Information")]
   public GrabbingHand hand;
@@ -35,6 +36,7 @@ public class Grabbable : MonoBehaviour {
     if (hand) {
       if (keepsRotationUp) {
         transform.rotation = originalRotation;
+        transform.localScale = Utils.SetX(transform.localScale, Mathf.Abs(transform.localScale.x) * hand.motion.orientation);
       }
       // TODO: a prettier grab position
       transform.position = hand.movingHand.TransformPoint(offset);
@@ -42,13 +44,14 @@ public class Grabbable : MonoBehaviour {
   }
 
   public void Use (GrabbingHand hand) {
+    GetComponent<SurfaceMimicker>().enabled = false;
     this.hand = hand;
     foreach (Collider2D c in cs) c.enabled = false;
     transform.parent = hand.movingHand;
     sortGroup.sortingOrder = hand.grabbedSortingOrder;
     body.velocity = Vector2.zero;
     body.isKinematic = true;
-    body.simulated = false;
+    body.simulated = simulateWhileGrabbed;
     CustomGripTransform customGrip = GetComponent<CustomGripTransform>();
     if (customGrip) {
       originalRotation = customGrip.gripTransform.localRotation;
@@ -60,6 +63,7 @@ public class Grabbable : MonoBehaviour {
   }
 
   public void Unuse () {
+    GetComponent<SurfaceMimicker>().enabled = true;
     this.hand = null;
     transform.parent = null;
     body.isKinematic = false;

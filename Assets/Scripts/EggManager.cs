@@ -16,6 +16,7 @@ public class EggManager : MonoBehaviour {
   public float wigglyShines = 0;
   public float cooldownToOilJump = 0;
   public float desirableWigglesWithCookingFactor = 0;
+  public bool isStuck = false;
 
   [Header("Initialization")]
   public Egg[] eggs;
@@ -64,6 +65,21 @@ public class EggManager : MonoBehaviour {
       renderer.maskInteraction = SpriteMaskInteraction.None;
     }
 
+    clone.GetComponent<CookedEggInPan>().isStuck =
+      GetComponentInParent<ContextualPan>().originalPan.oil < 0.8f && cookable.cookingFactor > 0.2f;
+    clone.GetComponent<CookedEggInPan>().status = new EggStatus() { cookingFactor = cookable.cookingFactor };
+
     return clone;
+  }
+
+  public void Mimic (CookedEggInPan cooked) {
+    gameObject.SetActive(cooked);
+    if (cooked) {
+      isStuck = cooked.isStuck;
+      cookable.cookingFactor = cooked.status.cookingFactor;
+    } else {
+      isStuck = false;
+      cookable.cookingFactor = 0;
+    }
   }
 }
