@@ -34,6 +34,7 @@ public class LadderUser : MonoBehaviour {
     }
   }
 
+  public void ClimbDown () { StartCoroutine(_ClimbDown()); }
   IEnumerator _ClimbDown () {
     motion.blockedByLadder = true;
     animator.SetTrigger("climb down"); current.climbedUp = false;
@@ -43,6 +44,7 @@ public class LadderUser : MonoBehaviour {
     animation = null;
   }
 
+  public void ClimbUp () { StartCoroutine(_ClimbUp()); }
   IEnumerator _ClimbUp () {
     motion.blockedByLadder = true;
     animator.SetTrigger("climb up"); current.climbedUp = true;
