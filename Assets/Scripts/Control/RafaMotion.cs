@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public class RafaMotion : MonoBehaviour {
   [Header("Information")]
   public int orientation = 1;
+  public float speed = 4;
 
   [Header("Initialization")]
   public Animator animator;
@@ -29,6 +30,7 @@ public class RafaMotion : MonoBehaviour {
     // }
 
     animator.SetFloat("speed", Mathf.Abs(walk.x));
+    transform.position += Vector3.right * speed * Time.deltaTime * walk.x;
     rotationTarget.transform.rotation =
       Quaternion.Euler(Utils.SetY(rotationTarget.transform.rotation.eulerAngles, orientation < 0? 180: 0));
   }
