@@ -97,6 +97,14 @@ public class @TheInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""c5b37711-e6f8-48c1-90cd-a0c24780202a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -487,6 +495,17 @@ public class @TheInput : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""0c73bf59-8116-4f13-805c-ac5c09670eff"",
+                    ""path"": ""<HID::54C-5C4>/button5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Duck"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""018d9000-bbcd-4d49-8de8-5faa8bccd175"",
                     ""path"": ""<Mouse>/position"",
                     ""interactions"": """",
@@ -572,6 +591,39 @@ public class @TheInput : IInputActionCollection, IDisposable
                     ""action"": ""MouseHandDetector"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2e64dc86-b6fb-4899-b432-a87c497eccde"",
+                    ""path"": ""<HID::54C-5C4>/button2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""71a8fee1-1789-495c-bac8-bf3051e136de"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""04bd2136-5314-4b32-b528-1956a2fe664f"",
+                    ""path"": ""<Keyboard>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -590,6 +642,7 @@ public class @TheInput : IInputActionCollection, IDisposable
         m_Rafa_MouseHand = m_Rafa.FindAction("MouseHand", throwIfNotFound: true);
         m_Rafa_JoystickHandDetector = m_Rafa.FindAction("JoystickHandDetector", throwIfNotFound: true);
         m_Rafa_MouseHandDetector = m_Rafa.FindAction("MouseHandDetector", throwIfNotFound: true);
+        m_Rafa_Interact = m_Rafa.FindAction("Interact", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -649,6 +702,7 @@ public class @TheInput : IInputActionCollection, IDisposable
     private readonly InputAction m_Rafa_MouseHand;
     private readonly InputAction m_Rafa_JoystickHandDetector;
     private readonly InputAction m_Rafa_MouseHandDetector;
+    private readonly InputAction m_Rafa_Interact;
     public struct RafaActions
     {
         private @TheInput m_Wrapper;
@@ -663,6 +717,7 @@ public class @TheInput : IInputActionCollection, IDisposable
         public InputAction @MouseHand => m_Wrapper.m_Rafa_MouseHand;
         public InputAction @JoystickHandDetector => m_Wrapper.m_Rafa_JoystickHandDetector;
         public InputAction @MouseHandDetector => m_Wrapper.m_Rafa_MouseHandDetector;
+        public InputAction @Interact => m_Wrapper.m_Rafa_Interact;
         public InputActionMap Get() { return m_Wrapper.m_Rafa; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -702,6 +757,9 @@ public class @TheInput : IInputActionCollection, IDisposable
                 @MouseHandDetector.started -= m_Wrapper.m_RafaActionsCallbackInterface.OnMouseHandDetector;
                 @MouseHandDetector.performed -= m_Wrapper.m_RafaActionsCallbackInterface.OnMouseHandDetector;
                 @MouseHandDetector.canceled -= m_Wrapper.m_RafaActionsCallbackInterface.OnMouseHandDetector;
+                @Interact.started -= m_Wrapper.m_RafaActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_RafaActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_RafaActionsCallbackInterface.OnInteract;
             }
             m_Wrapper.m_RafaActionsCallbackInterface = instance;
             if (instance != null)
@@ -736,6 +794,9 @@ public class @TheInput : IInputActionCollection, IDisposable
                 @MouseHandDetector.started += instance.OnMouseHandDetector;
                 @MouseHandDetector.performed += instance.OnMouseHandDetector;
                 @MouseHandDetector.canceled += instance.OnMouseHandDetector;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
         }
     }
@@ -752,5 +813,6 @@ public class @TheInput : IInputActionCollection, IDisposable
         void OnMouseHand(InputAction.CallbackContext context);
         void OnJoystickHandDetector(InputAction.CallbackContext context);
         void OnMouseHandDetector(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
 }

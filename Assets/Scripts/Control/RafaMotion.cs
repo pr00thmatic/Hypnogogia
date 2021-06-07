@@ -7,6 +7,7 @@ public class RafaMotion : MonoBehaviour {
   [Header("Information")]
   public int orientation = 1;
   public float speed = 4;
+  public bool blockedByLadder = false;
 
   [Header("Initialization")]
   public Animator animator;
@@ -25,17 +26,21 @@ public class RafaMotion : MonoBehaviour {
 
     if (walk.x != 0) {
       orientation = (int) Mathf.Sign(walk.x);
-    }//  else {
-    //   animator.SetFloat("offset", Random.Range(0, 1f));
-    // }
+    }
 
-    animator.SetFloat("speed", Mathf.Abs(walk.x));
-    transform.position += Vector3.right * speed * Time.deltaTime * walk.x;
     rotationTarget.transform.rotation =
       Quaternion.Euler(Utils.SetY(rotationTarget.transform.rotation.eulerAngles, orientation < 0? 180: 0));
+
+    if (!blockedByLadder) {
+      animator.SetFloat("speed", Mathf.Abs(walk.x));
+      transform.position += Vector3.right * speed * Time.deltaTime * walk.x;
+    } else {
+      animator.SetFloat("speed", 0);
+    }
   }
 
   public void HandleDuck (InputAction.CallbackContext ctx) {
-      animator.SetBool("ducking", !animator.GetBool("ducking"));
+    if (blockedByLadder) return;
+    animator.SetBool("ducking", !animator.GetBool("ducking"));
   }
 }

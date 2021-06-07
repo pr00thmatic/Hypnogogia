@@ -84,6 +84,14 @@
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "c5b37711-e6f8-48c1-90cd-a0c24780202a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -474,6 +482,17 @@
                 },
                 {
                     "name": "",
+                    "id": "0c73bf59-8116-4f13-805c-ac5c09670eff",
+                    "path": "<HID::54C-5C4>/button5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Duck",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "018d9000-bbcd-4d49-8de8-5faa8bccd175",
                     "path": "<Mouse>/position",
                     "interactions": "",
@@ -557,6 +576,39 @@
                     "processors": "",
                     "groups": "",
                     "action": "MouseHandDetector",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2e64dc86-b6fb-4899-b432-a87c497eccde",
+                    "path": "<HID::54C-5C4>/button2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "71a8fee1-1789-495c-bac8-bf3051e136de",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "04bd2136-5314-4b32-b528-1956a2fe664f",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
