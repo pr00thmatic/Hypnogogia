@@ -191,7 +191,7 @@ public class @TheInput : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""6407e1a4-7635-4fb8-a36a-63510df2592f"",
-                    ""path"": ""<Mouse>/rightButton"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -235,7 +235,7 @@ public class @TheInput : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""651d8252-9a0f-4db3-8d4e-dd68ae95494e"",
-                    ""path"": ""<Gamepad>/leftStick"",
+                    ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -323,7 +323,7 @@ public class @TheInput : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""e8e4a8d8-ad49-4c73-a0c0-709035450231"",
-                    ""path"": ""<Gamepad>/rightStick"",
+                    ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -467,6 +467,17 @@ public class @TheInput : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""3099f55f-ce76-4284-a0a1-a23c0e77a937"",
                     ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Duck"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""733b41ee-1c1b-44b1-8368-0f98c85c6998"",
+                    ""path"": ""<Keyboard>/ctrl"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
