@@ -21,6 +21,7 @@ public class Sky : NonPersistentSingleton<Sky> {
       hour += Time.deltaTime * (24 / dayDuration);
       hour %= 24;
     }
+    hour = (hour + 24) % 24;
     r.sharedMaterial.SetFloat("Daytime", hour);
   }
 }
