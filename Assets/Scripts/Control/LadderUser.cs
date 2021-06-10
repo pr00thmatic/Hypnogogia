@@ -16,42 +16,39 @@ public class LadderUser : MonoBehaviour {
   public Transform root;
   public Animator animator;
   public RafaMotion motion;
+  public Rigidbody2D body;
 
-  void OnEnable () {
-    TheInputInstance.Input.Rafa.Interact.performed += HandleInteraction;
-  }
-
-  void OnDisable () {
-    TheInputInstance.Input.Rafa.Interact.performed -= HandleInteraction;
-  }
+  void OnEnable () { TheInputInstance.Input.Rafa.Interact.performed += HandleInteraction; }
+  void OnDisable () { TheInputInstance.Input.Rafa.Interact.performed -= HandleInteraction; }
 
   public void HandleInteraction (InputAction.CallbackContext ctx) {
     if (!current) return;
     if (current.climbedUp) {
-      animation = StartCoroutine(_ClimbDown());
+      animation = StartCoroutine(_ClimbTo("climb down"));
     } else {
-      animation = StartCoroutine(_ClimbUp());
+      animation = StartCoroutine(_ClimbTo("climb up"));
     }
   }
 
-  public void ClimbDown () { StartCoroutine(_ClimbDown()); }
-  IEnumerator _ClimbDown () {
+  public void ClimbDown () { StartCoroutine(_ClimbTo("climb down")); }
+  public void ClimbUp () { StartCoroutine(_ClimbTo("climb up")); }
+  IEnumerator _ClimbTo(string triggerName) {
+    bool up = triggerName == "climb up";
     motion.blockedByLadder = true;
-    animator.SetTrigger("climb down"); current.climbedUp = false;
-    yield return StartCoroutine(_ToStart());
-    yield return new WaitForSeconds(0.5f);
-    motion.blockedByLadder = false;
+    animator.SetTrigger(triggerName); current.climbedUp = up;
+    body.isKinematic = true;
+    if (up) {
+      yield return StartCoroutine(_ToStart());
+      yield return StartCoroutine(_ToEnd());
+    } else {
+      yield return StartCoroutine(_ToStart());
+      yield return new WaitForSeconds(0.5f);
+    }
+    motion.blockedByLadder = up && current.blocksMotionWhileUp;
     animation = null;
-  }
-
-  public void ClimbUp () { StartCoroutine(_ClimbUp()); }
-  IEnumerator _ClimbUp () {
-    motion.blockedByLadder = true;
-    animator.SetTrigger("climb up"); current.climbedUp = true;
-    yield return StartCoroutine(_ToStart());
-    yield return StartCoroutine(_ToEnd());
-    motion.blockedByLadder = current.blocksMotionWhileUp;
-    animation = null;
+    if (!current.blocksMotionWhileUp) {
+      body.isKinematic = false;
+    }
   }
 
   IEnumerator _ToStart () {
