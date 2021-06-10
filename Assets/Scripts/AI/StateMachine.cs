@@ -71,4 +71,12 @@ public class StateMachine : MonoBehaviour {
       onStateChange?.Invoke(state);
     }
   }
+
+  public State GetCurrentState () {
+    foreach (Transform child in transform) {
+      State state = child.GetComponent<State>();
+      if (state.gameObject.activeSelf) return state;
+    }
+    return null;
+  }
 }

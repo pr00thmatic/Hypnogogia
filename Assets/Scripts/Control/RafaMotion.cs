@@ -4,6 +4,9 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class RafaMotion : MonoBehaviour {
+  public System.Action onDuckStart;
+  public System.Action onDuckStop;
+
   [Header("Information")]
   public int orientation = 1;
   public float speed = 4;
@@ -31,7 +34,7 @@ public class RafaMotion : MonoBehaviour {
     rotationTarget.transform.rotation =
       Quaternion.Euler(Utils.SetY(rotationTarget.transform.rotation.eulerAngles, orientation < 0? 180: 0));
 
-    if (!blockedByLadder) {
+    if (!blockedByLadder && !animator.GetBool("ducking")) {
       animator.SetFloat("speed", Mathf.Abs(walk.x));
       transform.position += Vector3.right * speed * Time.deltaTime * walk.x;
     } else {
@@ -42,5 +45,7 @@ public class RafaMotion : MonoBehaviour {
   public void HandleDuck (InputAction.CallbackContext ctx) {
     if (blockedByLadder) return;
     animator.SetBool("ducking", !animator.GetBool("ducking"));
+    if (animator.GetBool("ducking")) onDuckStart?.Invoke();
+    else onDuckStop?.Invoke();
   }
 }
