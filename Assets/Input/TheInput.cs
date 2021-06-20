@@ -517,6 +517,17 @@ public class @TheInput : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""dd641134-fe93-4c93-8a9e-39d610fc89d2"",
+                    ""path"": ""<HID::54C-5C4>/stick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""JoystickHandDetector"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""30147aa7-5c09-407f-8397-689c8fef5c22"",
                     ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
@@ -580,6 +591,17 @@ public class @TheInput : IInputActionCollection, IDisposable
                     ""action"": ""JoystickHandDetector"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4ecdde21-48fe-4dd5-976d-78931aeb4de2"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""JoystickHandDetector"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",

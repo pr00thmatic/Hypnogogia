@@ -6,6 +6,7 @@ public class Pan : MonoBehaviour, IOileable, IWashable {
   [Header("Information")]
   public float oil;
   public bool beingUsed = false;
+  public bool somethingIsStuck = false;
 
   [Header("Initialization")]
   public Estufable estufable;

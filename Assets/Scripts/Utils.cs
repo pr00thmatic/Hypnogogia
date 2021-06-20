@@ -26,4 +26,13 @@ public class Utils {
   public static T RandomPick<T> (T[] items) {
     return items[Random.Range(0, items.Length)];
   }
+
+  public static GameObject CreateEmptyChild (Transform parent, string name) {
+    GameObject child = new GameObject(name);
+    child.transform.parent = parent;
+    child.transform.localPosition = Vector3.zero;
+    child.transform.localRotation = Quaternion.identity;
+    child.transform.localScale = Vector3.one;
+    return child;
+  }
 }

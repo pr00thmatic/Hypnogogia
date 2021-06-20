@@ -17,6 +17,17 @@ public class Ladder : MonoBehaviour {
   public Transform endPose;
   public Transform distanceComparation;
   public Rigidbody2D body;
+  public GameObject indicator;
+
+  void Reset () {
+    startPose = transform.Find("start");
+    if (!startPose) startPose = Utils.CreateEmptyChild(transform, "start").transform;
+    endPose = transform.Find("end");
+    if (!endPose) endPose = Utils.CreateEmptyChild(transform, "end").transform;
+    indicator = GetComponentInChildren<Animator>().gameObject;
+    body = GetComponentInParent<Rigidbody2D>();
+    distanceComparation = startPose;
+  }
 
   void Update () {
     blocked = (Vector3.Angle(transform.up, Vector3.up) > angleToDisable ||
@@ -29,6 +40,7 @@ public class Ladder : MonoBehaviour {
         user = null;
       }
     }
+    indicator.SetActive(!blocked && user);
   }
 
   void OnTriggerStay2D (Collider2D c) {

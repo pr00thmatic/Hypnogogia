@@ -18,7 +18,7 @@ public class Oil : MonoBehaviour {
   void Update () {
     if (!grabbable.IsGrabbed) return;
 
-    int rafaOrientation = grabbable.hand.GetComponentInParent<RafaMotion>().orientation * -1;
+    int rafaOrientation = grabbable.hand.GetComponentInParent<Rafa>().motion.orientation * -1;
     Quaternion target = beingUsed? Quaternion.Euler(0,0, orientation * useRotation): Quaternion.identity;
     if (orientation != rafaOrientation) {
       transform.rotation = target;

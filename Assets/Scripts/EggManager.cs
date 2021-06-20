@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class EggManager : MonoBehaviour {
   public const int BURNT = 0, COOKED = 1, RAW = 2;
+  public static event System.Action onStuck;
 
   [Header("Configuration")]
   public float totallyCooked = 0.25f;
@@ -48,6 +49,12 @@ public class EggManager : MonoBehaviour {
       cooldownToOilJump = timeBetweenOilJump.Uniform;
       Utils.RandomPick(oil).Play();
     }
+
+    // TODO
+    if (!isStuck && GetComponentInParent<ContextualPan>().originalPan.oil < 0.8f && cookable.cookingFactor > 0.2f) {
+      isStuck = true;
+      onStuck?.Invoke();
+    }
   }
 
   public GameObject Clone () {
@@ -65,7 +72,7 @@ public class EggManager : MonoBehaviour {
       renderer.maskInteraction = SpriteMaskInteraction.None;
     }
 
-    clone.GetComponent<CookedEggInPan>().isStuck =
+    clone.GetComponent<CookedEggInPan>().IsStuck =
       GetComponentInParent<ContextualPan>().originalPan.oil < 0.8f && cookable.cookingFactor > 0.2f;
     clone.GetComponent<CookedEggInPan>().status = new EggStatus() { cookingFactor = cookable.cookingFactor };
 
@@ -75,7 +82,7 @@ public class EggManager : MonoBehaviour {
   public void Mimic (CookedEggInPan cooked) {
     gameObject.SetActive(cooked);
     if (cooked) {
-      isStuck = cooked.isStuck;
+      isStuck = cooked.IsStuck;
       cookable.cookingFactor = cooked.status.cookingFactor;
     } else {
       isStuck = false;

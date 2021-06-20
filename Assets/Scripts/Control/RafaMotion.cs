@@ -15,6 +15,7 @@ public class RafaMotion : MonoBehaviour {
   [Header("Initialization")]
   public Animator animator;
   public Transform rotationTarget;
+  public Transform motionTarget;
 
   void OnEnable () {
     TheInputInstance.Input.Rafa.Duck.performed += HandleDuck;
@@ -36,7 +37,7 @@ public class RafaMotion : MonoBehaviour {
 
     if (!blockedByLadder && !animator.GetBool("ducking")) {
       animator.SetFloat("speed", Mathf.Abs(walk.x));
-      transform.position += Vector3.right * speed * Time.deltaTime * walk.x;
+      motionTarget.position += Vector3.right * speed * Time.deltaTime * walk.x;
     } else {
       animator.SetFloat("speed", 0);
     }

@@ -4,8 +4,12 @@ using System.Collections.Generic;
 
 public class CookedEggInPan : MonoBehaviour {
   [Header("Information")]
-  public bool isStuck = false;
   public EggStatus status;
+  public bool IsStuck = false;
+  // public bool IsStuck {
+  //   get => GetComponentInParent<Pan>().somethingIsStuck;
+  //   set => GetComponentInParent<Pan>().somethingIsStuck = value;
+  // }
   public bool alreadySlided = false;
 
   [Header("Initialization")]
@@ -25,13 +29,13 @@ public class CookedEggInPan : MonoBehaviour {
   }
 
   void OnCollisionStay2D (Collision2D c) {
-    if (isStuck) return;
+    if (IsStuck) return;
     Splash(c.collider);
   }
 
   public void Slide () {
     GetComponentInParent<Pan>().oil = 0;
-    if (!isStuck) {
+    if (!IsStuck) {
       alreadySlided = true;
       transform.parent = null;
       collider.isTrigger = false;
