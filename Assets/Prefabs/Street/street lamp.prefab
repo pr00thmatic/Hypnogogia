@@ -190,6 +190,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7451398767609015195}
   - component: {fileID: 7451398767609015196}
+  - component: {fileID: 969374786607571159}
   m_Layer: 0
   m_Name: focalized light
   m_TagString: Untagged
@@ -252,6 +253,24 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &969374786607571159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7451398767609015194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0006e082c95a62489d545eb3dd319ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetIntensity: 1.92
+  speed: 5
+  x: 5.5
+  offTreshold: 0.33
+  randomStart: 0
+  myLight: {fileID: 7451398767609015196}
 --- !u!1 &7451398767696601116
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,6 +363,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7451398768145345137}
   - component: {fileID: 7451398768145345138}
+  - component: {fileID: 1274640920880234128}
   m_Layer: 0
   m_Name: point light
   m_TagString: Untagged
@@ -406,6 +426,24 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &1274640920880234128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7451398768145345136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0006e082c95a62489d545eb3dd319ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetIntensity: 0.65
+  speed: 5
+  x: 5.5
+  offTreshold: 0.33
+  randomStart: 0
+  myLight: {fileID: 7451398768145345138}
 --- !u!1 &7451398768463934486
 GameObject:
   m_ObjectHideFlags: 0

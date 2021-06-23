@@ -35,4 +35,9 @@ public class Utils {
     child.transform.localScale = Vector3.one;
     return child;
   }
+
+  public static string TwoDigits (string source) {
+    if (source.Length == 1) return "0" + source;
+    return source;
+  }
 }
