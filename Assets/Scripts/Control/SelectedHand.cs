@@ -7,6 +7,7 @@ public class SelectedHand : MonoBehaviour {
   [Header("Information")]
   public bool actionUsed;
   public bool IsBlocked { get => actionUsed; }
+  public bool IsSelected { get => gameObject.activeInHierarchy; }
 
   void OnEnable () {
     actionUsed = false;

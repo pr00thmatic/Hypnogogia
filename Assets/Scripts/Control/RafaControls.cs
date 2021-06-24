@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class RafaControls : MonoBehaviour {
   [Header("Information")]
   public int currentHand;
+  public Vector3 CurrentHandPosition { get => handControls.transform.GetChild(currentHand).gameObject.transform.position; }
 
   [Header("Initialization")]
   public GameObject handControls;

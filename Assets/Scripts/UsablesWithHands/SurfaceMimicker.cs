@@ -12,6 +12,7 @@ public class SurfaceMimicker : MonoBehaviour {
   }
 
   void OnCollisionStay2D (Collision2D c) {
+    if (GetComponent<Rigidbody2D>().isKinematic) return;
     if (c.collider.GetComponentInParent<HandSelection>()) return;
     if (c.collider.GetComponentInParent<Grabbable>()) {
       if (!c.collider.GetComponentInParent<Grabbable>().IsGrabbed) {
