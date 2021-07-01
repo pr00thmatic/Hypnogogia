@@ -11,20 +11,20 @@ public class Pan : MonoBehaviour, IOileable, IWashable {
   [Header("Initialization")]
   public Estufable estufable;
   public ParticleSystem steam;
-  public RequireContextualStove contextualStove;
+  public CookingRecipient recipient;
   public Transform eggPlace;
   public GameObject sidePan;
   public GameObject usingPan;
   public Grabbable grabbable;
 
   void OnEnable () {
-    contextualStove.onHornillaEnter += HandleEnter;
-    contextualStove.onHornillaExit += HandleExit;
+    recipient.onHornillaEnter += HandleEnter;
+    recipient.onHornillaExit += HandleExit;
   }
 
   void OnDisable () {
-    contextualStove.onHornillaEnter -= HandleEnter;
-    contextualStove.onHornillaExit -= HandleExit;
+    recipient.onHornillaEnter -= HandleEnter;
+    recipient.onHornillaExit -= HandleExit;
   }
 
   void Update () {
@@ -41,29 +41,23 @@ public class Pan : MonoBehaviour, IOileable, IWashable {
     oil += amount;
   }
 
-  public void HandleEnter (Hornilla hornilla) {
-    ContextualPan contextual = contextualStove.Representation.GetComponent<ContextualPan>();
-    contextual.originalPan = this;
-    contextual.GetComponentInChildren<EggManager>(true).Mimic(eggPlace.GetComponentInChildren<CookedEggInPan>());
+  public void HandleEnter () {
+    // recipient.representation.GetComponentInChildren<EggManager>(true).Mimic(eggPlace.GetComponentInChildren<CookedEggInPan>());
   }
 
-  public void HandleExit (Hornilla hornilla) {
-    DestroyEgg();
-    EggManager contextualEgg =
-      contextualStove.Representation.GetComponent<ContextualPan>().whatsCookin
-      .GetComponentInChildren<EggManager>(true);
+  public void HandleExit () {
+    // DestroyEgg();
+    // EggManager contextualEgg =
+    //   contextualStove.Representation.GetComponent<ContextualPan>().whatsCookin
+    //   .GetComponentInChildren<EggManager>(true);
 
-    if (contextualEgg.gameObject.activeInHierarchy) {
-      GameObject egg = contextualEgg.Clone();
-      egg.transform.parent = eggPlace;
-      egg.transform.localPosition = Vector3.zero;
-      egg.transform.localRotation = Quaternion.identity;
-      egg.transform.localScale = Vector3.one;
-    }
-  }
-
-  public void Cook (string name) {
-    contextualStove.Representation.GetComponent<ContextualPan>().whatsCookin.Find(name).gameObject.SetActive(true);
+    // if (contextualEgg.gameObject.activeInHierarchy) {
+    //   GameObject egg = contextualEgg.Clone();
+    //   egg.transform.parent = eggPlace;
+    //   egg.transform.localPosition = Vector3.zero;
+    //   egg.transform.localRotation = Quaternion.identity;
+    //   egg.transform.localScale = Vector3.one;
+    // }
   }
 
   public void DestroyEgg () {

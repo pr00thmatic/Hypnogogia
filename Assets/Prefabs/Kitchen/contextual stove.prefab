@@ -451,6 +451,8 @@ MonoBehaviour:
     a: 0
     b: 1.6
   debugClosed: 0
+  recipient: {fileID: 0}
+  recipientAnchor: {fileID: 4164825096095141165}
   fire: {fileID: 4331676664245346788}
   originalFire: {fileID: 0}
   bubble: {fileID: 4331676664637001506}
@@ -833,6 +835,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4331676663308852170}
     m_Modifications:
+    - target: {fileID: 2260585484119299792, guid: df0db7bb0b0f90b4bac01c222b702c1f, type: 3}
+      propertyPath: cookedEggPrototype
+      value: 
+      objectReference: {fileID: 5516003203493031557, guid: e5bf01851001b1c4fb74a00a17e1f61c, type: 3}
     - target: {fileID: 2260585484119299793, guid: df0db7bb0b0f90b4bac01c222b702c1f, type: 3}
       propertyPath: m_RootOrder
       value: 0

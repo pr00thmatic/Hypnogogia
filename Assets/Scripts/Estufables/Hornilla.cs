@@ -9,4 +9,13 @@ public class Hornilla : MonoBehaviour {
 
   [Header("Initialization")]
   public FireKnob knob;
+  public ContextualStove bubble;
+
+  public void Open (CookingRecipient requester) {
+    bubble.Open(requester);
+  }
+
+  public void Close () {
+    bubble.Close();
+  }
 }

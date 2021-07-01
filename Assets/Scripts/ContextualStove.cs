@@ -8,7 +8,11 @@ public class ContextualStove : MonoBehaviour {
   public RandomRange fireScaleRange = new RandomRange(0, 1.6f);
   public bool debugClosed = false;
 
+  [Header("Information")]
+  public CookingRecipient recipient;
+
   [Header("Initialization")]
+  public Transform recipientAnchor;
   public Transform fire;
   public FirelyLight originalFire;
   public Transform bubble;
@@ -23,6 +27,12 @@ public class ContextualStove : MonoBehaviour {
     }
   }
 
+  public void Open (CookingRecipient requester) {
+    animator.SetBool("is open", true);
+    recipient = requester;
+    recipient.representation.AnchorTo(recipientAnchor);
+  }
+
   public void Open () {
     animator.SetBool("is open", true);
     HideWhatsCookin();
@@ -30,6 +40,7 @@ public class ContextualStove : MonoBehaviour {
 
   public void Close () {
     animator.SetBool("is open", false);
+    recipient = null;
   }
 
   public void HideWhatsCookin () {
