@@ -24,7 +24,7 @@ public class CookedEggInPan : MonoBehaviour {
   }
 
   void Update () {
-    if (transform.localPosition.x > -0.22f && !alreadySlided) {
+    if (transform.localPosition.x < -0.22f && !alreadySlided) {
       Slide();
     }
   }
