@@ -10,6 +10,7 @@ public class CookingRecipient : MonoBehaviour {
   public Hornilla hornilla;
 
   [Header("Initialization")]
+  public Transform cookingAnchor;
   public ContextualRepresentation representation;
   public Grabbable grabbable;
 

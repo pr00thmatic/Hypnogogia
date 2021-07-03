@@ -7,10 +7,10 @@ public class FacadeInterior : MonoBehaviour {
   public GameObject facade;
 
   void OnTriggerEnter2D (Collider2D c) {
-    if (c.GetComponentInParent<Rafa>()) facade.SetActive(false);
+    if (c.GetComponent<Rafa>()) facade.SetActive(false);
   }
 
   void OnTriggerExit2D (Collider2D c) {
-    if (c.GetComponentInParent<Rafa>()) facade.SetActive(true);
+    if (c.GetComponent<Rafa>()) facade.SetActive(true);
   }
 }

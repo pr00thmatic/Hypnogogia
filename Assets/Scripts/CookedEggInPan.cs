@@ -5,14 +5,14 @@ using System.Collections.Generic;
 public class CookedEggInPan : MonoBehaviour {
   [Header("Information")]
   public EggStatus status;
-  public bool IsStuck = false;
-  // public bool IsStuck {
-  //   get => GetComponentInParent<Pan>().somethingIsStuck;
-  //   set => GetComponentInParent<Pan>().somethingIsStuck = value;
-  // }
+  public bool IsStuck {
+    get => original.isStuck;
+    set => original.isStuck = value;
+  }
   public bool alreadySlided = false;
 
   [Header("Initialization")]
+  public ContextualEgg original;
   public Rigidbody2D body;
   public new Collider2D collider;
   public Transform pannedEggs;
@@ -20,6 +20,7 @@ public class CookedEggInPan : MonoBehaviour {
 
   void OnEnable () {
     body.velocity = Vector2.zero;
+    if (original) Copy(original);
   }
 
   void Update () {
@@ -29,8 +30,20 @@ public class CookedEggInPan : MonoBehaviour {
   }
 
   void OnCollisionStay2D (Collision2D c) {
-    if (IsStuck) return;
+    if (IsStuck || c.collider.GetComponentInParent<Pan>()) return;
     Splash(c.collider);
+  }
+
+  public void Copy (ContextualEgg egg) {
+    this.original = egg;
+    for (int i=0; i<egg.eggs.Length; i++) {
+      Egg original = egg.eggs[i];
+      Egg clone = pannedEggs.Find(original.name).GetComponent<Egg>();
+      clone.Copy(original);
+      clone.name = original.name;
+      clone.wigglyShines = 0;
+      clone.status = 0.5f;
+    }
   }
 
   public void Slide () {
@@ -39,6 +52,7 @@ public class CookedEggInPan : MonoBehaviour {
       alreadySlided = true;
       transform.parent = null;
       collider.isTrigger = false;
+      original.DestroySelf();
     } else {
       body.isKinematic = true;
     }

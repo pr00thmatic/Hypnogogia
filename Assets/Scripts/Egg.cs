@@ -33,4 +33,13 @@ public class Egg : MonoBehaviour {
 
     gravitating.SetFloat("status", status);
   }
+
+  public void Copy (Egg original) {
+    for (int i=0; i<shines.Length; i++) {
+      shines[i].animator.SetFloat("wiggly", original.wigglyShines);
+    }
+
+    alpha = original.alpha;
+    gravitating.SetFloat("status", original.status);
+  }
 }

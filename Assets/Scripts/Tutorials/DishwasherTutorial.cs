@@ -14,11 +14,11 @@ public class DishwasherTutorial : MonoBehaviour {
   public GameObject tutorial;
 
   void OnEnable () {
-    EggManager.onStuck += HandleStuck;
+    ContextualEgg.onStuck += HandleStuck;
   }
 
   void OnDisable () {
-    EggManager.onStuck -= HandleStuck;
+    ContextualEgg.onStuck -= HandleStuck;
   }
 
   void Update () {
@@ -31,7 +31,7 @@ public class DishwasherTutorial : MonoBehaviour {
   }
 
   public void HandleStuck () {
-    EggManager.onStuck -= HandleStuck;
+    ContextualEgg.onStuck -= HandleStuck;
     triggered = true;
     StartCoroutine(_ShowTutorial());
   }
