@@ -7,7 +7,6 @@ public class DigitalClock : MonoBehaviour {
   public TextMeshPro display;
 
   void Update () {
-    display.text = Utils.TwoDigits((int) (Sky.Instance.hour) + "") + " : " +
-      Utils.TwoDigits((int) (Sky.Instance.hour % 60) + "");
+    display.text = Utils.DigitalTime(Sky.Instance.hour);
   }
 }

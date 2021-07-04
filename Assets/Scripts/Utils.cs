@@ -40,4 +40,8 @@ public class Utils {
     if (source.Length == 1) return "0" + source;
     return source;
   }
+
+  public static string DigitalTime (float hour) {
+    return Utils.TwoDigits((int) (hour) + "") + ":" + Utils.TwoDigits((int) ((hour * 60) % 60) + "");
+  }
 }
