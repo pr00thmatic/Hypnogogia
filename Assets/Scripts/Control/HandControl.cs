@@ -30,7 +30,6 @@ public class HandControl : MonoBehaviour {
       if ((blocker as IBlockHandMotion).BlockingHandMotion) return;
     }
 
-    Vector2 input = TheInputInstance.Input.Rafa.MoveHand.ReadValue<Vector2>();
     Vector3 d = point - shoulder.position;
     motionTarget.position = Vector3.ClampMagnitude(d, radius) + shoulder.position;
     motionTarget.rotation = arm1.rotation * Quaternion.Euler(0,0,90 * (invertHand? 1: -1));

@@ -5,10 +5,23 @@ using System.Collections.Generic;
 public class RafaControls : MonoBehaviour {
   [Header("Information")]
   public int currentHand;
-  public Vector3 CurrentHandPosition { get => handControls.transform.GetChild(currentHand).gameObject.transform.position; }
+  public Transform CurrentHand { get => handControls.transform.GetChild(currentHand); }
+  public Vector3 CurrentHandPosition { get => CurrentHand.position; }
 
   [Header("Initialization")]
   public GameObject handControls;
+  public GameObject allControls;
+
+  void Awake () {
+    ControlTaker.onControlRequested += HandleControlRequest;
+    ControlTaker.onControlResumed += ResumeControl;
+  }
+
+  void OnDestroy () {
+    if (!this) return;
+    ControlTaker.onControlRequested -= HandleControlRequest;
+    ControlTaker.onControlResumed -= ResumeControl;
+  }
 
   void Start () {
     SetControlTo(currentHand, true);
@@ -22,5 +35,13 @@ public class RafaControls : MonoBehaviour {
 
   public void SetControlTo (int handIndex, bool enabled) {
     handControls.transform.GetChild(handIndex).gameObject.SetActive(enabled);
+  }
+
+  public void HandleControlRequest (ControlTaker requester) {
+    allControls.SetActive(false);
+  }
+
+  public void ResumeControl (ControlTaker requester) {
+    allControls.SetActive(true);
   }
 }

@@ -4,6 +4,11 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class Utils {
+  public static Vector3 SetZ (Vector3 v, float z) {
+    v.z = z;
+    return v;
+  }
+
   public static Vector3 SetY (Vector3 v, float y) {
     v.y = y;
     return v;

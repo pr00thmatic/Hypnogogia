@@ -23,6 +23,7 @@ public class RafaMotion : MonoBehaviour {
 
   void OnDisable () {
     TheInputInstance.Input.Rafa.Duck.performed -= HandleDuck;
+    animator.SetFloat("speed", 0);
   }
 
   void Update () {
@@ -32,8 +33,7 @@ public class RafaMotion : MonoBehaviour {
       orientation = (int) Mathf.Sign(walk.x);
     }
 
-    rotationTarget.transform.rotation =
-      Quaternion.Euler(Utils.SetY(rotationTarget.transform.rotation.eulerAngles, orientation < 0? 180: 0));
+    UpdateOrientation();
 
     if (!blockedByLadder && !animator.GetBool("ducking")) {
       animator.SetFloat("speed", Mathf.Abs(walk.x));
@@ -41,6 +41,11 @@ public class RafaMotion : MonoBehaviour {
     } else {
       animator.SetFloat("speed", 0);
     }
+  }
+
+  public void UpdateOrientation () {
+    rotationTarget.transform.rotation =
+      Quaternion.Euler(Utils.SetY(rotationTarget.transform.rotation.eulerAngles, orientation < 0? 180: 0));
   }
 
   public void HandleDuck (InputAction.CallbackContext ctx) {

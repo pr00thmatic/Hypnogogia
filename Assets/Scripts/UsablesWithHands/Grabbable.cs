@@ -11,6 +11,7 @@ public class Grabbable : MonoBehaviour {
   [Header("Configuration")]
   public bool keepsRotationUp = true;
   public bool simulateWhileGrabbed = false;
+  public bool preserveOrientation = false;
 
   [Header("Information")]
   public GrabbingHand hand;
@@ -36,7 +37,8 @@ public class Grabbable : MonoBehaviour {
     if (hand) {
       if (keepsRotationUp) {
         transform.rotation = originalRotation;
-        transform.localScale = Utils.SetX(transform.localScale, Mathf.Abs(transform.localScale.x) * hand.motion.orientation);
+        transform.localScale = Utils.SetX(transform.localScale,
+                                          Mathf.Abs(transform.localScale.x) * (preserveOrientation? 1: hand.motion.orientation));
       }
       // TODO: a prettier grab position
       transform.position = hand.movingHand.TransformPoint(offset);
