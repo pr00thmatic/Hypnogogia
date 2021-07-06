@@ -25,6 +25,7 @@ public class UsableWithHand : MonoBehaviour {
     TheInputInstance.Input.Rafa.Grab.performed -= HandleUse;
     beingUsed = false;
     canBeUsed = false;
+    holding = false;
   }
 
   void Update () {
