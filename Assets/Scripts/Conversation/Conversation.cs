@@ -15,7 +15,6 @@ public class Conversation : MonoBehaviour {
 
   [Header("Initialization")]
   public ConversationData data;
-  public GameObject talkIndicator;
 
   void OnEnable () {
     TheInputInstance.Input.Rafa.Talk.performed += HandleTalk;
@@ -23,19 +22,6 @@ public class Conversation : MonoBehaviour {
 
   void OnDisable () {
     TheInputInstance.Input.Rafa.Talk.performed -= HandleTalk;
-  }
-
-  void OnTriggerStay2D (Collider2D c) {
-    Starter starter = c.GetComponent<Starter>();
-    if (!starter) return;
-    canStartConversation = true;
-    talkIndicator.SetActive(!IsCurrentlyHappening);
-  }
-
-  void OnTriggerExit2D (Collider2D c) {
-    if (!c.GetComponent<Starter>()) return;
-    canStartConversation = false;
-    talkIndicator.SetActive(false);
   }
 
   public void NextDialogue () {
@@ -53,9 +39,7 @@ public class Conversation : MonoBehaviour {
   }
 
   public void HandleTalk (InputAction.CallbackContext ctx) {
-    if (canStartConversation || IsCurrentlyHappening) {
-      NextDialogue();
-    }
+    if (IsCurrentlyHappening) NextDialogue();
   }
 }
 }

@@ -5,6 +5,8 @@ using TMPro;
 
 namespace Conversations {
 public class Bubble : MonoBehaviour {
+  [Header("Configuration")]
+  public int smallMaxLength = 35;
   [Header("Initialization")]
   public Animator animator;
   public TextMeshPro messageHolder;
@@ -38,8 +40,8 @@ public class Bubble : MonoBehaviour {
   }
 
   public void HandleRequest () {
-    small.SetActive(messageHolder.text.Length < 8);
-    big.SetActive(messageHolder.text.Length >= 8);
+    small.SetActive(messageHolder.text.Length <= smallMaxLength);
+    big.SetActive(messageHolder.text.Length > smallMaxLength);
   }
 }
 }

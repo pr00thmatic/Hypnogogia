@@ -4,11 +4,13 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class UsableWithHand : MonoBehaviour {
+  public event System.Action onLockedUse;
   public event System.Action<UserHand> onUse;
   public event System.Action<UserHand> onUseBegin;
 
   [Header("Configuration")]
   public bool takesControl = true;
+  public bool isLocked = false;
 
   [Header("Information")]
   public bool beingUsed = false;
@@ -53,6 +55,10 @@ public class UsableWithHand : MonoBehaviour {
 
   public void HandleUse (InputAction.CallbackContext ctx) {
     if (!canBeUsed) return;
+    if (isLocked) {
+      onLockedUse?.Invoke();
+      return;
+    }
     onUseBegin?.Invoke(hand);
     if (takesControl) {
       beingUsed = true;

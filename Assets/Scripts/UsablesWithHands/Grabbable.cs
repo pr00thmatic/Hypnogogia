@@ -8,10 +8,13 @@ using System.Collections.Generic;
 [RequireComponent(typeof(SurfaceMimicker))]
 [RequireComponent(typeof(Rigidbody2D))]
 public class Grabbable : MonoBehaviour {
+  public event System.Action onLockedGrab;
+
   [Header("Configuration")]
   public bool keepsRotationUp = true;
   public bool simulateWhileGrabbed = false;
   public bool preserveOrientation = false;
+  public bool isLocked = false;
 
   [Header("Information")]
   public GrabbingHand hand;
@@ -71,5 +74,9 @@ public class Grabbable : MonoBehaviour {
     body.isKinematic = false;
     body.simulated = true;
     foreach (Collider2D c in cs) c.enabled = true;
+  }
+
+  public void TriggerLockedGrab () {
+    onLockedGrab?.Invoke();
   }
 }

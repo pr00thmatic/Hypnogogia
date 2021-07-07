@@ -31,7 +31,8 @@ public class GrabbingHand : MonoBehaviour {
 
     int min = -1;
     for (int i=0; i<hits.Length; i++) {
-      if (!hits[i].GetComponentInParent<Grabbable>()) continue;
+      Grabbable found = hits[i].GetComponentInParent<Grabbable>();
+      if (!found) continue;
       if (min == -1) {
         min = i;
         continue;
@@ -54,7 +55,10 @@ public class GrabbingHand : MonoBehaviour {
       hand.SpentAction();
     } else {
       currentlyGrabbed = FindAvailableGrabbable();
-      if (currentlyGrabbed) {
+      if (currentlyGrabbed && currentlyGrabbed.isLocked) {
+        currentlyGrabbed.TriggerLockedGrab();
+        currentlyGrabbed = null;
+      } else if (currentlyGrabbed) {
         currentlyGrabbed.Use(this);
         hand.SpentAction();
       }

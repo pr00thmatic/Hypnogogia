@@ -122,7 +122,7 @@ public class @TheInput : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""434aa83a-3625-40fe-b60b-6d20c8d17ba2"",
-                    ""path"": ""<Keyboard>/ctrl"",
+                    ""path"": ""<Keyboard>/shift"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
