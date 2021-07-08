@@ -19,6 +19,7 @@ public class RecepcionistaAnimations : MonoBehaviour {
   [Header("Initialization")]
   public Animator face;
   public Animator legs;
+  public Animator eyebrows;
 
   void OnEnable () {
     timeoutToBlink = Random.Range(0, blinkingRange.Max);
@@ -33,5 +34,6 @@ public class RecepcionistaAnimations : MonoBehaviour {
     CurrentEyesOrientation = Mathf.MoveTowards(CurrentEyesOrientation, targetEyesOrientation,
                                                normalizedEyesOrientationSpeed * Time.deltaTime);
     legs.SetBool("upset", isUpset);
+    eyebrows.SetBool("upset", isUpset);
   }
 }

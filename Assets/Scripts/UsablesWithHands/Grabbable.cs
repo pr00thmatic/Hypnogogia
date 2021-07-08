@@ -21,6 +21,7 @@ public class Grabbable : MonoBehaviour {
   public Quaternion originalRotation;
   public Vector3 offset;
   public bool IsGrabbed { get => hand; }
+  public bool couldBeGrabbed;
 
   [Header("Initialization")]
   public SortingGroup sortGroup;
@@ -45,6 +46,19 @@ public class Grabbable : MonoBehaviour {
       }
       // TODO: a prettier grab position
       transform.position = hand.movingHand.TransformPoint(offset);
+    }
+  }
+
+  void OnTriggerStay2D (Collider2D c) {
+    GrabbingHand hand = c.GetComponent<GrabbingHand>();
+    if (!hand) return;
+    couldBeGrabbed = true;
+  }
+
+  void OnTriggerExit2D (Collider2D c) {
+    GrabbingHand hand = c.GetComponent<GrabbingHand>();
+    if (hand) {
+      couldBeGrabbed = false;
     }
   }
 
