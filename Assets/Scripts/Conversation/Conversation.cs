@@ -5,6 +5,8 @@ using System.Collections.Generic;
 
 namespace Conversations {
 public class Conversation : MonoBehaviour {
+  public event System.Action onFinished;
+
   [Header("Information")]
   public bool canStartConversation = false;
   public int currentPieceOfChat = -1;
@@ -35,6 +37,7 @@ public class Conversation : MonoBehaviour {
       Conversables.everyone[Current.owner].Display(Current.message);
     } else {
       currentPieceOfChat = -1;
+      onFinished?.Invoke();
     }
   }
 

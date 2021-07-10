@@ -49,4 +49,8 @@ public class Utils {
   public static string DigitalTime (float hour) {
     return Utils.TwoDigits((int) (hour) + "") + ":" + Utils.TwoDigits((int) ((hour * 60) % 60) + "");
   }
+
+  public static bool IsInState (Animator animator, string stateName) {
+    return animator.GetCurrentAnimatorStateInfo(0).IsName(stateName);
+  }
 }
