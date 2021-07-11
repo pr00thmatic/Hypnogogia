@@ -39,6 +39,7 @@ public class Grabbable : MonoBehaviour {
 
   void Update () {
     if (hand) {
+      if (isLocked) Unuse();
       if (keepsRotationUp) {
         transform.rotation = originalRotation;
         transform.localScale = Utils.SetX(transform.localScale,

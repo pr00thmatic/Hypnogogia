@@ -15,46 +15,22 @@ public class RecepcionistaDialogues : MonoBehaviour {
   public Conversation conversation;
   public ConversationData[] casilleros;
   public ConversationData[] tarjetas;
-  public UsableWithHand[] watchingLockers;
-  public Grabbable[] watchingCards;
   public RecepcionistaAnimations animations;
-  // public Transform debugCardFather;
+  public ClinicStartRoomLocker locker;
 
-  void OnEnable () { OnEnableOrDisable(true); }
-  void OnDisable () { OnEnableOrDisable(false); }
+  void OnEnable () {
+    locker.onCasilleroAttempt += ReganarPorCasillero;
+    locker.onCardAttempt += ReganarPorTarjeta;
+  }
 
-  public void OnEnableOrDisable (bool enabled) {
-    foreach (UsableWithHand casillero in watchingLockers) {
-      casillero.isLocked = enabled;
-      if (enabled) casillero.onLockedUse += ReganarPorCasillero;
-      else casillero.onLockedUse -= ReganarPorCasillero;
-    }
-    foreach (Grabbable card in watchingCards) {
-      card.isLocked = enabled;
-      if (enabled) card.onLockedGrab += ReganarPorTarjeta;
-      else card.onLockedGrab -= ReganarPorTarjeta;
-    }
+  void OnDisable () {
+    locker.onCasilleroAttempt -= ReganarPorCasillero;
+    locker.onCardAttempt -= ReganarPorTarjeta;
   }
 
   void Update () {
     if (snitched) return;
-  //   if (!debugCardFather) return;
-  //   watchingCards = debugCardFather.GetComponentsInChildren<Grabbable>();
-    animations.targetEyesOrientation = 0;
-    foreach (UsableWithHand casillero in watchingLockers) {
-      if (casillero.canBeUsed) {
-        animations.targetEyesOrientation = -1;
-        break;
-      }
-    }
-    if (animations.targetEyesOrientation == 0) {
-      foreach (Grabbable card in watchingCards) {
-        if (card.couldBeGrabbed) {
-          animations.targetEyesOrientation = -1;
-          break;
-        }
-      }
-    }
+    animations.targetEyesOrientation = locker.isOverSuspiciousThing? -1: 0;
   }
 
   public void Reganar (ref int counter, ConversationData[] datas) {
@@ -78,7 +54,7 @@ public class RecepcionistaDialogues : MonoBehaviour {
     conversation.onFinished -= Snitch;
     snitched = true;
     animations.targetEyesOrientation = 0;
-    this.enabled = false;
+    locker.enabled = this.enabled = false;
     onSnitch?.Invoke();
   }
 }
