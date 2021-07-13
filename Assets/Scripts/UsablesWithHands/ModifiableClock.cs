@@ -17,8 +17,6 @@ public class ModifiableClock : MonoBehaviour {
         minutes.transform.rotation = Quaternion.Euler(0,0, -(((Sky.Instance.hour * 60) % 60) / 60f) * 360);
       } else if (minutes.usable.beingUsed) {
         sky.hour = minutes.angles / 360f;
-        // sky.hour = Mathf.Floor(((360-hours.transform.rotation.eulerAngles.z) / 360f) * 12) +
-        //   (minutes.angles / 360f);
         hours.transform.rotation = Quaternion.Euler(0,0, -((Sky.Instance.hour / 12) % 12) * 360);
       }
     }
