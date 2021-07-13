@@ -23,8 +23,16 @@ public class ClockHand : MonoBehaviour {
       Vector2 handControl = TheInputInstance.Input.Rafa.MoveHand.ReadValue<Vector2>();
       if (JoystickMouseRouter.IsUsingMouse) {
         Vector3 delta = new Vector3(handControl.x, handControl.y, 0) * Time.deltaTime;
+        // don't allow time travel beyond the end of time and before 0 hour
+        float going = Vector3.SignedAngle(transform.up, delta, Vector3.forward);
+        if (Sky.Instance.hour >= Sky.Instance.endOfTime && going < 0) return;
+        if (Sky.Instance.hour <= 0 && going > 0) return;
         transform.up += delta;
       } else {
+        // don't allow time travel beyond the end of time and before 0 hour
+        float going = Vector3.SignedAngle(transform.up, handControl, Vector3.forward);
+        if (Sky.Instance.hour >= Sky.Instance.endOfTime && going < 0) return;
+        if (Sky.Instance.hour <= 0 && going > 0) return;
         transform.up = Vector3.RotateTowards(transform.up, new Vector3(handControl.x, handControl.y, 0),
                                              joystickSpeed * Time.deltaTime * Mathf.Deg2Rad, 1);
       }

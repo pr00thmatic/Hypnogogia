@@ -14,9 +14,11 @@ public class ModifiableClock : MonoBehaviour {
     if (!clock.enabled) {
       if (hours.usable.beingUsed) {
         sky.hour = (hours.angles / 360f) * 12;
+        sky.KeepRational();
         minutes.transform.rotation = Quaternion.Euler(0,0, -(((Sky.Instance.hour * 60) % 60) / 60f) * 360);
       } else if (minutes.usable.beingUsed) {
         sky.hour = minutes.angles / 360f;
+        sky.KeepRational();
         hours.transform.rotation = Quaternion.Euler(0,0, -((Sky.Instance.hour / 12) % 12) * 360);
       }
     }
