@@ -36,7 +36,7 @@ public class LadderUser : MonoBehaviour {
     bool up = triggerName == "climb up";
     motion.blockedByLadder = true;
     animator.SetTrigger(triggerName); current.climbedUp = up;
-    body.isKinematic = true;
+    body.isKinematic = up;
     if (up) {
       yield return StartCoroutine(_ToStart());
       yield return StartCoroutine(_ToEnd());
