@@ -9,6 +9,8 @@ public class TargetedMotion : MonoBehaviour {
   public float speed = 5;
   public string[] allowedWalkStates = new string[] { "walk", "standing idle" };
   public bool flip = false;
+  public bool invariantSpeed = true;
+  public float arriveEpsilon = 0;
 
   [Header("Information")]
   public float currentSpeed = 0;
@@ -20,10 +22,16 @@ public class TargetedMotion : MonoBehaviour {
   public Transform target;
 
   void Update () {
-    if (rootMotion.position == target.position) {
+    if (Mathf.Abs(rootMotion.position.x - target.position.x) <= arriveEpsilon) {
       animator.SetFloat("speed", 0);
       if (!arrived) {
         arrived = true;
+        if (target.GetComponent<TargetRotation>()) {
+          rootMotion.transform.rotation = target.transform.rotation;
+        }
+        if (target.GetComponent<IGiveInstructionsOnArrive>() != null) {
+          target.GetComponent<IGiveInstructionsOnArrive>().OnArrive();
+        }
         onArrive?.Invoke();
       }
     } else {
@@ -42,7 +50,7 @@ public class TargetedMotion : MonoBehaviour {
           rootMotion.rotation = Quaternion.Euler(0, 0, 0);
         }
         rootMotion.position = Vector3.MoveTowards(rootMotion.position, target.position, speed * Time.deltaTime);
-        animator.SetFloat("speed", 1);
+        animator.SetFloat("speed", invariantSpeed? 1: speed);
       }
     }
 

@@ -44,5 +44,10 @@ public class Conversation : MonoBehaviour {
   public void HandleTalk (InputAction.CallbackContext ctx) {
     if (IsCurrentlyHappening) NextDialogue();
   }
+
+  public void StartDialogue (ConversationData data) {
+    this.data = data;
+    NextDialogue();
+  }
 }
 }
