@@ -14,6 +14,7 @@ public class DefaultEnding : MonoBehaviour {
   public EndingTriggerer triggerer;
 
   void OnEnable () {
+    keyla.standing.SetActive(true);
     keyla.r.sprite = keyla.officeClothes;
     keyla.motion.rootMotion.position = initialPosition.position;
     keyla.motion.target = keyla.greetRafa;

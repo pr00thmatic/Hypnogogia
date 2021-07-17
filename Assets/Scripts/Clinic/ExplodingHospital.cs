@@ -19,6 +19,7 @@ public class ExplodingHospital : MonoBehaviour {
   public Conversation tvGuy;
 
   void OnEnable () {
+    keyla.standing.SetActive(true);
     keyla.motion.target = keyla.greetRafa;
     keyla.motion.onArrive += TalkToRafa;
     originalSpeed = keyla.motion.speed;

@@ -5,6 +5,7 @@ using Conversations;
 
 public class Keyla : MonoBehaviour {
   [Header("Initialization")]
+  public GameObject standing;
   public TargetedMotion motion;
   public Conversation conversation;
   public Transform greetRafa;

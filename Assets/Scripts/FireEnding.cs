@@ -18,6 +18,8 @@ public class FireEnding : MonoBehaviour, IEnding {
   public GameObject keylaCam;
 
   void OnEnable () {
+    keyla.standing.SetActive(true);
+    keyla.r.sprite = keyla.officeClothes;
     keyla.transform.position = initialPosition.position;
     keyla.transform.rotation = initialPosition.rotation;
   }
@@ -57,10 +59,14 @@ public class FireEnding : MonoBehaviour, IEnding {
   public void HandleEnd () {
     keyla.conversation.onNextDialogue -= HandlePieceOfChat;
     keyla.conversation.onFinished -= HandleEnd;
-    onFinished?.Invoke();
+    TriggerEndOfEnding();
+  }
+
+  public void TriggerEnding () {
+    gameObject.SetActive(true);
   }
 
   public void TriggerEndOfEnding () {
-    gameObject.SetActive(true);
+    onFinished?.Invoke();
   }
 }

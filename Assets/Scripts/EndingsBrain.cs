@@ -6,6 +6,7 @@ public class EndingsBrain : MonoBehaviour {
   [Header("Information")]
   public bool decided = false;
   public GameObject preferedEnding;
+  public bool discardedExplossion = false;
 
   [Header("Initialization")]
   public GameObject fire;
@@ -38,8 +39,8 @@ public class EndingsBrain : MonoBehaviour {
     Subscribe(false);
     decided = true;
     IEnding ending = preferedEnding.GetComponent<IEnding>();
-    ending.TriggerEndOfEnding();
     ending.onFinished += HandleEnd;
+    ending.TriggerEnding();
   }
 
   public void HandleEnd () {
@@ -48,6 +49,7 @@ public class EndingsBrain : MonoBehaviour {
 
   public void DiscardExplossion (TriggeredByRafa trigger) {
     if (preferedEnding == explossiveClinic) preferedEnding = defaultEnding;
+    discardedExplossion = true;
   }
 
   public void CheckFire (TriggeredByRafa trigger) {
@@ -61,8 +63,10 @@ public class EndingsBrain : MonoBehaviour {
 
     if (yup) {
       preferedEnding = fire;
-    } else {
+    } else if (discardedExplossion) {
       preferedEnding = defaultEnding;
+    } else {
+      preferedEnding = explossiveClinic;
     }
   }
 }
