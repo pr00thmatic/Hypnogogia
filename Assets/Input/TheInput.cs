@@ -105,6 +105,14 @@ public class @TheInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Restart"",
+                    ""type"": ""Button"",
+                    ""id"": ""1f228859-1e39-4804-9a52-e7f440869fd2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -646,6 +654,39 @@ public class @TheInput : IInputActionCollection, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""94560df4-de01-4c62-a951-235d7fa3fef9"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Restart"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a3f18f95-1eef-4d5b-8689-f076a5a1347f"",
+                    ""path"": ""<HID::54C-5C4>/button10"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Restart"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4b970d5d-c234-4e57-a12b-b65b417d8958"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Restart"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -665,6 +706,7 @@ public class @TheInput : IInputActionCollection, IDisposable
         m_Rafa_JoystickHandDetector = m_Rafa.FindAction("JoystickHandDetector", throwIfNotFound: true);
         m_Rafa_MouseHandDetector = m_Rafa.FindAction("MouseHandDetector", throwIfNotFound: true);
         m_Rafa_Interact = m_Rafa.FindAction("Interact", throwIfNotFound: true);
+        m_Rafa_Restart = m_Rafa.FindAction("Restart", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -725,6 +767,7 @@ public class @TheInput : IInputActionCollection, IDisposable
     private readonly InputAction m_Rafa_JoystickHandDetector;
     private readonly InputAction m_Rafa_MouseHandDetector;
     private readonly InputAction m_Rafa_Interact;
+    private readonly InputAction m_Rafa_Restart;
     public struct RafaActions
     {
         private @TheInput m_Wrapper;
@@ -740,6 +783,7 @@ public class @TheInput : IInputActionCollection, IDisposable
         public InputAction @JoystickHandDetector => m_Wrapper.m_Rafa_JoystickHandDetector;
         public InputAction @MouseHandDetector => m_Wrapper.m_Rafa_MouseHandDetector;
         public InputAction @Interact => m_Wrapper.m_Rafa_Interact;
+        public InputAction @Restart => m_Wrapper.m_Rafa_Restart;
         public InputActionMap Get() { return m_Wrapper.m_Rafa; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -782,6 +826,9 @@ public class @TheInput : IInputActionCollection, IDisposable
                 @Interact.started -= m_Wrapper.m_RafaActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_RafaActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_RafaActionsCallbackInterface.OnInteract;
+                @Restart.started -= m_Wrapper.m_RafaActionsCallbackInterface.OnRestart;
+                @Restart.performed -= m_Wrapper.m_RafaActionsCallbackInterface.OnRestart;
+                @Restart.canceled -= m_Wrapper.m_RafaActionsCallbackInterface.OnRestart;
             }
             m_Wrapper.m_RafaActionsCallbackInterface = instance;
             if (instance != null)
@@ -819,6 +866,9 @@ public class @TheInput : IInputActionCollection, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @Restart.started += instance.OnRestart;
+                @Restart.performed += instance.OnRestart;
+                @Restart.canceled += instance.OnRestart;
             }
         }
     }
@@ -836,5 +886,6 @@ public class @TheInput : IInputActionCollection, IDisposable
         void OnJoystickHandDetector(InputAction.CallbackContext context);
         void OnMouseHandDetector(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnRestart(InputAction.CallbackContext context);
     }
 }
