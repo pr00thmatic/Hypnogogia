@@ -27,7 +27,9 @@ public class Sky : NonPersistentSingleton<Sky> {
 
   public void KeepRational () {
     hour = (hour + 24 * ((int) (Mathf.Abs(hour) / 24))) % 24;
-    hour = Mathf.Max(0, Mathf.Min(hour, endOfTime));
+    if (endOfTime > 0) {
+      hour = Mathf.Max(0, Mathf.Min(hour, endOfTime));
+    }
     r.sharedMaterial.SetFloat("Daytime", hour);
   }
 }
