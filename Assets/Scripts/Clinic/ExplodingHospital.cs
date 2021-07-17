@@ -16,6 +16,7 @@ public class ExplodingHospital : MonoBehaviour {
   public Transform tvPlace;
   public ConversationData greetings;
   public GameObject tv;
+  public Conversation tvGuy;
 
   void OnEnable () {
     keyla.motion.target = keyla.greetRafa;
@@ -43,5 +44,11 @@ public class ExplodingHospital : MonoBehaviour {
   IEnumerator _TurnTvOn () {
     yield return new WaitForSeconds(0.5f);
     tv.SetActive(true);
+    tvGuy.onFinished += EndOfEnding;
+  }
+
+  public void EndOfEnding () {
+    tvGuy.onFinished -= EndOfEnding;
+    GetComponent<IEnding>().TriggerEndOfEnding();
   }
 }

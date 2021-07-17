@@ -9,4 +9,6 @@ public class Keyla : MonoBehaviour {
   public Conversation conversation;
   public Transform greetRafa;
   public Animator animator;
+  public Sprite officeClothes;
+  public SpriteRenderer r;
 }
