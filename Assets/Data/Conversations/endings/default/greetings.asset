@@ -12,35 +12,70 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21e65bcfb5ded1c4eb838ed1f9582a23, type: 3}
   m_Name: greetings
   m_EditorClassIdentifier: 
-  chat:
-  - owner: Keyla
-    message: "\xA1Rafa! \xA1Rafa!"
-  - owner: Rafa
-    message: "\xBFQu\xE9 pas\xF3?"
-  - owner: Keyla
-    message: "\xBFRecuerdas ese concurso de avioncitos de papel que iban a hacer
-      en el trabajo?"
-  - owner: Rafa
-    message: "\xBFNo era ese en el que descalificaron a ese sujeto porque le rob\xF3
-      su avioncito a otro cuate?"
-  - owner: Keyla
-    message: "\xA1No! ese fue el de la semana pasada: la carrera de cuies, y no fue
-      un avioncito, fue un cui"
-  - owner: Keyla
-    message: "\xBFNo recuerdas el de avioncitos que te cont\xE9 antenoche?"
-  - owner: Rafa
-    message: Mmmmmh....
-  - owner: Keyla
-    message: "\xBFMe cort\xE9 la mano ayer con el papel de mi avioncito?"
-  - owner: Rafa
-    message: "\xA1Ahh! s\xED... \xBFqu\xE9 con eso?"
-  - owner: Keyla
-    message: "\xA1Gan\xE9! y resulta que el premio hab\xEDa sido 1000000 Bs. \xA1\xBFQu\xE9
-      demonios?!"
-  - owner: Rafa
-    message: "\xA1\xBFQu\xE9?!"
-  - owner: Keyla
-    message: "Deber\xEDas haber visto la cara del pobre diablo que solo gan\xF3 una
-      licuadora..."
-  - owner: Keyla
-    message: Y encima, luego tuvo que trabajar horas extra por roba-cuies...
+  convo:
+  - location: bo
+    chat:
+    - owner: Keyla
+      message: "\xA1Rafa! \xA1Rafa!"
+    - owner: Rafa
+      message: "\xBFQu\xE9 pas\xF3?"
+    - owner: Keyla
+      message: "\xBFRecuerdas ese concurso de avioncitos de papel que iban a hacer
+        en el trabajo?"
+    - owner: Rafa
+      message: "\xBFNo era ese en el que ese sujeto le rob\xF3 su avioncito a otro
+        cuate?"
+    - owner: Keyla
+      message: "\xA1No! ese fue el de la semana pasada: la carrera de cuies, y no
+        fue un avioncito, fue un cui"
+    - owner: Keyla
+      message: "\xBFNo recuerdas el de avioncitos que te cont\xE9 antenoche?"
+    - owner: Rafa
+      message: Mmmmmh....
+    - owner: Keyla
+      message: "\xBFMe cort\xE9 la mano ayer con el papel de mi avioncito?"
+    - owner: Rafa
+      message: "\xA1Ahh! s\xED... \xBFqu\xE9 con eso?"
+    - owner: Keyla
+      message: "\xA1Gan\xE9! y resulta que el premio hab\xEDa sido 1000000 Bs. \xA1\xBFQu\xE9
+        demonios?!"
+    - owner: Rafa
+      message: "\xA1\xBFQu\xE9?!"
+    - owner: Keyla
+      message: "Deber\xEDas haber visto la cara del pobre diablo que solo gan\xF3
+        una licuadora..."
+    - owner: Keyla
+      message: Y encima, luego tuvo que trabajar horas extra por roba-cuies...
+  - location: english
+    chat:
+    - owner: Keyla
+      message: Rafa! Rafa!
+    - owner: Rafa
+      message: What is it?
+    - owner: Keyla
+      message: Remember that paper planes contest they were going to do at work?
+    - owner: Rafa
+      message: The one in which that guy got himself in trouble for stealing another
+        dude's paper plane?
+    - owner: Keyla
+      message: 'No, no... that''s last week''s contest: The guinea pig race. And
+        it wasn''t a plane, it was a guinea pig.'
+    - owner: Keyla
+      message: Don't you remember the paper plane contest I told you about last night?
+    - owner: Rafa
+      message: Mmmmmh....
+    - owner: Keyla
+      message: I got a paper cut while crafting my paper plane, does it sound a bell?
+    - owner: Rafa
+      message: Right! I remember now... How was it?
+    - owner: Keyla
+      message: well... I WON! and guess what? the prize was 1000000 Bs. Can you believe
+        it? What the heck?!
+    - owner: Rafa
+      message: SAY WHAAAAAT?!
+    - owner: Keyla
+      message: I'll never forget the face of the poor devil that only won a blender
+        last week!
+    - owner: Keyla
+      message: And to top it all, he had to do extra hours to compensate the stealing
+        of the cui...

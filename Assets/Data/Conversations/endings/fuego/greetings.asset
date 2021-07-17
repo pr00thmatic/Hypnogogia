@@ -12,20 +12,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21e65bcfb5ded1c4eb838ed1f9582a23, type: 3}
   m_Name: greetings
   m_EditorClassIdentifier: 
-  chat:
-  - owner: Rafa
-    message: "\xA1AY NO! \xA1NUESTRA CASA! \xA1NUESTRAS COSAS!"
-  - owner: Keyla
-    message: "no te preocupes, pero. \xA1\xBFHab\xEDamos tenido seguro dice?!"
-  - owner: Rafa
-    message: "\xBFEl qu\xE9? \xBFcon nuestro sueldo? pffftt... ni locos"
-  - owner: Keyla
-    message: "\xBFVerdad? pero ese ping\xFCino de all\xE1 dice que estamos asegurados
-      y que tenemos casa nueva."
-  - owner: Samuel
-    message: "\xA1OIGA! Sigo aqu\xED y no estoy sordo."
-  - owner: Rafa
-    message: "Oh por Od\xEDn \xBFPero qu\xE9? \xBFC\xF3mo?"
-  - owner: Keyla
-    message: "No s\xE9... \xBFtal vez tu pap\xE1 antes del accidente? bien precavido
-      siempre era, tan buenito \xE9l."
+  convo:
+  - location: bo
+    chat:
+    - owner: Rafa
+      message: "\xA1AY NO! \xA1NUESTRA CASA! \xA1NUESTRAS COSAS!"
+    - owner: Keyla
+      message: "no te preocupes, pero. \xA1\xBFHab\xEDamos tenido seguro dice?!"
+    - owner: Rafa
+      message: "\xBFEl qu\xE9? \xBFcon nuestro sueldo? pffftt... ni locos"
+    - owner: Keyla
+      message: "\xBFVerdad? pero ese ping\xFCino de all\xE1 dice que estamos asegurados
+        y que tenemos casa nueva."
+    - owner: Samuel
+      message: "\xA1OIGA! Sigo aqu\xED y no estoy sordo."
+    - owner: Rafa
+      message: "Oh por Od\xEDn \xBFPero qu\xE9? \xBFC\xF3mo?"
+    - owner: Keyla
+      message: "No s\xE9... \xBFtal vez tu pap\xE1 antes del accidente? bien precavido
+        siempre era, tan buenito \xE9l."
+  - location: english
+    chat:
+    - owner: Rafa
+      message: OH NO! OUR HOUSE! OUR THINGS!
+    - owner: Keyla
+      message: calm down, no worries, they say we are insured... how come?
+    - owner: Rafa
+      message: "what? with our salary? pffffttt... NO WAY!\n\xBFEl qu\xE9? \xBFcon
+        nuestro sueldo? pffftt... ni locos"
+    - owner: Keyla
+      message: I know, right? but that penguin over there says that we are insured,
+        so we have a brand new house!
+    - owner: Samuel
+      message: HEY! I am still here... and I can hear you.
+    - owner: Rafa
+      message: Oh my! but what?! but how?!
+    - owner: Keyla
+      message: I don't know... maybe your dad before the accident? he was very cautious,
+        he was such a good man...

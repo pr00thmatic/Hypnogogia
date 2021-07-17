@@ -12,6 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21e65bcfb5ded1c4eb838ed1f9582a23, type: 3}
   m_Name: 0
   m_EditorClassIdentifier: 
-  chat:
-  - owner: recepcionista
-    message: esa no es su tarjeta
+  convo:
+  - location: bo
+    chat:
+    - owner: recepcionista
+      message: esa no es su tarjeta
+  - location: english
+    chat:
+    - owner: recepcionista
+      message: that punch card doesn't belong to you

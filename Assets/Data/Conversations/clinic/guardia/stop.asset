@@ -12,6 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21e65bcfb5ded1c4eb838ed1f9582a23, type: 3}
   m_Name: stop
   m_EditorClassIdentifier: 
-  chat:
-  - owner: guardia
-    message: "\xA1Deje eso!"
+  convo:
+  - location: bo
+    chat:
+    - owner: guardia
+      message: "\xA1Deje eso!"
+  - location: english
+    chat:
+    - owner: guardia
+      message: Knock it off!

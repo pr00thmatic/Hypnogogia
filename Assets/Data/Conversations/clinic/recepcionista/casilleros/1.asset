@@ -12,6 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21e65bcfb5ded1c4eb838ed1f9582a23, type: 3}
   m_Name: 1
   m_EditorClassIdentifier: 
-  chat:
-  - owner: recepcionista
-    message: Usted es un suplente de interno, no tiene derecho a un casillero
+  convo:
+  - location: bo
+    chat:
+    - owner: recepcionista
+      message: Usted es un suplente de interno, no tiene derecho a un casillero
+  - location: english
+    chat:
+    - owner: recepcionista
+      message: You are an intern assistant, you are not qualified enough to have
+        a locker.

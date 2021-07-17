@@ -10,30 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 21e65bcfb5ded1c4eb838ed1f9582a23, type: 3}
-  m_Name: water in mars
+  m_Name: greetings
   m_EditorClassIdentifier: 
   convo:
   - location: bo
     chat:
+    - owner: Keyla
+      message: "\xA1Rafa! Qu\xE9 bien que llegaste \xBFEst\xE1s bien?"
     - owner: Rafa
-      message: "\xBFKeyla?"
+      message: "supongo... \xBFpor qu\xE9? \xBFqu\xE9 pas\xF3?"
     - owner: Keyla
-      message: zZz...
-    - owner: Keyla
-      message: "\xBFC\xF3mo que no han encontrado agua en marte?"
-    - owner: Keyla
-      message: "\xBFya revisaron en la refri?"
-    - owner: Rafa
-      message: mmmh...
+      message: "EL HOSPITAL EXPLOT\xD3. Est\xE1 en todas las noticias, mira..."
   - location: english
     chat:
+    - owner: Keyla
+      message: Good heavens, Rafa! I am so glad you are here. Are you OK?
     - owner: Rafa
-      message: Keyla?
+      message: I... guess? Why? what happened?
     - owner: Keyla
-      message: zZz...
-    - owner: Keyla
-      message: How come they couldn't find water in mars?
-    - owner: Keyla
-      message: Did they check the freezer?
-    - owner: Rafa
-      message: mmmh...
+      message: 'THE HOSPITAL EXPLODED! it''s all over the news, look... '

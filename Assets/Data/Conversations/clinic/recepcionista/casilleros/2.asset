@@ -12,6 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21e65bcfb5ded1c4eb838ed1f9582a23, type: 3}
   m_Name: 2
   m_EditorClassIdentifier: 
-  chat:
-  - owner: recepcionista
-    message: Ay Dr. Rafita, no me haga renegar
+  convo:
+  - location: bo
+    chat:
+    - owner: recepcionista
+      message: Ay Dr. Rafita, no me haga renegar
+  - location: english
+    chat:
+    - owner: recepcionista
+      message: "<sigh> \xA1Dr. Rafita please knock it off!"

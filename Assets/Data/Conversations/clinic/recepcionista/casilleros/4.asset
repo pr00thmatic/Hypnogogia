@@ -12,6 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21e65bcfb5ded1c4eb838ed1f9582a23, type: 3}
   m_Name: 4
   m_EditorClassIdentifier: 
-  chat:
-  - owner: recepcionista
-    message: "\xA1YA! yo no s\xE9... \xA1\xBFDOCTOR KRISTOFF?! \xA1\xBFSEGURIDAD?!"
+  convo:
+  - location: bo
+    chat:
+    - owner: recepcionista
+      message: "\xA1YA! yo no s\xE9... \xA1\xBFDOCTOR KRISTOFF?! \xA1\xBFGUARDIA?!"
+  - location: english
+    chat:
+    - owner: recepcionista
+      message: THAT'S ENOUGH! DR. KRISTOFF?! SECURITY?!

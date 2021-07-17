@@ -12,8 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21e65bcfb5ded1c4eb838ed1f9582a23, type: 3}
   m_Name: 2
   m_EditorClassIdentifier: 
-  chat:
-  - owner: recepcionista
-    message: "aaayyy Rafita, Rafita, Rafita... \xBFQu\xE9 voy a hacer con usted?"
-  - owner: recepcionista
-    message: la suya es la tercera de hasta abajo
+  convo:
+  - location: bo
+    chat:
+    - owner: recepcionista
+      message: "aaayyy Rafita, Rafita, Rafita... \xBFQu\xE9 voy a hacer con usted?"
+    - owner: recepcionista
+      message: la suya es la tercera de hasta abajo
+  - location: english
+    chat:
+    - owner: recepcionista
+      message: <sigh> What am I going to do with you?
+    - owner: recepcionista
+      message: Your card is at the bottom, third one from left to right.
