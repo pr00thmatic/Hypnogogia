@@ -34,7 +34,8 @@ public class PunchCardMachineControlTaker : MonoBehaviour {
     if (!found) return;
     if (current && found != current) return;
     current = found;
-    CanBeUsed = true;
+    Rafa rafa = c.GetComponentInParent<Rafa>();
+    CanBeUsed = !rafa.controls.motion.IsDucking;
     if (!subscribed) {
       subscribed = true;
       TheInputInstance.Rafa.Interact.performed += HandlePunchCardUse;
@@ -139,8 +140,10 @@ public class PunchCardMachineControlTaker : MonoBehaviour {
   }
 
   public void HandlePunchCardUse (InputAction.CallbackContext ctx) {
+    Rafa rafa = current.GetComponentInParent<Rafa>();
+    if (rafa.controls.motion.IsDucking) return;
     Stop();
-    rafa = current.GetComponentInParent<Rafa>();
+    this.rafa = rafa;
     taker.gameObject.SetActive(true);
     StartCoroutine(_PunchCard());
   }

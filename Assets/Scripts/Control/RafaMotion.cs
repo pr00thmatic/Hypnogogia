@@ -11,6 +11,7 @@ public class RafaMotion : MonoBehaviour {
   public int orientation = 1;
   public float speed = 4;
   public bool blockedByLadder = false;
+  public bool IsDucking { get => Utils.IsInState(animator, "Duck"); }
 
   [Header("Initialization")]
   public Animator animator;

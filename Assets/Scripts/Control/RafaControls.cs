@@ -11,6 +11,7 @@ public class RafaControls : MonoBehaviour {
   [Header("Initialization")]
   public GameObject handControls;
   public GameObject allControls;
+  public RafaMotion motion;
 
   void Awake () {
     ControlTaker.onControlRequested += HandleControlRequest;
