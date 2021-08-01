@@ -32,6 +32,10 @@ public class Utils {
     return items[Random.Range(0, items.Length)];
   }
 
+  public static T RandomPick<T> (List<T> items) {
+    return items[Random.Range(0, items.Count)];
+  }
+
   public static GameObject CreateEmptyChild (Transform parent, string name) {
     GameObject child = new GameObject(name);
     child.transform.parent = parent;
@@ -52,5 +56,26 @@ public class Utils {
 
   public static bool IsInState (Animator animator, string stateName) {
     return animator.GetCurrentAnimatorStateInfo(0).IsName(stateName);
+  }
+
+  public static void DeleteChildren (Transform dad) {
+    for (int i=dad.childCount-1; i>=0; i--) {
+      Transform chosen = dad.GetChild(i);
+      chosen.parent = null;
+      GameObject.Destroy(chosen.gameObject);
+    }
+  }
+
+  // https://stackoverflow.com/questions/273313/randomize-a-listt (grenade)
+  public static void Shuffle<T> (List<T> list)   {
+    int n = list.Count;
+    while (n > 1) {
+      n--;
+      // rng.Next(n + 1);
+      int k = Random.Range(0, n);
+      T value = list[k];
+      list[k] = list[n];
+      list[n] = value;
+    }
   }
 }
