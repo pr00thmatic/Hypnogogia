@@ -22,12 +22,16 @@ public class SurfingRecepcionista : MonoBehaviour {
 
   IEnumerator _ExpressTastes () {
     yield return new WaitForSeconds(1);
-    dialogue.text = Utils.RandomPick(tinder.yup).Comment.Comment;
-    yield return new WaitForSeconds(4);
-    dialogue.text = "";
+    if (tinder.yup.Count > 0) {
+      dialogue.text = Utils.RandomPick(tinder.yup).Comment.Comment;
+      yield return new WaitForSeconds(4);
+      dialogue.text = "";
+    }
     yield return new WaitForSeconds(0.5f);
-    dialogue.text = Utils.RandomPick(tinder.nope).Comment.Comment;
-    yield return new WaitForSeconds(4);
+    if (tinder.nope.Count > 0) {
+      dialogue.text = Utils.RandomPick(tinder.nope).Comment.Comment;
+      yield return new WaitForSeconds(4);
+    }
     arm.SetTrigger("swipe left");
     dialogue.text = "";
     yield return new WaitForSeconds(0.5f);
