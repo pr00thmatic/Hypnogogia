@@ -7,6 +7,10 @@ public class SpriteVariant : Variant {
   public Sprite[] variants;
   public SpriteRenderer[] renderers;
 
+  void Reset () {
+    renderers = GetComponentsInChildren<SpriteRenderer>();
+  }
+
   public override void Set () {
     Sprite pick = variants[chosen];
     foreach (SpriteRenderer renderer in renderers) {

@@ -5,64 +5,42 @@ using TMPro;
 
 public class TinderGuy : MonoBehaviour {
   [Header("Information")]
-  public Variant yup;
-  public Variant nope;
+  public List<Variant> yup = new List<Variant>();
+  public List<Variant> nope = new List<Variant>();
 
   [Header("Initialization")]
-  public PartVariant randomizer;
-  public TextMeshPro dialogue;
-  public Animator arm;
+  public Animator animator;
 
-  void Start () {
-    Randomize();
-  }
-
-  public void Randomize () { StopAllCoroutines(); StartCoroutine(_Randomize()); }
-  IEnumerator _Randomize() {
-    randomizer.Randomize();
-
-    yield return null;
-    CleverPick();
-    StartCoroutine(_ExpressTastes());
-  }
-
-  public void CleverPick () {
-    List<Variant> variants = new List<Variant>(GetComponentsInChildren<Variant>());
-    Utils.Shuffle(variants);
-    yup = null;
-    nope = null;
+  public void Randomize () { StartCoroutine(_Randomize()); }
+  IEnumerator _Randomize () {
+    animator.SetTrigger("slide");
+    if (Application.isPlaying) yield return new WaitForSeconds(0.1f);
+    Variant[] variants = GetComponentsInChildren<Variant>();
+    yup.Clear();
+    nope.Clear();
 
     foreach (Variant variant in variants) {
-      if (!yup && variant.IsOk) yup = variant;
-      if (!nope && !variant.IsOk) nope = variant;
-      if (yup && nope) break;
-    }
-
-    if (!nope) {
-      do {
-        nope = Utils.RandomPick(variants);
-      } while (nope as PartVariant);
-      nope.SetNope();
-    }
-    if (!yup) {
-      do {
-        yup = Utils.RandomPick(variants);
-      } while (yup as PartVariant);
-      yup.SetYup();
+      variant.Randomize();
+      if (variant.IsOk) {
+        yup.Add(variant);
+      } else {
+        nope.Add(variant);
+      }
     }
   }
 
-  IEnumerator _ExpressTastes () {
-    yield return new WaitForSeconds(1);
-    dialogue.text = yup.Comment.Comment;
-    yield return new WaitForSeconds(3);
-    dialogue.text = "";
-    yield return new WaitForSeconds(0.5f);
-    dialogue.text = nope.Comment.Comment;
-    yield return new WaitForSeconds(3);
-    arm.SetTrigger("swipe left");
-    dialogue.text = "";
-    yield return new WaitForSeconds(1);
-    Randomize();
+  public void BalanceIt () {
+    BalanceIt(yup, nope)?.SetYup();
+    BalanceIt(nope, yup)?.SetNope();
+  }
+
+  public Variant BalanceIt (List<Variant> v, List<Variant> dopleganger) {
+    if (v.Count == 0) {
+      int random = Random.Range(0, dopleganger.Count);
+      v.Add(dopleganger[random]);
+      dopleganger.RemoveAt(random);
+      return v[random];
+    }
+    return null;
   }
 }

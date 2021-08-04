@@ -78,4 +78,10 @@ public class Utils {
       list[n] = value;
     }
   }
+
+  public static void CopyTransform (Transform toCopy, Transform copier) {
+    copier.position = toCopy.position;
+    copier.rotation = toCopy.rotation;
+    copier.localScale = toCopy.localScale;
+  }
 }

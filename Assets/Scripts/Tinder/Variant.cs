@@ -30,10 +30,6 @@ public abstract class Variant : MonoBehaviour {
       chosen = Random.Range(0, comments.Length);
     } while (chosen == prefered && guard-- > 0);
 
-    if (guard <= 0) {
-      Debug.Log("OH NO!!", this);
-    }
-
     Set();
   }
 
