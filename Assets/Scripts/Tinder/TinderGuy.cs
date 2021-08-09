@@ -30,8 +30,11 @@ public class TinderGuy : MonoBehaviour {
   }
 
   public void BalanceIt () {
-    BalanceIt(yup, nope)?.SetYup();
-    BalanceIt(nope, yup)?.SetNope();
+    Variant v = BalanceIt(yup, nope);
+    if (v) v.SetYup();
+
+    v = BalanceIt(nope, yup);
+    if (v) v.SetNope();
   }
 
   public Variant BalanceIt (List<Variant> v, List<Variant> dopleganger) {

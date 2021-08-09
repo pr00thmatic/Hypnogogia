@@ -9,8 +9,8 @@ public class SurfingRecepcionista : MonoBehaviour {
   public Animator arm;
   public TinderGuy tinder;
 
-  void Start () {
-    Randomize();
+  void OnEnable () {
+    StartCoroutine(_SwipeItOff());
   }
 
   public void Randomize () {
@@ -32,6 +32,10 @@ public class SurfingRecepcionista : MonoBehaviour {
       dialogue.text = Utils.RandomPick(tinder.nope).Comment.Comment;
       yield return new WaitForSeconds(4);
     }
+    StartCoroutine(_SwipeItOff());
+  }
+
+  IEnumerator _SwipeItOff () {
     arm.SetTrigger("swipe left");
     dialogue.text = "";
     yield return new WaitForSeconds(0.5f);

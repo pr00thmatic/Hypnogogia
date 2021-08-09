@@ -55,13 +55,32 @@ public class GrabbingHand : MonoBehaviour {
       hand.SpentAction();
     } else {
       currentlyGrabbed = FindAvailableGrabbable();
-      if (currentlyGrabbed && currentlyGrabbed.isLocked) {
-        currentlyGrabbed.TriggerLockedGrab();
-        currentlyGrabbed = null;
-      } else if (currentlyGrabbed) {
-        currentlyGrabbed.Use(this);
-        hand.SpentAction();
-      }
+      ForceGrab(currentlyGrabbed);
+      hand.SpentAction();
+    }
+  }
+
+  public void ForceGrab (Grabbable grabbable) {
+    if (currentlyGrabbed) {
+      currentlyGrabbed.Unuse();
+      currentlyGrabbed = null;
+    }
+
+    currentlyGrabbed = grabbable;
+
+    if (currentlyGrabbed && currentlyGrabbed.isLocked) {
+      currentlyGrabbed.TriggerLockedGrab();
+      currentlyGrabbed = null;
+    } else if (currentlyGrabbed) {
+      currentlyGrabbed.Use(this);
+    }
+  }
+
+  public void DestroyGrabbed () {
+    if (currentlyGrabbed) {
+      Grabbable grabbed = currentlyGrabbed;
+      ForceGrab(null);
+      Destroy(grabbed.gameObject);
     }
   }
 }

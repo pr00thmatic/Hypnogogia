@@ -10,21 +10,25 @@ public class PilaDePapeles : MonoBehaviour {
   [Header("Initialization")]
   public PointingArea askArea;
   public PointingArea takeArea;
-  public GameObject give;
   public RecepcionistaGrabingHand grabingHand;
 
   void OnEnable () {
     TheInputInstance.Rafa.Talk.performed += HandleAsk;
+    TheInputInstance.Rafa.Grab.performed += HandleGrab;
   }
 
   void OnDisable () {
     TheInputInstance.Rafa.Talk.performed -= HandleAsk;
+    TheInputInstance.Rafa.Grab.performed -= HandleGrab;
   }
 
   public void HandleAsk (InputAction.CallbackContext ctx) {
-    if (askArea.IsPointing && !give.activeSelf) {
-      give.SetActive(true);
-      grabingHand.animator.SetTrigger(trigger);
+    if (askArea.IsPointing) {
+      grabingHand.HandForm(trigger);
     }
+  }
+
+  public void HandleGrab (InputAction.CallbackContext ctx) {
+    if (takeArea.IsPointing) grabingHand.DontTouch(trigger);
   }
 }

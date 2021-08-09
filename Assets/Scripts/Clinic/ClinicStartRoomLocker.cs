@@ -14,6 +14,7 @@ public class ClinicStartRoomLocker : MonoBehaviour {
 
   [Header("Information")]
   public bool isOverSuspiciousThing = false;
+  public bool lockedByLackOfControl = false;
 
   void OnEnable () { OnEnableOrDisable(true); }
   void OnDisable () { OnEnableOrDisable(false); }
@@ -28,11 +29,23 @@ public class ClinicStartRoomLocker : MonoBehaviour {
       if (enabled) card.onLockedGrab += TriggerCardAttempt;
       else card.onLockedGrab -= TriggerCardAttempt;
     }
+
+    if (enabled) {
+      ControlTaker.onControlRequested += HandleControlRequest;
+      ControlTaker.onControlResumed += HandleControlResumed;
+    } else {
+      ControlTaker.onControlRequested -= HandleControlRequest;
+      ControlTaker.onControlResumed -= HandleControlResumed;
+    }
+
+    isOverSuspiciousThing = enabled;
   }
 
   void Update () {
     // if (!debugCardFather) return;
     // watchingCards = debugCardFather.GetComponentsInChildren<Grabbable>();
+    if (lockedByLackOfControl) return;
+
     isOverSuspiciousThing = false;
     foreach (UsableWithHand casillero in watchingLockers) {
       if (casillero.canBeUsed) {
@@ -51,10 +64,20 @@ public class ClinicStartRoomLocker : MonoBehaviour {
   }
 
   public void TriggerCasilleroAttempt () {
+    isOverSuspiciousThing = false;
     onCasilleroAttempt?.Invoke();
   }
 
   public void TriggerCardAttempt () {
+    isOverSuspiciousThing = false;
     onCardAttempt?.Invoke();
+  }
+
+  public void HandleControlRequest (ControlTaker taker) {
+    lockedByLackOfControl = true;
+  }
+
+  public void HandleControlResumed (ControlTaker taker) {
+    lockedByLackOfControl = false;
   }
 }

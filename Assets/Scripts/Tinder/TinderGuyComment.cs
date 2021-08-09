@@ -13,5 +13,13 @@ public class TinderGuyComment : ScriptableObject {
       return comments[0].comment;
     }
   }
-
+  public void Set (TinderGuyComment anotherComment) {
+    foreach (LocalizedComment comment in comments) {
+      foreach (LocalizedComment otherComment in anotherComment.comments) {
+        if (otherComment.location == comment.location) {
+          comment.comment = otherComment.comment;
+        }
+      }
+    }
+  }
 }

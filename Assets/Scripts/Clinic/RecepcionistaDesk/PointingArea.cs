@@ -9,9 +9,8 @@ public class PointingArea : MonoBehaviour {
   [Header("Initialization")]
   public GameObject talkIndicator;
 
-  void OnEnable () {
-    IsPointing = false;
-  }
+  void OnEnable () { IsPointing = false; }
+  void OnDisable () { IsPointing = false; }
 
   void OnTriggerStay2D (Collider2D c) {
     if (c.GetComponentInParent<RafaPointingArm>()) {
