@@ -30,6 +30,7 @@ public class RecepcionistaGrabingHand : MonoBehaviour {
     surf.SetActive(true);
     lastFormHanded = "";
     submit.onSubmitted += HandleSubmission;
+    ResetHandFormTriggers();
   }
 
   void OnDisable () {
@@ -57,6 +58,7 @@ public class RecepcionistaGrabingHand : MonoBehaviour {
 
   public void Release () {
     animator.SetTrigger("release");
+    ResetHandFormTriggers();
     currentlyGrabbing.onGrab -= Release;
     currentlyGrabbing = null;
     surf.SetActive(true);
@@ -102,7 +104,12 @@ public class RecepcionistaGrabingHand : MonoBehaviour {
   }
 
   public void ArmLeavesForm () {
-    submittedForm.transform.parent = submittedAnchor;
     submittedForm.GetComponent<SpriteRenderer>().sortingOrder += SubmissionArea.submittedForms++;
+    submittedForm.transform.parent = submittedAnchor;
+  }
+
+  public void ResetHandFormTriggers () {
+    animator.ResetTrigger("hand ingresos");
+    animator.ResetTrigger("hand epicrisis");
   }
 }
