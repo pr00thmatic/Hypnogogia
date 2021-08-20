@@ -44,6 +44,7 @@ public class FormSpawner : MonoBehaviour {
       grabbed.GetComponent<GrabbedFormulario>().key = taken.key;
 
       hand.ForceGrab(grabbed);
+      taken = null;
     } else {
       Grabbable grabbed = controls.CurrentHand.GetComponentInChildren<GrabbingHand>(true).currentlyGrabbed;
       if (grabbed && grabbed.GetComponent<GrabbedFormulario>()) {
