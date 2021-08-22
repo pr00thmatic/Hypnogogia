@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Experimental.U2D.Animation;
 using UnityEngine.Rendering;
 using System.Collections;
 using System.Collections.Generic;
@@ -83,5 +84,30 @@ public class Utils {
     copier.position = toCopy.position;
     copier.rotation = toCopy.rotation;
     copier.localScale = toCopy.localScale;
+  }
+
+  public static void RandomSkin (SpriteResolver[] resolvers) {
+    IEnumerable<string> FUCK = resolvers[0].spriteLibrary.spriteLibraryAsset
+      .GetCategoryLabelNames(resolvers[0].GetCategory());
+    int count = 0;
+    foreach (string fuck in FUCK) { count++; }
+    int pick = Random.Range(0, count);
+
+    foreach (SpriteResolver resolver in resolvers) {
+      int i = 0;
+      IEnumerable<string> uselessList =
+        resolver.spriteLibrary.spriteLibraryAsset.GetCategoryLabelNames(resolver.GetCategory());
+      foreach (string fuck in uselessList) {
+        if (i == pick) {
+          resolver.SetCategoryAndLabel(resolver.GetCategory(), fuck);
+          break;
+        }
+        i++;
+      }
+    }
+  }
+
+  public static void RandomSkin (SpriteResolver resolver) {
+    RandomSkin(new SpriteResolver[] { resolver });
   }
 }
