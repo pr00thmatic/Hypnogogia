@@ -19,11 +19,11 @@ public class Bubble : MonoBehaviour {
   }
 
   void OnEnable () {
-    conversable.onDisplayRequested += HandleRequest;
+    if (conversable) conversable.onDisplayRequested += HandleRequest;
   }
 
   void OnDisable () {
-    conversable.onDisplayRequested -= HandleRequest;
+    if (conversable) conversable.onDisplayRequested -= HandleRequest;
   }
 
   void Update () {
@@ -40,8 +40,8 @@ public class Bubble : MonoBehaviour {
   }
 
   public void HandleRequest () {
-    small.SetActive(messageHolder.text.Length <= smallMaxLength);
-    big.SetActive(messageHolder.text.Length > smallMaxLength);
+    if (small) small.SetActive(messageHolder.text.Length <= smallMaxLength);
+    if (big) big.SetActive(messageHolder.text.Length > smallMaxLength);
   }
 }
 }

@@ -8,10 +8,17 @@ public class Patient : MonoBehaviour {
   public SpriteResolver face;
   public SpriteResolver[] hair;
   public GameObject female;
+  public Animator arms;
+  public ClinicalInfo info;
+  public Animator body;
+  public GameObject interactIndicator;
 
   void OnEnable () {
-    female.SetActive(Random.Range(0,1f) < 0.5f);
-    Utils.RandomSkin(face);
+    female.SetActive(!info.male);
+    face.SetCategoryAndLabel(face.GetCategory(), info.consciousness.ToString());
     Utils.RandomSkin(hair);
+    arms.Play(info.pain.ToString());
+    body.SetInteger("random", Random.Range(0, 3));
+    body.SetTrigger(info.consciousness.ToString());
   }
 }
