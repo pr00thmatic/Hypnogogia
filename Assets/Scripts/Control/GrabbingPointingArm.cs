@@ -24,7 +24,7 @@ public class GrabbingPointingArm : MonoBehaviour {
 
   public void HandleGrab (InputAction.CallbackContext ctx) {
     if (!highlighted) return;
-    if (grabbed && grabbed.canBeReleased) {
+    if (grabbed && grabbed.CanBeReleased) {
       grabbed.Unanchor();
       grabbed = null;
     } else if (!grabbed) {

@@ -4,27 +4,40 @@ using System.Collections.Generic;
 using TMPro;
 
 public class MultipleChoise : MonoBehaviour {
+  [Header("Information")]
+  public List<FormSlot> available;
+
   [Header("Initialization")]
   public Transform options;
+  public Transform formSlots;
 
   void OnEnable () {
-    Display("Mamani", RandomizerDictionary.apellidos);
+    foreach (Transform child in formSlots) {
+      FormSlot slot = child.GetComponent<FormSlot>();
+      available.Add(slot);
+      slot.onFill += HandleFormFilled;
+    }
+
+    DisplayChoise();
   }
 
-  public void Display (string option, string[] dictionary) {
+  public void Display (string option, List<string> dictionary) {
     TextMeshPro[] labels = options.GetComponentsInChildren<TextMeshPro>();
     TextMeshPro theChosenOne = Utils.RandomPick(labels);
     theChosenOne.text = option;
 
-    List<IntPair> distances = new List<IntPair>();
-    bool[] used = new bool[dictionary.Length];
-    for (int i=0; i<dictionary.Length; i++) {
-      distances.Add(new IntPair(i, Utils.Levenshtein(dictionary[i], option)));
+    foreach (TextMeshPro label in labels) {
+      if (label == theChosenOne) continue;
+      do {
+        label.text = Utils.RandomPick(dictionary);
+      } while (label.text == option);
     }
+  }
 
-    distances.Sort((IntPair a, IntPair b) => { return a.b - b.b; });
-    foreach (IntPair item in distances) {
-      Debug.Log(dictionary[item.a] + " distance: " + item.b);
-    }
+  void HandleFormFilled (FormSlot used) { DisplayChoise(); }
+  public void DisplayChoise () {
+    FormSlot chosen = Utils.RandomPick(available);
+    Display(chosen.expected, chosen.dictionary.Entries);
+    available.Remove(chosen);
   }
 }

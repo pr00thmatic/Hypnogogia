@@ -6,8 +6,10 @@ public class ContextuallyGrabbable : MonoBehaviour {
   [Header("Information")]
   public GrabbingPointingArm pointing;
   public Vector3 localPoint;
+  public bool IsGrabbed { get => grabbingArm; }
   public GrabbingPointingArm grabbingArm;
-  public bool canBeReleased;
+  public bool CanBeReleased { get => area; }
+  public ReleasableArea area;
 
   [Header("Initialization")]
   public Animator animator;
@@ -21,7 +23,10 @@ public class ContextuallyGrabbable : MonoBehaviour {
   }
 
   void OnTriggerStay2D (Collider2D c) {
-    if (c.GetComponentInParent<ReleasableArea>()) canBeReleased = true;
+    ReleasableArea area = c.GetComponentInParent<ReleasableArea>();
+    if (area && !area.blocked) {
+      this.area = area; return;
+    }
     GrabbingPointingArm found = c.GetComponentInParent<GrabbingPointingArm>();
     if (!found) return;
     pointing = found;
@@ -30,7 +35,11 @@ public class ContextuallyGrabbable : MonoBehaviour {
   }
 
   void OnTriggerExit2D (Collider2D c) {
-    if (c.GetComponentInParent<ReleasableArea>()) canBeReleased = false;
+    ReleasableArea foundArea = c.GetComponentInParent<ReleasableArea>();
+    if (foundArea) {
+      area = null;
+      return;
+    }
     GrabbingPointingArm found = c.GetComponentInParent<GrabbingPointingArm>();
     if (!found) return;
     if (found != pointing) return;
@@ -47,7 +56,7 @@ public class ContextuallyGrabbable : MonoBehaviour {
 
   public void AnchorTo (GrabbingPointingArm arm) {
     grabbingArm = arm;
-    localPoint = grabbingArm.grabAnchor.InverseTransformPoint(transform.position);
+    // localPoint = grabbingArm.grabAnchor.InverseTransformPoint(transform.position);
     animator.SetBool("is grabbed", true);
     collider.isTrigger = true;
     body.isKinematic = true;
@@ -60,5 +69,6 @@ public class ContextuallyGrabbable : MonoBehaviour {
     localPoint = Vector3.zero;
     collider.isTrigger = false;
     body.isKinematic = false;
+    if (area) area.TriggerRelease(this);
   }
 }
