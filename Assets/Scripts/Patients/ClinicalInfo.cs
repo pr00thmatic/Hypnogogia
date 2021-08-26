@@ -10,4 +10,5 @@ public class ClinicalInfo : ScriptableObject {
   public Pain pain;
   public Consciousness consciousness;
   public LocalizedComment[] presentation;
+  public string cause;
 }

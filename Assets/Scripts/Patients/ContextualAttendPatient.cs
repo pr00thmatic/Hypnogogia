@@ -15,7 +15,7 @@ public class ContextualAttendPatient : MonoBehaviour {
   public GameObject rafa;
   public DecissionBubble yes;
   public DecissionBubble no;
-  public GameObject ingresos;
+  public ContextualIngreso ingresos;
 
   void OnEnable () {
     TheInputInstance.Rafa.Cancel.performed += HandleClose;
@@ -47,8 +47,7 @@ public class ContextualAttendPatient : MonoBehaviour {
     onChoiseMade?.Invoke(decission == yes, attendingPatient);
     Close();
     if (decission == yes) {
-      ingresos.SetActive(true);
-      ingresos.transform.position = transform.position;
+      ingresos.OpenAt(attendingPatient);
     }
   }
 }

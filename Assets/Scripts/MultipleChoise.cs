@@ -27,10 +27,8 @@ public class MultipleChoise : MonoBehaviour {
     theChosenOne.text = option;
 
     foreach (TextMeshPro label in labels) {
-      if (label == theChosenOne) continue;
-      do {
-        label.text = Utils.RandomPick(dictionary);
-      } while (label.text == option);
+      if (label == theChosenOne || label.text == option) continue;
+      label.text = Utils.RandomPick(dictionary);
     }
   }
 

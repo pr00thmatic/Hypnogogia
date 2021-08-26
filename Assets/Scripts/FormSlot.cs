@@ -11,7 +11,9 @@ public class FormSlot : MonoBehaviour {
 
   [Header("Information")]
   public bool isFilled = false;
-  public DictionaryForRandomization dictionary;
+  [SerializeField]
+  DictionaryForRandomization _dictionary;
+  public virtual DictionaryForRandomization dictionary { get => _dictionary; }
 
   [Header("Initialization")]
   public ReleasableArea area;
@@ -34,9 +36,10 @@ public class FormSlot : MonoBehaviour {
   public void HandleRelease (ContextuallyGrabbable grabbable) {
     area.onReleased -= HandleRelease;
     area.blocked = true;
-    obtained = grabbable.GetComponent<BouncingOption>().label.text;
+    BouncingOption toConsume = grabbable.GetComponent<BouncingOption>();
+    obtained = toConsume.label.text;
     handwritting.sprite = Utils.RandomPick(possibleHandwritting);
-    Destroy(grabbable.gameObject);
+    toConsume.GetConsumed();
     isFilled = true;
     onFill?.Invoke(this);
   }
