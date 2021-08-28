@@ -15,9 +15,12 @@ public class ContextualAttendPatient : MonoBehaviour {
   public GameObject rafa;
   public DecissionBubble yes;
   public DecissionBubble no;
+  public ThoughtBubbleChildrenAnimators statement;
   public ContextualIngreso ingresos;
 
   void OnEnable () {
+    yes.isBlocked = false; no.isBlocked = false;
+    yes.animator.PopIn(); no.animator.PopIn(); statement.PopIn();
     TheInputInstance.Rafa.Cancel.performed += HandleClose;
     yes.onDecissionMade += HandleDecission;
     no.onDecissionMade += HandleDecission;
@@ -44,6 +47,18 @@ public class ContextualAttendPatient : MonoBehaviour {
   }
 
   public void HandleDecission (DecissionBubble decission) {
+    yes.isBlocked = true;
+    no.isBlocked = true;
+    StartCoroutine(_HandleDecission(decission));
+  }
+
+  IEnumerator _HandleDecission (DecissionBubble decission) {
+    decission.animator.PopOut();
+    yield return new WaitForSeconds(0.25f);
+    (decission == yes? no: yes).animator.PopOut();
+    yield return new WaitForSeconds(0.25f);
+    statement.PopOut();
+    yield return new WaitForSeconds(0.25f);
     onChoiseMade?.Invoke(decission == yes, attendingPatient);
     Close();
     if (decission == yes) {

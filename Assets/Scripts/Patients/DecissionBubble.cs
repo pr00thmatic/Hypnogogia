@@ -6,11 +6,15 @@ using System.Collections.Generic;
 public class DecissionBubble : MonoBehaviour {
   public event System.Action<DecissionBubble> onDecissionMade;
 
+  [Header("Configuration")]
+  public bool isBlocked = false;
+
   [Header("Information")]
   public RafaPointingArm pointing;
 
   [Header("Initialization")]
   public GameObject interactionIndicator;
+  public ThoughtBubbleChildrenAnimators animator;
 
   void OnEnable () { TheInputInstance.Rafa.Grab.performed += HandleDecissionAttempt; }
   void OnDisable () { TheInputInstance.Rafa.Grab.performed -= HandleDecissionAttempt; }
@@ -32,6 +36,7 @@ public class DecissionBubble : MonoBehaviour {
   }
 
   public void HandleDecissionAttempt (InputAction.CallbackContext ctx) {
+    if (isBlocked) return;
     if (!pointing) return;
     onDecissionMade?.Invoke(this);
   }
