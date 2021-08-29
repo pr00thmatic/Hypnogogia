@@ -107,6 +107,26 @@ public class Utils {
     }
   }
 
+  public static int GetSkinIndex (SpriteResolver resolver) {
+    IEnumerable<string> skins = resolver.spriteLibrary.spriteLibraryAsset.GetCategoryLabelNames(resolver.GetCategory());
+    int index = 0;
+    foreach (string skin in skins) {
+      if (skin == resolver.GetLabel()) return index;
+    }
+    return -1;
+  }
+
+  public static void SetSkinByIndex (SpriteResolver resolver, int index) {
+    IEnumerable<string> skins = resolver.spriteLibrary.spriteLibraryAsset.GetCategoryLabelNames(resolver.GetCategory());
+    int count = 0;
+    string found = "";
+    foreach (string skin in skins) {
+      if (count == index) { found = skin; break; }
+      count++;
+    }
+    resolver.SetCategoryAndLabel(resolver.GetCategory(), found);
+  }
+
   public static void RandomSkin (SpriteResolver resolver) {
     RandomSkin(new SpriteResolver[] { resolver });
   }

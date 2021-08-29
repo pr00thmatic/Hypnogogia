@@ -4,21 +4,24 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class Patient : MonoBehaviour {
-  [Header("Initialization")]
-  public SpriteResolver face;
-  public SpriteResolver[] hair;
-  public GameObject female;
-  public Animator arms;
-  public ClinicalInfo info;
-  public Animator body;
-  public GameObject interactIndicator;
+  [Header("Information")]
+  public bool isRandomized = false;
 
+  [Header("Initialization")]
+  public ClinicalInfo info;
+  public GameObject interactIndicator;
+  public RandomColorFromArray body;
+  public RandomColorFromArray hair;
+  public RandomColorFromArray pants;
+  public RandomColorFromArray shoes;
+  public RandomIntFromArray hairStyle;
+  
   void OnEnable () {
-    female.SetActive(!info.male);
-    face.SetCategoryAndLabel(face.GetCategory(), info.consciousness.ToString());
-    Utils.RandomSkin(hair);
-    arms.Play(info.pain.ToString());
-    body.SetInteger("random", Random.Range(0, 3));
-    body.SetTrigger(info.consciousness.ToString());
+    body.Randomize();
+    hair.Randomize();
+    pants.Randomize();
+    shoes.Randomize();
+    hairStyle.Randomize();
+    isRandomized = true;
   }
 }
