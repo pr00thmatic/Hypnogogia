@@ -13,6 +13,9 @@ public class SideSkin : MonoBehaviour {
   public SpriteRenderer hairRenderer;
   public SpriteRenderer pantsRenderer;
   public SpriteRenderer shoesRenderer;
+  public Animator legsAnimator;
+  public Animator armsAnimator;
+  public Animator bodyAnimator;
 
   void OnEnable () { StartCoroutine(_OnEnable()); } IEnumerator _OnEnable () {
     yield return new WaitUntil(() => patient.isRandomized);
@@ -28,5 +31,14 @@ public class SideSkin : MonoBehaviour {
     hairRenderer.color = patient.hair.chosen;
     pantsRenderer.color = patient.pants.chosen;
     shoesRenderer.color = patient.shoes.chosen;
+
+    bodyAnimator.Play(patient.info.consciousness.ToString());
+    armsAnimator.Play(patient.info.pain.ToString());
+  }
+
+  void Update () {
+    bodyAnimator.SetFloat("speed", patient.speed);
+    legsAnimator.SetFloat("speed", patient.speed);
+    armsAnimator.SetFloat("speed", patient.speed);
   }
 }
