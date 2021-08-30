@@ -12,6 +12,7 @@ public class RafaControls : MonoBehaviour {
   public GameObject handControls;
   public GameObject allControls;
   public RafaMotion motion;
+  public Animator animator;
 
   void Awake () {
     ControlTaker.onControlRequested += HandleControlRequest;
@@ -38,11 +39,31 @@ public class RafaControls : MonoBehaviour {
     handControls.transform.GetChild(handIndex).gameObject.SetActive(enabled);
   }
 
-  public void HandleControlRequest (ControlTaker requester) {
+  public void HandleControlRequest (ControlTaker requester) { requester.StartCoroutine(_HandleControlRequest(requester)); }
+  IEnumerator _HandleControlRequest (ControlTaker requester) {
     allControls.SetActive(false);
+    if (requester.targetPosition) {
+      while (motion.motionTarget.position.x != requester.targetPosition.position.x) {
+        motion.UpdateOrientation(Mathf.Sign(requester.targetPosition.position.x - motion.motionTarget.position.x));
+        animator.SetFloat("speed", 1);
+        motion.motionTarget.position =
+          Utils.SetX(motion.motionTarget.position, Mathf.MoveTowards(motion.motionTarget.position.x,
+                                                                     requester.targetPosition.position.x,
+                                                                     motion.speed * Time.deltaTime));
+        yield return null;
+      }
+      motion.UpdateOrientation(Mathf.Sign(requester.targetPosition.position.x));
+      animator.SetFloat("speed", 0);
+    }
+    if (requester.rafaAnimation != "") {
+      animator.CrossFadeInFixedTime(requester.rafaAnimation, 0.15f);
+    }
   }
 
   public void ResumeControl (ControlTaker requester) {
     allControls.SetActive(true);
+    if (requester.rafaAnimation != "") {
+      animator.CrossFadeInFixedTime("Idle", 0.15f);
+    }
   }
 }

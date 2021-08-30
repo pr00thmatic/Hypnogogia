@@ -12,11 +12,11 @@ public class ContextualAttendPatient : MonoBehaviour {
 
   [Header("Initialization")]
   public TextMeshPro patientDialogue;
-  public GameObject rafa;
   public DecissionBubble yes;
   public DecissionBubble no;
   public ThoughtBubbleChildrenAnimators statement;
   public ContextualIngreso ingresos;
+  public ControlTaker control;
 
   void OnEnable () {
     yes.isBlocked = false; no.isBlocked = false;
@@ -36,13 +36,12 @@ public class ContextualAttendPatient : MonoBehaviour {
     attendingPatient = patient;
     transform.position = patient.transform.position;
     patientDialogue.text = LocalizedComment.Get(patient.info.presentation);
+    control.targetPosition.position = attendingPatient.drPosition.position;
     gameObject.SetActive(true);
-    rafa.SetActive(false);
   }
 
   public void HandleClose (InputAction.CallbackContext ctx) { Close(); }
   public void Close () {
-    rafa.SetActive(true);
     gameObject.SetActive(false);
   }
 

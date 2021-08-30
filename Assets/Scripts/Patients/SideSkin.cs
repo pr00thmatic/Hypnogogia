@@ -18,7 +18,10 @@ public class SideSkin : MonoBehaviour {
   public Animator bodyAnimator;
 
   void OnEnable () { StartCoroutine(_OnEnable()); } IEnumerator _OnEnable () {
+    SpriteRenderer[] rs = GetComponentsInChildren<SpriteRenderer>();
+    foreach (SpriteRenderer r in rs) r.enabled = false;
     yield return new WaitUntil(() => patient.isRandomized);
+    foreach (SpriteRenderer r in rs) r.enabled = true;
     UpdateFromPatient();
   }
 

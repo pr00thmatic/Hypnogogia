@@ -7,7 +7,6 @@ public class ContextualIngreso : MonoBehaviour {
   public Patient attendingPatient;
 
   [Header("Initialization")]
-  public GameObject rafa;
   public FormSlot apellidos;
   public FormSlot nombre;
   public FormSlot causa;
@@ -17,14 +16,12 @@ public class ContextualIngreso : MonoBehaviour {
   public Animator form;
 
   void OnEnable () {
-    rafa.SetActive(false);
     choises.onDone += HandleDone;
     form.SetTrigger("hide");
     form.SetBool("is visible", true);
   }
 
   void OnDisable () {
-    if (rafa) rafa.SetActive(true);
     choises.onDone -= HandleDone;
   }
 

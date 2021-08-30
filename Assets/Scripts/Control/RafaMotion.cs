@@ -44,6 +44,12 @@ public class RafaMotion : MonoBehaviour {
     }
   }
 
+  public void UpdateOrientation (int orientation) {
+    this.orientation = orientation;
+    UpdateOrientation();
+  }
+  public void UpdateOrientation (float orientation) { UpdateOrientation((int) orientation); }
+
   public void UpdateOrientation () {
     rotationTarget.transform.rotation =
       Quaternion.Euler(Utils.SetY(rotationTarget.transform.rotation.eulerAngles, orientation < 0? 180: 0));
