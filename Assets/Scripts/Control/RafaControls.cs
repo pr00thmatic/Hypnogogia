@@ -39,11 +39,12 @@ public class RafaControls : MonoBehaviour {
     handControls.transform.GetChild(handIndex).gameObject.SetActive(enabled);
   }
 
-  public void HandleControlRequest (ControlTaker requester) { requester.StartCoroutine(_HandleControlRequest(requester)); }
+  public void HandleControlRequest (ControlTaker requester) {
+    TheAlwaysActiveGameObject.Instance.StartCoroutine(_HandleControlRequest(requester)); }
   IEnumerator _HandleControlRequest (ControlTaker requester) {
     allControls.SetActive(false);
     if (requester.targetPosition) {
-      while (motion.motionTarget.position.x != requester.targetPosition.position.x) {
+      while (Mathf.Abs(motion.motionTarget.position.x - requester.targetPosition.position.x) >= 0.01) {
         motion.UpdateOrientation(Mathf.Sign(requester.targetPosition.position.x - motion.motionTarget.position.x));
         animator.SetFloat("speed", 1);
         motion.motionTarget.position =

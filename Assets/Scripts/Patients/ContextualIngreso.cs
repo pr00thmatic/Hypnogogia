@@ -23,6 +23,7 @@ public class ContextualIngreso : MonoBehaviour {
 
   void OnDisable () {
     choises.onDone -= HandleDone;
+    attendingPatient.GoToEnfermeria();
   }
 
   public void OpenAt (Patient patient) {

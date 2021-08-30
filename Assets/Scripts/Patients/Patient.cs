@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public class Patient : MonoBehaviour {
   [Header("Configuration")]
   public float walkingSpeed = 2;
+  public bool canBeAttended;
 
   [Header("Information")]
   public bool isRandomized = false;
@@ -45,6 +46,7 @@ public class Patient : MonoBehaviour {
   }
 
   public void GoToEnfermeria () { StartCoroutine(_GoToEnfermeria()); } IEnumerator _GoToEnfermeria () {
+    canBeAttended = false;
     PatientsManager manager = GetComponentInParent<PatientsManager>();
     speed = 1;
 

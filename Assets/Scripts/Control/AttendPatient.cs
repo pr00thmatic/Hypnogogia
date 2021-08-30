@@ -25,7 +25,7 @@ public class AttendPatient : MonoBehaviour {
   }
 
   public void HandlePatient (InputAction.CallbackContext ctx) {
-    if (!selected) return;
+    if (!selected || !selected.canBeAttended) return;
 
     GrabbedFormulario form = controls.CurrentHand.GetComponentInChildren<GrabbingHand>()
       .currentlyGrabbed?.GetComponentInChildren<GrabbedFormulario>();
@@ -41,6 +41,7 @@ public class AttendPatient : MonoBehaviour {
   void OnTriggerStay2D (Collider2D c) {
     Patient patient = c.GetComponentInParent<Patient>();
     if (!patient) return;
+    if (!patient.canBeAttended) { patient.interactIndicator.SetActive(false); return; }
     if (!selected) { SelectPatient(patient, true); return; }
     if (Vector3.Distance(patient.transform.position, transform.position) <
         Vector3.Distance(selected.transform.position, transform.position)) SelectPatient(patient, true);
