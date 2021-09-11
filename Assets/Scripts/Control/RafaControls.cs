@@ -42,6 +42,7 @@ public class RafaControls : MonoBehaviour {
   public void HandleControlRequest (ControlTaker requester) {
     TheAlwaysActiveGameObject.Instance.StartCoroutine(_HandleControlRequest(requester)); }
   IEnumerator _HandleControlRequest (ControlTaker requester) {
+    animator.SetFloat("speed", 0);
     allControls.SetActive(false);
     if (requester.targetPosition) {
       while (Mathf.Abs(motion.motionTarget.position.x - requester.targetPosition.position.x) >= 0.01) {
