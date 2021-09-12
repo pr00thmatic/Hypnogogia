@@ -10,17 +10,15 @@ public class RafaMetarigTransform : MonoBehaviour {
 
   [Header("Initialization")]
   public PositionConstraint animationPosition;
-  public RotationConstraint animationRotation;
   public PositionConstraint commandsPosition;
-  public RotationConstraint commandsRotation;
 
   void Update () {
     if (followCommands) {
-      commandsPosition.enabled = commandsRotation.enabled = true;
-      animationPosition.enabled = animationRotation.enabled = false;
+      commandsPosition.enabled = true;
+      animationPosition.enabled = false;
     } else {
-      commandsPosition.enabled = commandsRotation.enabled = false;
-      animationPosition.enabled = animationRotation.enabled = true;
+      commandsPosition.enabled = false;
+      animationPosition.enabled = true;
     }
   }
 }
