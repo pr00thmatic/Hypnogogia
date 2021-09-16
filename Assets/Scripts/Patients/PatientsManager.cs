@@ -6,4 +6,5 @@ public class PatientsManager : MonoBehaviour {
   [Header("Initialization")]
   public Transform enfermeriaTarget;
   public ShelfDoor enfermeriaDoor;
+  public Transform enfermeriaChair;
 }

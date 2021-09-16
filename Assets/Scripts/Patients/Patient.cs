@@ -63,6 +63,7 @@ public class Patient : MonoBehaviour {
     skins.SetActive(false);
     yield return new WaitForSeconds(0.25f);
     manager.enfermeriaDoor.isOpen = false;
-    gameObject.SetActive(false);
+    transform.parent = manager.enfermeriaChair;
+    transform.localPosition = Vector3.zero;
   }
 }
