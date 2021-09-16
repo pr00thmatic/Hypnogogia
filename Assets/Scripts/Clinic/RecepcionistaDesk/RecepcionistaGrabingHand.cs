@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -101,10 +102,13 @@ public class RecepcionistaGrabingHand : MonoBehaviour {
     arm.grabbed.transform.parent = transform;
     submittedForm = arm.grabbed.transform;
     arm.grabbed = null;
+    if (submittedForm.GetComponent<ContextualIngresoForm>()) {
+      Destroy(submittedForm.GetComponent<ContextualIngresoForm>());
+    }
   }
 
   public void ArmLeavesForm () {
-    submittedForm.GetComponent<SpriteRenderer>().sortingOrder += SubmissionArea.submittedForms++;
+    submittedForm.GetComponent<SortingGroup>().sortingOrder += SubmissionArea.submittedForms++;
     submittedForm.transform.parent = submittedAnchor;
   }
 

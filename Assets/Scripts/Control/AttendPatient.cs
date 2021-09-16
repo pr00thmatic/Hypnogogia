@@ -27,8 +27,8 @@ public class AttendPatient : MonoBehaviour {
   public void HandlePatient (InputAction.CallbackContext ctx) {
     if (!selected || !selected.canBeAttended) return;
 
-    GrabbedFormulario form = controls.CurrentHand.GetComponentInChildren<GrabbingHand>()
-      .currentlyGrabbed?.GetComponentInChildren<GrabbedFormulario>();
+    IngameForm form = controls.CurrentHand.GetComponentInChildren<GrabbingHand>()
+      .currentlyGrabbed?.GetComponentInChildren<IngameForm>();
 
     if (!form || form.key != FormularioKeys.ingresos) {
       conversation.StartDialogue(noForm);

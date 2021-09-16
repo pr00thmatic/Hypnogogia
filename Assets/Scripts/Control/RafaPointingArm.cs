@@ -16,6 +16,10 @@ public class RafaPointingArm : MonoBehaviour {
   public Transform fingerTip;
   public Transform rootMotion;
 
+  void OnDisable () {
+    if (grabbed) Destroy(grabbed);
+  }
+
   public void Grab (GameObject toGrab) {
     toGrab.transform.position = grabAnchor.position;
     toGrab.transform.rotation = grabAnchor.rotation;

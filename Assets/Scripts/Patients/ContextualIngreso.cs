@@ -3,14 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class ContextualIngreso : MonoBehaviour {
+  public static event System.Action<FormSlot> onFill;
+
   [Header("Information")]
   public Patient attendingPatient;
 
   [Header("Initialization")]
-  public FormSlot apellidos;
-  public FormSlot nombre;
-  public FormSlot causa;
-  public FormSlot conciencia;
+  public Transform slots;
   public MultipleChoise choises;
   public GameObject signature;
   public Animator form;
@@ -19,19 +18,21 @@ public class ContextualIngreso : MonoBehaviour {
     choises.onDone += HandleDone;
     form.SetTrigger("hide");
     form.SetBool("is visible", true);
+    foreach (Transform slot in slots) slot.GetComponent<FormSlot>().onFill += HandleFill;
   }
 
   void OnDisable () {
     choises.onDone -= HandleDone;
     attendingPatient.GoToEnfermeria();
+    foreach (Transform slot in slots) slot.GetComponent<FormSlot>().onFill -= HandleFill;
   }
 
   public void OpenAt (Patient patient) {
     attendingPatient = patient;
-    apellidos.expected = patient.info.apellidos;
-    nombre.expected = patient.info.nombre;
-    causa.expected = patient.info.cause;
-    conciencia.expected = patient.info.consciousness.ToString();
+    slots.Find("apellidos").GetComponent<FormSlot>().expected = patient.info.apellidos;
+    slots.Find("nombre").GetComponent<FormSlot>().expected = patient.info.nombre;
+    slots.Find("causa").GetComponent<FormSlot>().expected = patient.info.cause;
+    slots.Find("conciencia").GetComponent<FormSlot>().expected = patient.info.consciousness.ToString();
     transform.position = patient.transform.position;
     gameObject.SetActive(true);
   }
@@ -44,4 +45,6 @@ public class ContextualIngreso : MonoBehaviour {
     yield return new WaitForSeconds(0.5f);
     gameObject.SetActive(false);
   }
+
+  public void HandleFill (FormSlot filled) { onFill?.Invoke(filled); }
 }

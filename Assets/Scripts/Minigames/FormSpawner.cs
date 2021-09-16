@@ -41,15 +41,16 @@ public class FormSpawner : MonoBehaviour {
 
       grabbed.transform.position = hand.transform.position;
       grabbed.transform.rotation = hand.transform.rotation;
-      grabbed.GetComponent<GrabbedFormulario>().key = taken.key;
+      grabbed.GetComponent<IngameForm>().key = taken.key;
 
       hand.ForceGrab(grabbed);
       taken = null;
     } else {
       Grabbable grabbed = controls.CurrentHand.GetComponentInChildren<GrabbingHand>(true).currentlyGrabbed;
-      if (grabbed && grabbed.GetComponent<GrabbedFormulario>()) {
-        GameObject created = Instantiate(FindDeskRepresentation(grabbed.GetComponent<GrabbedFormulario>().key));
+      if (grabbed && grabbed.GetComponent<IngameForm>()) {
+        GameObject created = Instantiate(FindDeskRepresentation(grabbed.GetComponent<IngameForm>().key));
         deskArm.Grab(created);
+        created.gameObject.SetActive(true);
         created.GetComponentInParent<DeskForm>().submittable = true;
       }
     }
