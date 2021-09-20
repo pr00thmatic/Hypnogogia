@@ -23,7 +23,7 @@ public class ContextualIngreso : MonoBehaviour {
 
   void OnDisable () {
     choises.onDone -= HandleDone;
-    attendingPatient.GoToEnfermeria();
+    attendingPatient.waiting.GoToEnfermeria();
     foreach (Transform slot in slots) slot.GetComponent<FormSlot>().onFill -= HandleFill;
   }
 

@@ -13,6 +13,10 @@ public class PresenceRequester : MonoBehaviour {
     RequestPresence();
   }
 
+  void OnDisable () {
+    if (!this.enabled) onRoomExit?.Invoke(this);
+  }
+
   public void RequestPresence () {
     onPresenceRequested?.Invoke(this);
   }

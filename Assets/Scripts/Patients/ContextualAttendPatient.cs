@@ -36,7 +36,7 @@ public class ContextualAttendPatient : MonoBehaviour {
     attendingPatient = patient;
     transform.position = patient.transform.position;
     patientDialogue.text = LocalizedComment.Get(patient.info.presentation);
-    control.targetPosition.position = attendingPatient.drPosition.position;
+    control.targetPosition.position = attendingPatient.waiting.drPosition.position;
     gameObject.SetActive(true);
   }
 

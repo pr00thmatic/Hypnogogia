@@ -40,8 +40,8 @@ public class SideSkin : MonoBehaviour {
   }
 
   void Update () {
-    bodyAnimator.SetFloat("speed", patient.speed);
-    legsAnimator.SetFloat("speed", patient.speed);
-    armsAnimator.SetFloat("speed", patient.speed);
+    bodyAnimator.SetFloat("speed", patient.walker.speed);
+    legsAnimator.SetFloat("speed", patient.walker.speed);
+    armsAnimator.SetFloat("speed", patient.walker.speed);
   }
 }
