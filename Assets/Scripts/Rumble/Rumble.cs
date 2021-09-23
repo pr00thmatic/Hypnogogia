@@ -14,7 +14,7 @@ public class Rumble : NonPersistentSingleton<Rumble> {
 
   [Header("Information")]
   public static Gamepad gamepad;
-  public Coroutine heart;
+  public Coroutine pattern;
 
   [Header("Initialization")]
   public PlayerInput input;
@@ -30,17 +30,18 @@ public class Rumble : NonPersistentSingleton<Rumble> {
     return Gamepad.all.FirstOrDefault(g => input.devices.Any(d => d.deviceId == g.deviceId));
   }
 
-  public static Coroutine SetHeartRumble (HeartRumblePattern pattern) {
-    return SetHeartRumble(HeartRumblePatterns.hash[pattern]());
+  public static Coroutine SetRumble (RumblePattern pattern) {
+    return SetRumble(RumblePatterns.hash[pattern]());
   }
 
-  public static Coroutine SetHeartRumble (IEnumerator pattern) {
-    StopHeart();
-    Instance.heart = Instance.StartCoroutine(pattern);
-    return Instance.heart;
+  public static Coroutine SetRumble (IEnumerator pattern) {
+    Stop();
+    Instance.pattern = Instance.StartCoroutine(pattern);
+    return Instance.pattern;
   }
 
-  public static void StopHeart () {
-    if (Instance.heart != null) Instance.StopCoroutine(Instance.heart);
+  public static void Stop () {
+    Instance.StopAllCoroutines();
+    // if (Instance.pattern != null) Instance.StopCoroutine(Instance.pattern);
   }
 }

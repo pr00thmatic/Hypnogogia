@@ -55,19 +55,6 @@ public class Grabbable : MonoBehaviour {
     }
   }
 
-  void OnTriggerStay2D (Collider2D c) {
-    GrabbingHand hand = c.GetComponent<GrabbingHand>();
-    if (!hand) return;
-    couldBeGrabbed = true;
-  }
-
-  void OnTriggerExit2D (Collider2D c) {
-    GrabbingHand hand = c.GetComponent<GrabbingHand>();
-    if (hand) {
-      couldBeGrabbed = false;
-    }
-  }
-
   public void Use (GrabbingHand hand) {
     GetComponent<SurfaceMimicker>().enabled = false;
     this.hand = hand;

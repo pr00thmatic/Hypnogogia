@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class Heart : MonoBehaviour {
+public class StethoSign : MonoBehaviour {
   [Header("Configuration")]
-  public HeartRumblePattern pattern;
+  public RumblePattern pattern;
 }
