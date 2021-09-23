@@ -148,28 +148,6 @@ public class @TheInput : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""e66ca36b-c8f3-4922-a185-e612615458e5"",
-                    ""path"": ""<HID::54C-5C4>/button4"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Talk"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""fac3d731-182d-4521-9a4e-79e1622dda03"",
-                    ""path"": ""<HID::54C-5C4>/button12"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SwitchHand"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""80de5556-7d18-4314-80ae-a74fe0306dee"",
                     ""path"": ""<Gamepad>/rightStickPress"",
                     ""interactions"": """",
@@ -192,17 +170,6 @@ public class @TheInput : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""06a80488-191c-4af7-a086-04eb90e4214f"",
-                    ""path"": ""<HID::54C-5C4>/button6"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Grab"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""91d582e8-f77c-4a1c-9a95-d803c5997c10"",
                     ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
@@ -220,17 +187,6 @@ public class @TheInput : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Grab"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""3bc0322b-688c-4c0c-a1db-6154d67325fc"",
-                    ""path"": ""<HID::54C-5C4>/button8"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Use"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -330,17 +286,6 @@ public class @TheInput : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""MoveHand"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""c9fbdde0-0b52-4ce5-b73c-211f8822b539"",
-                    ""path"": ""<HID::54C-5C4>/stick"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Walk"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -467,17 +412,6 @@ public class @TheInput : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""92dc5d0a-ccf1-4201-87fd-63e42f1de624"",
-                    ""path"": ""<HID::54C-5C4>/button11"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Duck"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""ddbfcd84-e5fe-4724-a546-4143fa46d0bf"",
                     ""path"": ""<Gamepad>/leftStickPress"",
                     ""interactions"": """",
@@ -511,34 +445,12 @@ public class @TheInput : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""0c73bf59-8116-4f13-805c-ac5c09670eff"",
-                    ""path"": ""<HID::54C-5C4>/button5"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Duck"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""018d9000-bbcd-4d49-8de8-5faa8bccd175"",
                     ""path"": ""<Mouse>/position"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""MouseHand"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""dd641134-fe93-4c93-8a9e-39d610fc89d2"",
-                    ""path"": ""<HID::54C-5C4>/stick"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""JoystickHandDetector"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -632,17 +544,6 @@ public class @TheInput : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""2e64dc86-b6fb-4899-b432-a87c497eccde"",
-                    ""path"": ""<HID::54C-5C4>/button2"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Interact"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""71a8fee1-1789-495c-bac8-bf3051e136de"",
                     ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
@@ -676,17 +577,6 @@ public class @TheInput : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""a3f18f95-1eef-4d5b-8689-f076a5a1347f"",
-                    ""path"": ""<HID::54C-5C4>/button10"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Restart"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""4b970d5d-c234-4e57-a12b-b65b417d8958"",
                     ""path"": ""<Gamepad>/start"",
                     ""interactions"": """",
@@ -700,17 +590,6 @@ public class @TheInput : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""74a0661a-a430-48e3-9d20-9443ce219d9c"",
                     ""path"": ""<Keyboard>/escape"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Cancel"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""e588a052-6dc4-4c19-b58f-f8d42cb518fc"",
-                    ""path"": ""<HID::54C-5C4>/button3"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
