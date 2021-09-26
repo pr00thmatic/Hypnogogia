@@ -4,5 +4,5 @@ using System.Collections.Generic;
 
 public class StethoSign : MonoBehaviour {
   [Header("Configuration")]
-  public RumblePattern pattern;
+  public ClinicalSign pattern;
 }

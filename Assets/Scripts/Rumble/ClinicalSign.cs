@@ -1,4 +1,4 @@
-public enum RumblePattern {
+public enum ClinicalSign {
   normalHeart,
   fastHeart,
   slowHeart,

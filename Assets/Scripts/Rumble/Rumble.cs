@@ -15,12 +15,28 @@ public class Rumble : NonPersistentSingleton<Rumble> {
   [Header("Information")]
   public static Gamepad gamepad;
   public Coroutine pattern;
+  public Animator currentAnimator;
 
   [Header("Initialization")]
   public PlayerInput input;
 
   void Reset () { input = GetComponent<PlayerInput>(); }
-  void OnDisable () { if (GetGamepad() != null) GetGamepad().SetMotorSpeeds(0,0); }
+
+  void OnEnable () {
+    StethoscopeMic.onStatusChange += HandleStatusChange;
+    StethoscopeMic.onSignFound += HandleSignFound;
+    StethoscopeMic.onSignLost += HandleSignLost;
+    StethoOrganUIOverlay.onRumbleDisplayNeeded += HandleDisplayNeed;
+  }
+
+  void OnDisable () {
+    StethoscopeMic.onStatusChange -= HandleStatusChange;
+    StethoscopeMic.onSignFound -= HandleSignFound;
+    StethoscopeMic.onSignLost -= HandleSignLost;
+    StethoOrganUIOverlay.onRumbleDisplayNeeded -= HandleDisplayNeed;
+    if (GetGamepad() != null) GetGamepad().SetMotorSpeeds(0,0);
+  }
+
   void Update () {
     Gamepad found = GetGamepad();
     if (found != null) gamepad = found;
@@ -30,18 +46,37 @@ public class Rumble : NonPersistentSingleton<Rumble> {
     return Gamepad.all.FirstOrDefault(g => input.devices.Any(d => d.deviceId == g.deviceId));
   }
 
-  public static Coroutine SetRumble (RumblePattern pattern) {
-    return SetRumble(RumblePatterns.hash[pattern]());
+  public static void SetRumble (ClinicalSign signCodename) {
+    SetRumble(RumblePatterns.actionsHash[signCodename]);
   }
 
-  public static Coroutine SetRumble (IEnumerator pattern) {
+  public static void SetRumble (System.Action<MonoBehaviour> patternTriggerer) {
     Stop();
-    Instance.pattern = Instance.StartCoroutine(pattern);
-    return Instance.pattern;
+    patternTriggerer(Instance);
   }
 
   public static void Stop () {
     Instance.StopAllCoroutines();
-    // if (Instance.pattern != null) Instance.StopCoroutine(Instance.pattern);
+  }
+
+  public void HandleStatusChange (StethoscopeMic mic) {
+    if (!mic.isGrabbed) { Stop(); return; }
+  }
+
+  public void HandleSignFound (ClinicalSign sign) {
+    SetRumble(sign);
+  }
+
+  public void HandleSignLost (ClinicalSign sign) {
+    Stop();
+  }
+
+  public void HandleDisplayNeed (Animator animator) {
+    if (animator != currentAnimator) return;
+    if (animator.gameObject.activeSelf) {
+      currentAnimator = animator;
+    } else {
+      currentAnimator = null;
+    }
   }
 }
