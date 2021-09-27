@@ -44,7 +44,7 @@ public class Grabbable : MonoBehaviour {
 
   void Update () {
     if (hand && copiesHandPosition) {
-      if (isLocked) Unuse();
+      if (IsGrabbed && isLocked) Unuse();
       if (keepsRotationUp) {
         transform.rotation = originalRotation;
         transform.localScale = Utils.SetX(transform.localScale,
@@ -56,6 +56,10 @@ public class Grabbable : MonoBehaviour {
   }
 
   public void Use (GrabbingHand hand) {
+    if (isLocked) {
+      TriggerLockedGrab();
+      return;
+    }
     GetComponent<SurfaceMimicker>().enabled = false;
     this.hand = hand;
     foreach (Collider2D c in cs) c.enabled = false;
@@ -80,6 +84,7 @@ public class Grabbable : MonoBehaviour {
   }
 
   public void Unuse () {
+    if (!this.hand) return;
     GetComponent<SurfaceMimicker>().enabled = true;
     this.hand = null;
     transform.parent = null;

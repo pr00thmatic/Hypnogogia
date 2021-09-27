@@ -65,15 +65,9 @@ public class GrabbingHand : MonoBehaviour {
       currentlyGrabbed.Unuse();
       currentlyGrabbed = null;
     }
-
     currentlyGrabbed = grabbable;
-
-    if (currentlyGrabbed && currentlyGrabbed.isLocked) {
-      currentlyGrabbed.TriggerLockedGrab();
-      currentlyGrabbed = null;
-    } else if (currentlyGrabbed) {
-      currentlyGrabbed.Use(this);
-    }
+    if (currentlyGrabbed) currentlyGrabbed.Use(this);
+    if (currentlyGrabbed && currentlyGrabbed.isLocked) currentlyGrabbed = null;
   }
 
   public void DestroyGrabbed () {

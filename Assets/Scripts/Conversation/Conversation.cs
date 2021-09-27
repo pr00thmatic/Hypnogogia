@@ -47,6 +47,8 @@ public class Conversation : MonoBehaviour {
     if (IsCurrentlyHappening) NextDialogue();
   }
 
+  public void StartDialogue () { NextDialogue(); }
+
   public void StartDialogue (ConversationData data) {
     this.data = data;
     NextDialogue();
