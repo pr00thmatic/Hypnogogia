@@ -28,6 +28,8 @@ public class WalkToEnfermeria : MonoBehaviour {
     speed = 1;
 
     while (root.transform.position.x != manager.enfermeriaTarget.position.x) {
+      float direction = Mathf.Sign(manager.enfermeriaTarget.position.x - root.transform.position.x);
+      root.localScale = Utils.SetX(root.localScale, Mathf.Abs(root.localScale.x) * direction);
       root.transform.position =
         Utils.SetX(root.transform.position, Mathf.MoveTowards(root.transform.position.x, manager.enfermeriaTarget.position.x,
                                                          walkingSpeed * Time.deltaTime));
