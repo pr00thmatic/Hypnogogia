@@ -72,7 +72,7 @@ public class Rumble : NonPersistentSingleton<Rumble> {
 
   public void HandleSignLost (StethoSign sign) {
     if (currentSign == sign) {
-      GetGamepad().SetMotorSpeeds(0,0);
+      GetGamepad()?.SetMotorSpeeds(0,0);
       currentSign = null;
       Stop();
     }
