@@ -14,20 +14,19 @@ public class StethoOrganUIOverlay : MonoBehaviour {
     StethoscopeMic.onSignLost += HandleLoss;
   }
 
-  public void HandleFinding (ClinicalSign sign) {
-    if (MedTools.signToBody[sign] == bodyPart) {
+  public void HandleFinding (StethoSign sign) {
+    if (MedTools.signToBody[sign.pattern] == bodyPart) {
       animator.gameObject.SetActive(true);
+      onRumbleDisplayNeeded?.Invoke(animator);
     } else {
       animator.gameObject.SetActive(false);
     }
-    onRumbleDisplayNeeded?.Invoke(animator);
   }
 
-  public void HandleLoss (ClinicalSign sign) {
-    if (MedTools.signToBody[sign] == bodyPart) {
+  public void HandleLoss (StethoSign sign) {
+    if (MedTools.signToBody[sign.pattern] == bodyPart) {
       animator.gameObject.SetActive(false);
     }
-    onRumbleDisplayNeeded?.Invoke(animator);
   }
 
 }

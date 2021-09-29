@@ -10,12 +10,12 @@ public class Rumble : NonPersistentSingleton<Rumble> {
   public float speed = 1;
   public float waitTime = 0.5f;
   public float pulseTime = 0.01f;
-  public int quickConfig = -1;
 
   [Header("Information")]
+  public Animator currentAnimator;
   public static Gamepad gamepad;
   public Coroutine pattern;
-  public Animator currentAnimator;
+  public StethoSign currentSign;
 
   [Header("Initialization")]
   public PlayerInput input;
@@ -63,20 +63,20 @@ public class Rumble : NonPersistentSingleton<Rumble> {
     if (!mic.isGrabbed) { Stop(); return; }
   }
 
-  public void HandleSignFound (ClinicalSign sign) {
-    SetRumble(sign);
-  }
-
-  public void HandleSignLost (ClinicalSign sign) {
-    Stop();
-  }
-
-  public void HandleDisplayNeed (Animator animator) {
-    if (animator != currentAnimator) return;
-    if (animator.gameObject.activeSelf) {
-      currentAnimator = animator;
-    } else {
-      currentAnimator = null;
+  public void HandleSignFound (StethoSign sign) {
+    if (currentSign != sign) {
+      currentSign = sign;
+      SetRumble(sign.pattern);
     }
   }
+
+  public void HandleSignLost (StethoSign sign) {
+    if (currentSign == sign) {
+      GetGamepad().SetMotorSpeeds(0,0);
+      currentSign = null;
+      Stop();
+    }
+  }
+
+  public void HandleDisplayNeed (Animator animator) { currentAnimator = animator; }
 }

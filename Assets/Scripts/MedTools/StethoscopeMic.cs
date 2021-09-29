@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 public class StethoscopeMic : MonoBehaviour {
   public static event System.Action<StethoscopeMic> onStatusChange;
-  public static event System.Action<ClinicalSign> onSignLost;
-  public static event System.Action<ClinicalSign> onSignFound;
+  public static event System.Action<StethoSign> onSignLost;
+  public static event System.Action<StethoSign> onSignFound;
 
   [Header("Information")]
   public StethoSign currentSign;
@@ -25,7 +25,7 @@ public class StethoscopeMic : MonoBehaviour {
   void OnTriggerStay2D (Collider2D c) {
     StethoSign sign = c.GetComponent<StethoSign>();
     if (!sign) return;
-    onSignFound?.Invoke(sign.pattern);
+    onSignFound?.Invoke(sign);
     if (currentSign != sign) {
       currentSign = sign;
       onStatusChange?.Invoke(this);
@@ -35,7 +35,7 @@ public class StethoscopeMic : MonoBehaviour {
   void OnTriggerExit2D (Collider2D c) {
     StethoSign sign = c.GetComponent<StethoSign>();
     if (!sign) return;
-    onSignLost?.Invoke(sign.pattern);
+    onSignLost?.Invoke(sign);
     if (sign == currentSign) {
       currentSign = null;
       onStatusChange?.Invoke(this);
