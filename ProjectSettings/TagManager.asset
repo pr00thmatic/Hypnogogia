@@ -11,6 +11,18 @@ TagManager:
   - 
   - Water
   - UI
+  - Grabbable
+  - OnlyRaycasts
+  - Floor
+  - OnlyFloors
+  - Contextual
+  - Characters
+  - CharacterSensor
+  - OnlyFloors (stackable)
+  - tv
+  - Box
+  - BoxItem
+  - UI renders
   - 
   - 
   - 
@@ -21,23 +33,47 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - City
+  - Sky
+  - Dialogues
   - 
   m_SortingLayers:
+  - name: Sky
+    uniqueID: 997522037
+    locked: 0
+  - name: BackgroundCity
+    uniqueID: 571784545
+    locked: 0
+  - name: Street
+    uniqueID: 1005155101
+    locked: 0
+  - name: InsideBuilding
+    uniqueID: 3471504005
+    locked: 0
+  - name: BehindCharacter
+    uniqueID: 3471337471
+    locked: 0
+  - name: Character
+    uniqueID: 2727823299
+    locked: 0
+  - name: FrontCharacter
+    uniqueID: 2854875885
+    locked: 0
+  - name: Facade
+    uniqueID: 2767137211
+    locked: 0
+  - name: UnlittedFacade
+    uniqueID: 1916662973
+    locked: 0
+  - name: Outside
+    uniqueID: 1699864207
+    locked: 0
+  - name: Floor
+    uniqueID: 3849660783
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Conversation
+    uniqueID: 2945274623
     locked: 0
