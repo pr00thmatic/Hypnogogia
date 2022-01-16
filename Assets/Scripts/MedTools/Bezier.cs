@@ -14,7 +14,7 @@ public class Bezier : MonoBehaviour {
   public Transform end;
   public LineRenderer body;
 
-  void Update () {
+  void LateUpdate () {
     Vector3[] positions = new Vector3[resolution];
 
     Vector3 p0 = begin.position;
