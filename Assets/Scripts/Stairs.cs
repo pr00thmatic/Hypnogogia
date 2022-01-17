@@ -7,6 +7,15 @@ public class Stairs : MonoBehaviour {
   public Transform usePosition;
   public Transform up;
   public Transform down;
+  public ControlTaker taker;
+
+  void Reset () {
+    taker = GetComponentInChildren<ControlTaker>();
+    if (!taker) {
+      taker = new GameObject(name + " ControlTaker").AddComponent<ControlTaker>();
+      taker.transform.parent = transform;
+    }
+  }
 
   void OnTriggerEnter2D (Collider2D c) {
     RafaStairUser found = c.GetComponentInParent<RafaStairUser>();
