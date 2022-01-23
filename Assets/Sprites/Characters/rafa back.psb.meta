@@ -546,10 +546,10 @@ ScriptedImporter:
       length: 292.44202
       parentId: -1
     - name: leg1R
-      position: {x: 292.442, y: -0.00013967259, z: 0}
-      rotation: {x: 0, y: 0, z: 0.005665459, w: 0.999984}
-      length: 376.10825
-      parentId: 0
+      position: {x: 81.095276, y: 399.4894, z: 0}
+      rotation: {x: 0, y: 0, z: 0.6957976, w: -0.718238}
+      length: 376.1083
+      parentId: -1
     - name: body0
       position: {x: 12.47525, y: 769.4412, z: 0}
       rotation: {x: 0, y: 0, z: 0.70014143, w: 0.7140042}
@@ -1145,7 +1145,7 @@ ScriptedImporter:
     internalID: 0
     spriteBone:
     - name: shoeR
-      position: {x: 42.03003, y: 71.570435, z: 0}
+      position: {x: 42.029846, y: 71.570435, z: 0}
       rotation: {x: 0, y: 0, z: 0.7071104, w: -0.7071032}
       length: 62.653244
       parentId: -1
@@ -1524,13 +1524,13 @@ ScriptedImporter:
     - name: leg0L
       position: {x: 84.88818, y: 695.8045, z: 0}
       rotation: {x: 0, y: 0, z: 0.7254521, w: -0.6882727}
-      length: 283.8231
+      length: 283.82306
       parentId: -1
     - name: leg1L
-      position: {x: 283.82303, y: 0.000018371687, z: 0}
-      rotation: {x: 0, y: 0, z: -0.00038603356, w: 1}
-      length: 391.39404
-      parentId: 0
+      position: {x: 69.97, y: 412.37384, z: 0}
+      rotation: {x: 0, y: 0, z: 0.7257178, w: -0.68799263}
+      length: 391.39417
+      parentId: -1
     - name: body0
       position: {x: 159.47525, y: 761.4412, z: 0}
       rotation: {x: 0, y: 0, z: 0.70014143, w: 0.7140042}
@@ -2307,9 +2307,9 @@ ScriptedImporter:
     internalID: 0
     spriteBone:
     - name: shoeL
-      position: {x: 41.09604, y: 81.53674, z: 0}
+      position: {x: 41.095947, y: 81.53668, z: 0}
       rotation: {x: 0, y: 0, z: 0.73592854, w: -0.6770593}
-      length: 71.85206
+      length: 71.852066
       parentId: -1
     spriteOutline: []
     vertices:
@@ -3150,7 +3150,7 @@ ScriptedImporter:
     internalID: 0
     spriteBone:
     - name: head
-      position: {x: 128.45892, y: 18.244507, z: 0}
+      position: {x: 128.45898, y: 18.244507, z: 0}
       rotation: {x: 0, y: 0, z: 0.7071066, w: 0.70710707}
       length: 214.81076
       parentId: -1
@@ -3670,17 +3670,17 @@ ScriptedImporter:
   characterData:
     bones:
     - name: body0
-      position: {x: 448.47525, y: 823.4412, z: 0}
+      position: {x: 59.36667, y: -18.92163, z: 0}
       rotation: {x: 0, y: 0, z: 0.70014143, w: 0.7140042}
       length: 152.18683
-      parentId: -1
+      parentId: 10
     - name: body1
       position: {x: 152.18683, y: 0.000013823469, z: 0}
       rotation: {x: 0, y: 0, z: 0.0098021785, w: 0.99995196}
       length: 244.64566
       parentId: 0
     - name: head
-      position: {x: 244.64568, y: -0.0000661485, z: 0}
+      position: {x: 244.64568, y: -0.000096666074, z: 0}
       rotation: {x: 0, y: 0, z: -0.000000044007287, w: 1}
       length: 214.81076
       parentId: 1
@@ -3690,35 +3690,40 @@ ScriptedImporter:
       length: 92.68025
       parentId: 0
     - name: leg0R
-      position: {x: 22.762035, y: 64.251915, z: 0}
-      rotation: {x: 0, y: 0, z: 0.04240323, w: 0.99910057}
-      length: 292.44205
-      parentId: 3
+      position: {x: 122.01984, y: -96.49231, z: 0}
+      rotation: {x: 0, y: 0, z: 0.69985557, w: -0.7142845}
+      length: 292.44202
+      parentId: 10
     - name: leg1R
-      position: {x: 292.44202, y: -0.00016239582, z: 0}
-      rotation: {x: 0, y: 0, z: 0.005665431, w: 0.99998397}
+      position: {x: 127.986694, y: -388.87344, z: 0}
+      rotation: {x: 0, y: 0, z: 0.6957976, w: -0.718238}
       length: 376.1083
-      parentId: 4
+      parentId: 10
     - name: shoeR
-      position: {x: 376.10834, y: 0.00009491969, z: 0}
-      rotation: {x: 0, y: 0, z: -0.015872862, w: 0.99987406}
+      position: {x: 139.92126, y: -764.7924, z: 0}
+      rotation: {x: 0, y: 0, z: 0.7071104, w: -0.7071032}
       length: 62.653244
-      parentId: 5
+      parentId: 10
     - name: leg0L
-      position: {x: 19.688547, y: -73.47191, z: 0}
-      rotation: {x: 0, y: 0, z: 0.005920096, w: 0.9999825}
-      length: 283.82312
-      parentId: 3
+      position: {x: -15.220398, y: -84.55835, z: 0}
+      rotation: {x: 0, y: 0, z: 0.7254521, w: -0.6882727}
+      length: 283.82306
+      parentId: 10
     - name: leg1L
-      position: {x: 283.82303, y: -0.000020459132, z: 0}
-      rotation: {x: 0, y: 0, z: -0.00038602029, w: 0.99999994}
-      length: 391.39407
-      parentId: 7
+      position: {x: -30.13858, y: -367.989, z: 0}
+      rotation: {x: 0, y: 0, z: 0.7257178, w: -0.68799263}
+      length: 391.39413
+      parentId: 10
     - name: shoeL
-      position: {x: 391.3941, y: -0.0000045639317, z: 0}
-      rotation: {x: 0, y: 0, z: -0.014959443, w: 0.9998881}
+      position: {x: -51.012634, y: -758.8262, z: 0}
+      rotation: {x: 0, y: 0, z: 0.73592854, w: -0.6770593}
       length: 71.852066
-      parentId: 8
+      parentId: 10
+    - name: Rafa
+      position: {x: 389.10858, y: 842.36285, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      length: 97.745514
+      parentId: -1
     parts:
     - spritePosition:
         x: 315

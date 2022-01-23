@@ -8,6 +8,9 @@ public class Stairs : MonoBehaviour {
   public Transform up;
   public Transform down;
   public ControlTaker taker;
+  public Transform users;
+  public Transform maskTop;
+  public Transform maskBottom;
 
   void Reset () {
     taker = GetComponentInChildren<ControlTaker>();
@@ -40,5 +43,10 @@ public class Stairs : MonoBehaviour {
 
   public void GoDown (Transform user) {
     Go(user, down);
+  }
+
+  public void AddUser (StairsUser user) {
+    user.transform.parent = users;
+    Utils.CopyTransform(users, user.transform);
   }
 }

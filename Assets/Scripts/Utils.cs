@@ -80,10 +80,10 @@ public class Utils {
     }
   }
 
-  public static void CopyTransform (Transform toCopy, Transform copier) {
-    copier.position = toCopy.position;
-    copier.rotation = toCopy.rotation;
-    copier.localScale = toCopy.localScale;
+  public static void CopyTransform (Transform copyFrom, Transform copyInto) {
+    copyInto.position = copyFrom.position;
+    copyInto.rotation = copyFrom.rotation;
+    copyInto.localScale = copyFrom.localScale;
   }
 
   public static void RandomSkin (SpriteResolver[] resolvers) {
