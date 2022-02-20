@@ -67,7 +67,7 @@ public class StateMachine : MonoBehaviour {
   }
 
   public void HandleStateChange (State state) {
-    if (gameObject.activeInHierarchy) {
+    if (gameObject && gameObject.activeInHierarchy) {
       onStateChange?.Invoke(state);
     }
   }

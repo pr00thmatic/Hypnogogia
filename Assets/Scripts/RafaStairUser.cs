@@ -9,6 +9,8 @@ public class RafaStairUser : MonoBehaviour {
 
   [Header("Initialization")]
   public Rafa rafa;
+  public RafaStairsSkin upstairs;
+  public RafaStairsSkin downstairs;
 
   void Reset () {
     rafa = GetComponentInParent<Rafa>();
@@ -20,8 +22,13 @@ public class RafaStairUser : MonoBehaviour {
 
     if (useSignalResetted && Mathf.Abs(motion.y) > 0.5) {
       useSignalResetted = false;
-      if (motion.y > 0.5) currentStairs.GoUp(rafa.motion.motionTarget);
-      if (motion.y < -0.5) currentStairs.GoDown(rafa.motion.motionTarget);
+      if (motion.y > 0.5 && currentStairs.CanGoUp) {
+        upstairs.Activate();
+        upstairs.target = currentStairs.up;
+      } else if (motion.y < -0.5 && currentStairs.CanGoDown) {
+        downstairs.Activate();
+        downstairs.target = currentStairs.down;
+      }
     } else if (!useSignalResetted && Mathf.Abs(motion.y) < 0.5) {
       useSignalResetted = true;
     }

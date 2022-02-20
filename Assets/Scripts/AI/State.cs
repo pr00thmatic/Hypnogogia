@@ -14,10 +14,19 @@ public class State : MonoBehaviour {
   }
 
   void OnDisable () {
+    if (!this.enabled) return;
     onExit?.Invoke(this);
   }
 
   public void Next () {
     transform.parent.GetChild(transform.GetSiblingIndex()+1).gameObject.SetActive(true);
+  }
+
+  public void Activate () {
+    Transform parent = transform;
+    do {
+      parent.gameObject.SetActive(true);
+      parent = parent.parent;
+    } while (parent);
   }
 }
