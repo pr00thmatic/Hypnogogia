@@ -6,7 +6,7 @@ public class ActivateOnRafaEnter : MonoBehaviour {
   [Header("Initialization")]
   public GameObject toActivate;
 
-  void OnTriggerEnter2D (Collider2D c) {
+  void OnTriggerEnter (Collider c) {
     if (!c.GetComponent<Rafa>()) return;
     toActivate.SetActive(true);
   }
