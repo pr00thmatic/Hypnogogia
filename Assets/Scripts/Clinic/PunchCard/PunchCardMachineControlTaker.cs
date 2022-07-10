@@ -35,6 +35,7 @@ public class PunchCardMachineControlTaker : MonoBehaviour {
     if (current && found != current) return;
     current = found;
     Rafa rafa = c.GetComponentInParent<Rafa>();
+    if (!rafa) return;
     CanBeUsed = !rafa.controls.motion.IsDucking;
     if (!subscribed) {
       subscribed = true;

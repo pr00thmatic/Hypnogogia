@@ -43,6 +43,10 @@ public class Grabbable : MonoBehaviour {
     }
   }
 
+  void Awake () {
+    originalRotation = transform.rotation;
+  }
+
   public void Use (GrabbingHand hand) {
     if (isLocked) {
       TriggerLockedGrab();

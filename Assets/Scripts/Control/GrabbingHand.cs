@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Animations;
 using UnityEngine.InputSystem;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ public class GrabbingHand : MonoBehaviour {
   [Header("Information")]
   public Grabbable currentlyGrabbed;
   public Vector3 Center { get => (Vector3) c.offset + transform.position; }
+  public Transform visualHand;
 
   [Header("Initialization")]
   public RafaMotion motion;
@@ -17,13 +19,23 @@ public class GrabbingHand : MonoBehaviour {
   public CircleCollider2D c;
   public UserHand user;
   public SelectedHand hand;
+  public ParentConstraint forceFollow;
 
   void OnEnable () {
     TheInputInstance.Input.Rafa.Grab.performed += HandleGrab;
+    visualHand = this.forceFollow.GetSource(0).sourceTransform;
   }
 
   void OnDisable () {
     TheInputInstance.Input.Rafa.Grab.performed -= HandleGrab;
+  }
+
+  void LateUpdate () {
+    if (!currentlyGrabbed) return;
+
+    currentlyGrabbed.transform.position = visualHand.position;
+    if (currentlyGrabbed.preserveOrientation)
+      currentlyGrabbed.transform.rotation = currentlyGrabbed.originalRotation;
   }
 
   // TODO: grab the thing that is in front of everything
