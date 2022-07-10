@@ -27,6 +27,7 @@ public class Grabbable : MonoBehaviour {
   public Vector3 offset;
   public bool IsGrabbed { get => hand; }
   public bool couldBeGrabbed;
+  public Coroutine grabbedCoroutine;
 
   [Header("Initialization")]
   public SortingGroup sortGroup;
@@ -42,55 +43,36 @@ public class Grabbable : MonoBehaviour {
     }
   }
 
-  void Update () {
-    if (hand && copiesHandPosition) {
-      if (IsGrabbed && isLocked) Unuse();
-      if (keepsRotationUp) {
-        transform.rotation = originalRotation;
-        transform.localScale = Utils.SetX(transform.localScale,
-                                          Mathf.Abs(transform.localScale.x) * (preserveOrientation? 1: hand.motion.orientation));
-      }
-      // TODO: a prettier grab position
-      transform.position = hand.movingHand.TransformPoint(offset);
-    }
-  }
-
   public void Use (GrabbingHand hand) {
     if (isLocked) {
       TriggerLockedGrab();
       return;
     }
+
+    foreach (Collider2D c in cs) c.enabled = false;
+
     GetComponent<SurfaceMimicker>().enabled = false;
     this.hand = hand;
-    foreach (Collider2D c in cs) c.enabled = false;
-    if (getsParented) {
-      transform.parent = hand.movingHand;
-    }
-    if (changeSortingGroup) {
-      sortGroup.sortingOrder = hand.grabbedSortingOrder;
-    }
+    if (getsParented) transform.parent = hand.movingHand;
+    if (changeSortingGroup) sortGroup.sortingOrder = hand.grabbedSortingOrder;
     body.velocity = Vector2.zero;
     body.isKinematic = true;
-    body.simulated = simulateWhileGrabbed;
-    CustomGripTransform customGrip = GetComponent<CustomGripTransform>();
-    if (customGrip) {
-      originalRotation = customGrip.gripTransform.localRotation;
-      offset = customGrip.gripTransform.localPosition;
-    } else {
-      originalRotation = transform.rotation;
-      offset = hand.movingHand.InverseTransformPoint(transform.position);
-    }
+    body.simulated = simulateWhileGrabbed; // TODO: remove custom grip coz it's not working :P
+
     onGrabbed?.Invoke(hand);
   }
 
   public void Unuse () {
     if (!this.hand) return;
+
     GetComponent<SurfaceMimicker>().enabled = true;
     this.hand = null;
-    transform.parent = null;
+    if (getsParented) transform.parent = null;
     body.isKinematic = false;
     body.simulated = true;
+
     foreach (Collider2D c in cs) c.enabled = true;
+
     onDropped?.Invoke();
   }
 

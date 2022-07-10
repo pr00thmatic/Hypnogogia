@@ -26,6 +26,7 @@ public class GrabbingHand : MonoBehaviour {
     TheInputInstance.Input.Rafa.Grab.performed -= HandleGrab;
   }
 
+  // TODO: grab the thing that is in front of everything
   public Grabbable FindAvailableGrabbable () {
     Collider2D[] hits = Physics2D.OverlapCircleAll(Center, c.radius);
 
@@ -49,15 +50,23 @@ public class GrabbingHand : MonoBehaviour {
   public void HandleGrab (InputAction.CallbackContext ctx) {
     if (hand.IsBlocked) return;
 
-    if (currentlyGrabbed) {
-      currentlyGrabbed.Unuse();
-      currentlyGrabbed = null;
-      hand.SpentAction();
+    if (!currentlyGrabbed) {
+      AttemptGrab();
     } else {
-      currentlyGrabbed = FindAvailableGrabbable();
-      ForceGrab(currentlyGrabbed);
-      hand.SpentAction();
+      AttemptDrop();
     }
+  }
+
+  public void AttemptDrop () {
+    currentlyGrabbed.Unuse();
+    currentlyGrabbed = null;
+    // hand.SpentAction();
+  }
+
+  public void AttemptGrab () {
+    currentlyGrabbed = FindAvailableGrabbable();
+    ForceGrab(currentlyGrabbed);
+    // hand.SpentAction();
   }
 
   public void ForceGrab (Grabbable grabbable) {
